@@ -23,3 +23,5 @@ shape = SubResource("RectangleShape2D_sw52n")
 
 [node name="Player" parent="." instance=ExtResource("1_sw52n")]
 position = Vector2(117, 553)
+acceleration = 1000.0
+jumpAmount = 5
