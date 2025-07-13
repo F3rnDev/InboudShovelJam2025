@@ -7,6 +7,9 @@ const JUMP_VELOCITY = -400.0
 @export var jumpAmount:int = 2
 var jumps = jumpAmount
 
+func _process(delta: float) -> void:
+	Animate()
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -31,3 +34,19 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func Animate():
+	#Animate character
+	if is_on_floor():
+		if velocity.x != 0:
+			$AnimatedSprite2D.play("Walk")
+		else:
+			$AnimatedSprite2D.play("Idle")
+	else:
+		$AnimatedSprite2D.play("Jump")
+	
+	#Flip sprite
+	if velocity.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	elif velocity.x > 0:
+		$AnimatedSprite2D.flip_h = false
