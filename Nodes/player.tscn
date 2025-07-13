@@ -1,16 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl8e2shl6fofv"]
+[gd_scene load_steps=8 format=3 uid="uid://dl8e2shl6fofv"]
 
-[ext_resource type="Texture2D" uid="uid://tb73fo71k46g" path="res://icon.svg" id="1_aoxlc"]
 [ext_resource type="Script" uid="uid://bdqdc87vcx51b" path="res://Scripts/player.gd" id="1_qlfej"]
+[ext_resource type="Texture2D" uid="uid://cigjh6lj4wtut" path="res://Art/Sprites/Characters/Green/character_green_idle.png" id="2_hv3sw"]
+[ext_resource type="Texture2D" uid="uid://dl2aa05lebbar" path="res://Art/Sprites/Characters/Green/character_green_walk_a.png" id="2_pie2b"]
+[ext_resource type="Texture2D" uid="uid://cnapve2guu3f8" path="res://Art/Sprites/Characters/Green/character_green_jump.png" id="3_r4ynj"]
+[ext_resource type="Texture2D" uid="uid://ufd740hfeemy" path="res://Art/Sprites/Characters/Green/character_green_walk_b.png" id="3_sfp35"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qlfej"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_aoxlc")
+"texture": ExtResource("2_hv3sw")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_r4ynj")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pie2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sfp35")
+}],
+"loop": true,
+"name": &"Walk",
 "speed": 5.0
 }]
 
@@ -22,6 +44,8 @@ script = ExtResource("1_qlfej")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qlfej")
+animation = &"Idle"
+frame_progress = 0.062857
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
