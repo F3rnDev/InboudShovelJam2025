@@ -38,7 +38,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv3sw"]
 radius = 33.5
-height = 128.0
+height = 94.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qlfej")
@@ -49,5 +49,10 @@ animation = &"Idle"
 frame_progress = 0.0461824
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1)
+position = Vector2(-1, 17)
 shape = SubResource("CapsuleShape2D_hv3sw")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 99)
+collision_mask = 3
+collide_with_areas = true

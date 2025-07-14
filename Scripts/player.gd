@@ -1,20 +1,42 @@
 extends CharacterBody2D
 
 
-@export var SPEED = 300.0
+@export var SPEED = 800.0
 @export var JUMP_VELOCITY = -400.0
 @export var acceleration = 800.0
-@export var friction = 1000.0
+@export var frictionMult = 4
 
 @export var jumpAmount:int = 2
 var jumps = jumpAmount
 
 @export var fastFallMultiplier = 2.0
 
+#Wall jump/slide
+@export var wallJumpPush = 500.0;
+@export var wallSlideGravity = 100.0
+var isWallSliding = false
+
 func _process(delta: float) -> void:
 	Animate()
 
 func _physics_process(delta: float) -> void:
+	HorizontalMovement(delta)
+	VerticalMovement(delta)
+
+	move_and_slide()
+
+func HorizontalMovement(delta):
+	var direction = Input.get_axis("Move Left", "Move Right")
+	var targetSpeed = direction * SPEED
+	if direction:
+		velocity.x = move_toward(velocity.x, targetSpeed, acceleration * delta)
+	else:
+		velocity.x *= lerp(1.0, 0.0, delta * frictionMult)
+	
+	if abs(velocity.x) < 1.0:
+		velocity.x = 0
+
+func VerticalMovement(delta):
 	# Add the gravity.
 	var fastFall = 1
 	if velocity.y > 0:
@@ -24,30 +46,50 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * fastFall * delta
 	else:
 		velocity.y = 0
-		jumps = jumpAmount
-
+	
 	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and jumps > 0:
+	if Input.is_action_just_pressed("Jump"):
+		Jump()
+	
+	#Stop jump if button is released
+	if Input.is_action_just_released("Jump") and velocity.y < 0:
+		velocity.y = 0
+	
+	#Wall slide
+	WallSlide(delta)
+
+func Jump():
+	if is_on_floor():
+		jumps = jumpAmount
+	
+	var direction = Input.get_axis("Move Left", "Move Right")
+	if is_on_wall() and !is_on_floor():
+		jumps = jumpAmount
+		velocity.x += -wallJumpPush * direction
+	
+	if jumps > 0:
 		velocity.y = JUMP_VELOCITY
 		jumps -= 1
-	elif Input.is_action_just_released("Jump") and velocity.y < 0:
-		velocity.y = 0
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("Move Left", "Move Right")
-	var targetSpeed = direction * SPEED
-	if direction:
-		velocity.x = move_toward(velocity.x, targetSpeed, acceleration * delta)
+func WallSlide(delta):
+	if is_on_wall() and !is_on_floor() and !$RayCast2D.is_colliding():
+		var direction = Input.get_axis("Move Left", "Move Right")
+		if direction != 0:
+			isWallSliding = true
+		else:
+			isWallSliding = false
 	else:
-		velocity.x = move_toward(velocity.x, 0, friction * delta)
-
-	move_and_slide()
+		isWallSliding = false
+	
+	if isWallSliding:
+		velocity.y += wallSlideGravity * delta
+		velocity.y = min(velocity.y, wallSlideGravity)
 
 func Animate():
 	#Animate character
+	var direction = Input.get_axis("Move Left", "Move Right")
 	if is_on_floor():
-		if velocity.x != 0:
+		if direction < 0 or direction > 0:
 			$AnimatedSprite2D.play("Walk")
 		else:
 			$AnimatedSprite2D.play("Idle")
@@ -55,7 +97,7 @@ func Animate():
 		$AnimatedSprite2D.play("Jump")
 	
 	#Flip sprite
-	if velocity.x < 0:
+	if direction < 0:
 		$AnimatedSprite2D.flip_h = true
-	elif velocity.x > 0:
+	elif direction > 0:
 		$AnimatedSprite2D.flip_h = false
