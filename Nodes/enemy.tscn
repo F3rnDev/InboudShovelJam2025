@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg5tuvkfkc1t7"]
+[gd_scene load_steps=10 format=3 uid="uid://bg5tuvkfkc1t7"]
 
 [ext_resource type="Texture2D" uid="uid://cie3gujrotq63" path="res://Art/Sprites/Enemies/Snail/snail_walk_a.png" id="1_hrxw6"]
+[ext_resource type="Script" uid="uid://dxsw16o6ow56k" path="res://Scripts/enemy.gd" id="1_jpxen"]
 [ext_resource type="Texture2D" uid="uid://cub5fvlt07u4d" path="res://Art/Sprites/Enemies/Snail/snail_walk_b.png" id="2_jpxen"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4erml"]
@@ -17,17 +18,79 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_jpxen"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(0.0647043, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4erml"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ojtsa"]
+_data = {
+&"RESET": SubResource("Animation_4erml"),
+&"die": SubResource("Animation_jpxen")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojtsa"]
+size = Vector2(64, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpxen"]
 size = Vector2(64, 53)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
+script = ExtResource("1_jpxen")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4erml")
 animation = &"walk"
-frame_progress = 0.961525
+frame_progress = 0.979787
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_ojtsa")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_ojtsa")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_jpxen")
+debug_color = Color(0.949624, 1.44392e-06, 0.572582, 0.42)
+
+[node name="RayCastWall" type="RayCast2D" parent="."]
+target_position = Vector2(-45, 0)
+collision_mask = 2
+
+[node name="RayCastFloor" type="RayCast2D" parent="."]
+target_position = Vector2(0, 45)
+collision_mask = 2
+
+[connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_die_animation_finished"]

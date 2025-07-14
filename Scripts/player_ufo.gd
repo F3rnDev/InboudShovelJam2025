@@ -5,12 +5,15 @@ extends CharacterBody2D
 @export var frictionMult = 7
 
 #Tilting
-@export var tilt_amount := 35.0 # graus
+@export var tilt_amount := 25.0 # graus
 @export var tilt_speed := 10.0
 
 #Capturing enemies
 var captureMode = false
 var animated
+
+#Capture score
+var enemiesCaptured = 0
 
 func _ready() -> void:
 	$LaserGreen2.modulate.a = 0.0
@@ -61,3 +64,18 @@ func CaptureInput(delta):
 		$LaserGreen2.modulate.a = lerp($LaserGreen2.modulate.a, 0.0, 10 * delta)
 		$LaserGreen2/AnimationPlayer.play("Close")
 		animated = false
+
+
+func _on_laser_area_entered(area: Area2D) -> void:
+	area.get_parent().isBeingCaptured = false
+	
+	if captureMode:
+		area.get_parent().isBeingCaptured = true
+
+
+func _on_laser_area_exited(area: Area2D) -> void:
+	area.get_parent().isBeingCaptured = false
+
+func _on_capture_area_entered(area: Area2D) -> void:
+	enemiesCaptured += 1
+	area.get_parent().dieAnimation()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0i2qcdea4yl"]
+[gd_scene load_steps=13 format=3 uid="uid://c0i2qcdea4yl"]
 
 [ext_resource type="Script" uid="uid://dofdjubsvauiu" path="res://Scripts/player_ufo.gd" id="1_jtrr0"]
 [ext_resource type="Texture2D" uid="uid://d2yb2d751qlsv" path="res://Art/Sprites/UFO character/Green/UFO/shipGreen_manned.png" id="1_n33h1"]
@@ -21,6 +21,21 @@ size = Vector2(127, 124)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtrr0"]
 size = Vector2(69, 100)
+
+[sub_resource type="Animation" id="Animation_lacuh"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.225, 1),
+"update": 0,
+"values": [Vector2(1.5, 2), Vector2(0, 2)]
+}
 
 [sub_resource type="Animation" id="Animation_jtrr0"]
 resource_name = "Open"
@@ -52,27 +67,15 @@ tracks/0/keys = {
 "values": [Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_lacuh"]
-resource_name = "Close"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.225, 1),
-"update": 0,
-"values": [Vector2(1.5, 2), Vector2(0, 2)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_krmus"]
 _data = {
 &"Close": SubResource("Animation_lacuh"),
 &"Open": SubResource("Animation_jtrr0"),
 &"RESET": SubResource("Animation_i2vrh")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2vrh"]
+size = Vector2(104, 109)
 
 [node name="PlayerUFO" type="CharacterBody2D"]
 script = ExtResource("1_jtrr0")
@@ -93,10 +96,10 @@ position = Vector2(0, 55.7)
 texture = ExtResource("3_k1odt")
 offset = Vector2(0, 50)
 
-[node name="Area2D" type="Area2D" parent="LaserGreen2"]
+[node name="Laser Area" type="Area2D" parent="LaserGreen2"]
 position = Vector2(0, 50.115)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserGreen2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserGreen2/Laser Area"]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_jtrr0")
 debug_color = Color(0.863337, 0.000613956, 0.867291, 0.42)
@@ -105,3 +108,14 @@ debug_color = Color(0.863337, 0.000613956, 0.867291, 0.42)
 libraries = {
 &"": SubResource("AnimationLibrary_krmus")
 }
+
+[node name="Capture Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capture Area"]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_i2vrh")
+debug_color = Color(0.756339, 0.45326, 0.104897, 0.42)
+
+[connection signal="area_entered" from="LaserGreen2/Laser Area" to="." method="_on_laser_area_entered"]
+[connection signal="area_exited" from="LaserGreen2/Laser Area" to="." method="_on_laser_area_exited"]
+[connection signal="area_entered" from="Capture Area" to="." method="_on_capture_area_entered"]
