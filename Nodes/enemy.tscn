@@ -61,7 +61,7 @@ size = Vector2(64, 53)
 size = Vector2(64, 53)
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_jpxen")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
