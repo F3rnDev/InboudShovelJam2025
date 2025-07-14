@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djfqrg4ryth5v"
-path="res://.godot/imported/hud_coin.png-beeef4a2a84147e576002c2de2b6c6d4.ctex"
+uid="uid://e8djg7gnbmd6"
+path="res://.godot/imported/hud_player_beige.png-e9a97458b336f41290565e1288e5e699.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Tiles/hud_coin.png"
-dest_files=["res://.godot/imported/hud_coin.png-beeef4a2a84147e576002c2de2b6c6d4.ctex"]
+source_file="res://Art/Sprites/Tiles/HUD/hud_player_beige.png"
+dest_files=["res://.godot/imported/hud_player_beige.png-e9a97458b336f41290565e1288e5e699.ctex"]
 
 [params]
 

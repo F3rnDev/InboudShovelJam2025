@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqucotcnjxcor"
-path="res://.godot/imported/hud_heart_empty.png-387dade408bd9dc16a85919c7f9046a7.ctex"
+uid="uid://dnvn1042mpxap"
+path="res://.godot/imported/hud_player_helmet_pink.png-ee581b64a92cdda25d11e5e083f2c444.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Tiles/hud_heart_empty.png"
-dest_files=["res://.godot/imported/hud_heart_empty.png-387dade408bd9dc16a85919c7f9046a7.ctex"]
+source_file="res://Art/Sprites/Tiles/HUD/hud_player_helmet_pink.png"
+dest_files=["res://.godot/imported/hud_player_helmet_pink.png-ee581b64a92cdda25d11e5e083f2c444.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctbx7882lpbob"
-path="res://.godot/imported/hud_key_green.png-0db76dc2cf8a6d754492574eeda35f91.ctex"
+uid="uid://bqucotcnjxcor"
+path="res://.godot/imported/hud_heart_empty.png-5080e828d14603e5394e5620f0ff8c8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Tiles/hud_key_green.png"
-dest_files=["res://.godot/imported/hud_key_green.png-0db76dc2cf8a6d754492574eeda35f91.ctex"]
+source_file="res://Art/Sprites/Tiles/HUD/hud_heart_empty.png"
+dest_files=["res://.godot/imported/hud_heart_empty.png-5080e828d14603e5394e5620f0ff8c8d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3ry84dgsu85m"
-path="res://.godot/imported/hud_character_8.png-ff5f11a259db9cbe5035e54714de9435.ctex"
+uid="uid://cpvtwnjtrbmdt"
+path="res://.godot/imported/hud_player_helmet_beige.png-62ee008bdab363b0303f30dda3f0bb43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Tiles/hud_character_8.png"
-dest_files=["res://.godot/imported/hud_character_8.png-ff5f11a259db9cbe5035e54714de9435.ctex"]
+source_file="res://Art/Sprites/Tiles/HUD/hud_player_helmet_beige.png"
+dest_files=["res://.godot/imported/hud_player_helmet_beige.png-62ee008bdab363b0303f30dda3f0bb43.ctex"]
 
 [params]
 

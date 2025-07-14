@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://onxbbldm01dw"
-path="res://.godot/imported/hud_character_9.png-9bafa2fee95f0e5e76082795399e7166.ctex"
+uid="uid://cv45dvqwa4lfo"
+path="res://.godot/imported/hud_player_pink.png-ce86e1a37888174e825e4e5554548dff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Tiles/hud_character_9.png"
-dest_files=["res://.godot/imported/hud_character_9.png-9bafa2fee95f0e5e76082795399e7166.ctex"]
+source_file="res://Art/Sprites/Tiles/HUD/hud_player_pink.png"
+dest_files=["res://.godot/imported/hud_player_pink.png-ce86e1a37888174e825e4e5554548dff.ctex"]
 
 [params]
 

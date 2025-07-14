@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e8djg7gnbmd6"
-path="res://.godot/imported/hud_player_beige.png-2d45235fe985aace17585b5a62a3f8ab.ctex"
+uid="uid://bnu42uu3a1udc"
+path="res://.godot/imported/hud_player_green.png-7703817abe21eb440ab8a044f185b857.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Tiles/hud_player_beige.png"
-dest_files=["res://.godot/imported/hud_player_beige.png-2d45235fe985aace17585b5a62a3f8ab.ctex"]
+source_file="res://Art/Sprites/Tiles/HUD/hud_player_green.png"
+dest_files=["res://.godot/imported/hud_player_green.png-7703817abe21eb440ab8a044f185b857.ctex"]
 
 [params]
 
