@@ -15,6 +15,10 @@ run/main_scene="uid://bbno37krbcp4d"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/mode=2
+
 [input]
 
 "Move Left"={
