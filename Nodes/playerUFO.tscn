@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://c0i2qcdea4yl"]
 
-[ext_resource type="Script" uid="uid://dofdjubsvauiu" path="res://Scripts/player_ufo.gd" id="1_jtrr0"]
+[ext_resource type="Script" path="res://Scripts/player_ufo.gd" id="1_jtrr0"]
 [ext_resource type="Texture2D" uid="uid://d2yb2d751qlsv" path="res://Art/Sprites/UFO character/Green/UFO/shipGreen_manned.png" id="1_n33h1"]
 [ext_resource type="Texture2D" uid="uid://df75nh80ac535" path="res://Art/Sprites/UFO character/Green/UFO/dome.png" id="2_qp7fc"]
 [ext_resource type="Texture2D" uid="uid://ccwvady7kl0h6" path="res://Art/Sprites/UFO character/Green/Laser/laserGreen2.png" id="3_k1odt"]
@@ -21,6 +21,21 @@ size = Vector2(127, 124)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jtrr0"]
 size = Vector2(69, 100)
+
+[sub_resource type="Animation" id="Animation_lacuh"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.225, 1),
+"update": 0,
+"values": [Vector2(1.5, 2), Vector2(0, 2)]
+}
 
 [sub_resource type="Animation" id="Animation_jtrr0"]
 resource_name = "Open"
@@ -50,21 +65,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_lacuh"]
-resource_name = "Close"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.225, 1),
-"update": 0,
-"values": [Vector2(1.5, 2), Vector2(0, 2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_krmus"]
