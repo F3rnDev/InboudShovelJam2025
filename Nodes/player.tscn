@@ -42,6 +42,7 @@ height = 94.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_qlfej")
+frictionMult = 7
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qlfej")

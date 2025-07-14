@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @export var SPEED = 800.0
-@export var JUMP_VELOCITY = -400.0
+@export var JUMP_VELOCITY = -500.0
 @export var acceleration = 800.0
 @export var frictionMult = 4
 
@@ -29,7 +29,9 @@ func HorizontalMovement(delta):
 	var direction = Input.get_axis("Move Left", "Move Right")
 	var targetSpeed = direction * SPEED
 	if direction:
-		velocity.x = move_toward(velocity.x, targetSpeed, acceleration * delta)
+		var changing_direction = sign(direction) != sign(velocity.x) and abs(velocity.x) > 10
+		var effective_accel = acceleration * 3.0 if changing_direction else acceleration
+		velocity.x = move_toward(velocity.x, targetSpeed, effective_accel * delta)
 	else:
 		velocity.x *= lerp(1.0, 0.0, delta * frictionMult)
 	
@@ -46,6 +48,7 @@ func VerticalMovement(delta):
 		velocity += get_gravity() * fastFall * delta
 	else:
 		velocity.y = 0
+		jumps = jumpAmount
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("Jump"):
@@ -59,11 +62,11 @@ func VerticalMovement(delta):
 	WallSlide(delta)
 
 func Jump():
-	if is_on_floor():
-		jumps = jumpAmount
+	if !is_on_floor() and jumps == jumpAmount:
+		jumps = jumpAmount-1
 	
 	var direction = Input.get_axis("Move Left", "Move Right")
-	if is_on_wall() and !is_on_floor():
+	if is_on_wall() and !is_on_floor() and direction!=0:
 		jumps = jumpAmount
 		velocity.x += -wallJumpPush * direction
 	
