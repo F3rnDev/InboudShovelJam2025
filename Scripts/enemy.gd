@@ -9,6 +9,9 @@ var direction = -1
 @onready var wallRay = $RayCastWall
 @onready var floorRay = $RayCastFloor
 
+#Inactive
+var playerInactive
+
 func _process(delta: float) -> void:
 	$AnimatedSprite2D.flip_h = direction > 0
 	

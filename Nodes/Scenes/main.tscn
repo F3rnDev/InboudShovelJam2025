@@ -65,5 +65,5 @@ limit_bottom = 1900
 followRef = NodePath("../PlayerUFO")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("playerRef") instance=ExtResource("5_o6wln")]
-position = Vector2(63, 1297)
+position = Vector2(1064, 1740)
 playerRef = NodePath("../PlayerUFO")
