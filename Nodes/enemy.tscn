@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg5tuvkfkc1t7"]
+
+[ext_resource type="Texture2D" uid="uid://cie3gujrotq63" path="res://Art/Sprites/Enemies/Snail/snail_walk_a.png" id="1_hrxw6"]
+[ext_resource type="Texture2D" uid="uid://cub5fvlt07u4d" path="res://Art/Sprites/Enemies/Snail/snail_walk_b.png" id="2_jpxen"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4erml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hrxw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jpxen")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojtsa"]
+size = Vector2(64, 53)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4erml")
+animation = &"walk"
+frame_progress = 0.58232
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_ojtsa")
