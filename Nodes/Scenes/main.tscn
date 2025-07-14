@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=4 uid="uid://cbb56ackafflv"]
 
 [ext_resource type="TileSet" uid="uid://cguv3uauaardu" path="res://Nodes/Scenes/tilemapBackground.tres" id="1_6epbx"]
-[ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="2_1kfen"]
 [ext_resource type="TileSet" uid="uid://6snbq7kucp30" path="res://Nodes/Scenes/tilemapGrass.tres" id="2_xqnp4"]
-[ext_resource type="PackedScene" path="res://Nodes/gameCamera.tscn" id="3_6epbx"]
+[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="3_6epbx"]
+[ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="4_xqnp4"]
 
 [node name="Main" type="Node2D"]
 
@@ -20,7 +20,7 @@ position = Vector2(-3637, 576)
 zoom = Vector2(0.7, 0.7)
 limit_left = -3637
 limit_bottom = 576
-followRef = NodePath("../Player")
+followRef = NodePath("../PlayerUFO")
 
-[node name="Player" parent="." instance=ExtResource("2_1kfen")]
+[node name="PlayerUFO" parent="." instance=ExtResource("4_xqnp4")]
 collision_mask = 2
