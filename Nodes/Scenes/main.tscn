@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=4 uid="uid://cbb56ackafflv"]
 
-[ext_resource type="Script" path="res://Scripts/cloudLayer.gd" id="2_usifc"]
+[ext_resource type="Script" uid="uid://drqocjk5017wb" path="res://Scripts/cloudLayer.gd" id="2_usifc"]
 [ext_resource type="TileSet" uid="uid://6snbq7kucp30" path="res://Tilemaps/tilemapGrass.tres" id="2_xqnp4"]
-[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="3_6epbx"]
+[ext_resource type="PackedScene" path="res://Nodes/gameCamera.tscn" id="3_6epbx"]
 [ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="4_xqnp4"]
 [ext_resource type="PackedScene" uid="uid://bg5tuvkfkc1t7" path="res://Nodes/enemy.tscn" id="5_o6wln"]
 [ext_resource type="Texture2D" uid="uid://bks2dxx4jek0k" path="res://Art/Sprites/Backgrounds/Background_00.png" id="5_usifc"]

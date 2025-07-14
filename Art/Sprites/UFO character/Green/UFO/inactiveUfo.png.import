@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk1ls631hbt37"
-path="res://.godot/imported/shipGreen_manned.png-a0762ff6153bffdde7776008d0e49fdd.ctex"
+uid="uid://d2yb2d751qlsv"
+path="res://.godot/imported/inactiveUfo.png-77925e6e760c3790f954056e6da27578.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/UFO character/Green/UFO/shipGreen_manned.png"
-dest_files=["res://.godot/imported/shipGreen_manned.png-a0762ff6153bffdde7776008d0e49fdd.ctex"]
+source_file="res://Art/Sprites/UFO character/Green/UFO/inactiveUfo.png"
+dest_files=["res://.godot/imported/inactiveUfo.png-77925e6e760c3790f954056e6da27578.ctex"]
 
 [params]
 
