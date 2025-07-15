@@ -15,16 +15,32 @@ var animated
 #Capture score
 var enemiesCaptured = 0
 
+#Inactive
+var playerInactive = true
+
+#Health
+@export var shipHealth = 3 #Not planned, could be something
+
 func _ready() -> void:
 	$LaserGreen2.modulate.a = 0.0
+	$AnimatedSprite2D.play("inactive")
+
+func setPlayer(active:bool):
+	playerInactive = active
+	
+	var curAnimString = "default" if !active else "inactive"
+	
+	$AnimatedSprite2D.play(curAnimString)
 
 func _physics_process(delta: float) -> void:
-	Movement(delta)
-	CaptureInput(delta)
+	if !playerInactive:
+		Movement(delta)
+		CaptureInput(delta)
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	TiltSprite(delta)
+	if !playerInactive:
+		TiltSprite(delta)
 
 func Movement(delta):
 	var directionX = Input.get_axis("Move Left", "Move Right")
@@ -67,15 +83,18 @@ func CaptureInput(delta):
 
 
 func _on_laser_area_entered(area: Area2D) -> void:
-	area.get_parent().isBeingCaptured = false
-	
-	if captureMode:
-		area.get_parent().isBeingCaptured = true
+	if area.get_parent().is_in_group("Enemy"):
+		area.get_parent().isBeingCaptured = false
+		
+		if captureMode:
+			area.get_parent().isBeingCaptured = true
 
 
 func _on_laser_area_exited(area: Area2D) -> void:
-	area.get_parent().isBeingCaptured = false
+	if area.get_parent().is_in_group("Enemy"):
+		area.get_parent().isBeingCaptured = false
 
 func _on_capture_area_entered(area: Area2D) -> void:
-	enemiesCaptured += 1
-	area.get_parent().dieAnimation()
+	if area.get_parent().is_in_group("Enemy") and captureMode:
+		enemiesCaptured += 1
+		area.get_parent().dieAnimation()

@@ -1,13 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl8e2shl6fofv"]
+[gd_scene load_steps=12 format=3 uid="uid://dl8e2shl6fofv"]
 
 [ext_resource type="Script" uid="uid://bdqdc87vcx51b" path="res://Scripts/player.gd" id="1_qlfej"]
 [ext_resource type="Texture2D" uid="uid://cigjh6lj4wtut" path="res://Art/Sprites/Characters/Green/character_green_idle.png" id="2_hv3sw"]
 [ext_resource type="Texture2D" uid="uid://dl2aa05lebbar" path="res://Art/Sprites/Characters/Green/character_green_walk_a.png" id="2_pie2b"]
+[ext_resource type="Texture2D" uid="uid://dp0yxnrwhecdw" path="res://Art/Sprites/Characters/Green/character_green_hit.png" id="2_r4ynj"]
 [ext_resource type="Texture2D" uid="uid://cnapve2guu3f8" path="res://Art/Sprites/Characters/Green/character_green_jump.png" id="3_r4ynj"]
 [ext_resource type="Texture2D" uid="uid://ufd740hfeemy" path="res://Art/Sprites/Characters/Green/character_green_walk_b.png" id="3_sfp35"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmu34"]
+atlas = ExtResource("2_r4ynj")
+region = Rect2(0, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_qlfej"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmu34")
+}],
+"loop": true,
+"name": &"Hit",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_hv3sw")
@@ -40,14 +53,20 @@ animations = [{
 radius = 33.5
 height = 94.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv3sw"]
+size = Vector2(28, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4ynj"]
+size = Vector2(56, 5)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 2
 script = ExtResource("1_qlfej")
 frictionMult = 7
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qlfej")
-animation = &"Idle"
-frame_progress = 0.0461824
+animation = &"Jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 17)
@@ -57,3 +76,21 @@ shape = SubResource("CapsuleShape2D_hv3sw")
 target_position = Vector2(0, 99)
 collision_mask = 3
 collide_with_areas = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 15.5)
+shape = SubResource("RectangleShape2D_hv3sw")
+debug_color = Color(0.953185, 6.73831e-07, 0.554854, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1, 64)
+shape = SubResource("RectangleShape2D_r4ynj")
+debug_color = Color(0.547816, 0.564661, 1.34766e-06, 0.42)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_area_2d_area_entered"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg5tuvkfkc1t7"]
+[gd_scene load_steps=11 format=3 uid="uid://bg5tuvkfkc1t7"]
 
 [ext_resource type="Texture2D" uid="uid://cie3gujrotq63" path="res://Art/Sprites/Enemies/Snail/snail_walk_a.png" id="1_hrxw6"]
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_jpxen"]
+[ext_resource type="Script" uid="uid://dxsw16o6ow56k" path="res://Scripts/enemy.gd" id="1_jpxen"]
 [ext_resource type="Texture2D" uid="uid://cub5fvlt07u4d" path="res://Art/Sprites/Enemies/Snail/snail_walk_b.png" id="2_jpxen"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4erml"]
@@ -60,7 +60,10 @@ size = Vector2(64, 53)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpxen"]
 size = Vector2(64, 53)
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4erml"]
+size = Vector2(35, 2)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_mask = 2
 script = ExtResource("1_jpxen")
 
@@ -78,12 +81,21 @@ libraries = {
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_ojtsa")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_jpxen")
 debug_color = Color(0.949624, 1.44392e-06, 0.572582, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -22)
+shape = SubResource("RectangleShape2D_4erml")
+debug_color = Color(0.651728, 0.518974, 3.85046e-07, 0.42)
 
 [node name="RayCastWall" type="RayCast2D" parent="."]
 target_position = Vector2(-45, 0)
@@ -93,4 +105,9 @@ collision_mask = 2
 target_position = Vector2(0, 45)
 collision_mask = 2
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_die_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

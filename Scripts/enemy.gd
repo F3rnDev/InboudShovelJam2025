@@ -9,13 +9,14 @@ var direction = -1
 @onready var wallRay = $RayCastWall
 @onready var floorRay = $RayCastFloor
 
-#Inactive
-var playerInactive
+var stunned = false
+
+signal enemyhit
 
 func _process(delta: float) -> void:
 	$AnimatedSprite2D.flip_h = direction > 0
 	
-	if !isBeingCaptured:
+	if !isBeingCaptured and velocity.x != 0:
 		$AnimatedSprite2D.play("walk")
 	else:
 		$AnimatedSprite2D.stop()
@@ -29,7 +30,11 @@ func _physics_process(delta: float) -> void:
 		velocity = direction * abductionSpeed
 	else:
 		verticalMovement(delta)
-		horizontalMovement(delta)
+		
+		if !stunned:
+			horizontalMovement(delta)
+		else:
+			velocity.x = 0
 
 	move_and_slide()
 
@@ -53,3 +58,14 @@ func dieAnimation():
 
 func _on_die_animation_finished(anim_name: StringName) -> void:
 	queue_free()
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.get_parent().is_in_group("Player"):
+		stunned = true
+		$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+		enemyhit.emit()
+		$Timer.start()
+
+func _on_timer_timeout() -> void:
+	stunned = false
+	$Hitbox/CollisionShape2D.set_deferred("disabled", false)
