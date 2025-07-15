@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxsmn7h8rftn"
-path="res://.godot/imported/hud_character_1.png-5c2c55d60cc14a05f4f9c0ae3bf004ae.ctex"
+uid="uid://biy2yllj23ppv"
+path="res://.godot/imported/tilemap_gamejam.png-7eac8f3adb23b0c6aad927b0f22d9958.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Tiles/HUD/Character/hud_character_1.png"
-dest_files=["res://.godot/imported/hud_character_1.png-5c2c55d60cc14a05f4f9c0ae3bf004ae.ctex"]
+source_file="res://Tilemaps/tilemap_gamejam.png"
+dest_files=["res://.godot/imported/tilemap_gamejam.png-7eac8f3adb23b0c6aad927b0f22d9958.ctex"]
 
 [params]
 

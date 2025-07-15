@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://babfd1rkm3koe"
-path="res://.godot/imported/hud_key_yellow.png-23a3bd0c24f6ece2734a8372e8e2f4b7.ctex"
+uid="uid://dt2xvk0j771sx"
+path="res://.godot/imported/spritesheet-tiles-default.png-a0cdf16db28e09401c4e0375b404eff3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Tiles/HUD/Heart/hud_key_yellow.png"
-dest_files=["res://.godot/imported/hud_key_yellow.png-23a3bd0c24f6ece2734a8372e8e2f4b7.ctex"]
+source_file="res://Tilemaps/spritesheet-tiles-default.png"
+dest_files=["res://.godot/imported/spritesheet-tiles-default.png-a0cdf16db28e09401c4e0375b404eff3.ctex"]
 
 [params]
 
