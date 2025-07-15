@@ -26,7 +26,7 @@ var wasHit = false
 
 signal enteredUFO
 signal playerDead
-signal hit
+signal hit(curHealth:int)
 
 func _process(delta: float) -> void:
 	if !playerInactive and !wasHit:
@@ -132,9 +132,8 @@ func Animate():
 
 func enterUFO(ufo):
 	ufo.setPlayer(false)
-	visible = false
-	playerInactive = true
 	enteredUFO.emit()
+	queue_free()
 
 func playerHit(enemyPos):
 	if invulnerable:
@@ -144,7 +143,7 @@ func playerHit(enemyPos):
 	invulnerable = true
 	wasHit = true
 	
-	hit.emit()
+	hit.emit(health)
 	
 	if health <= 0:
 		killPlayer()
@@ -178,6 +177,7 @@ func killPlayer():
 	velocity = knockbackStrength
 	
 	$CollisionShape2D.set_deferred("disabled", true)
+	set_process(true)
 	
 	playerDead.emit()
 

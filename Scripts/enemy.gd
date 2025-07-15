@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 100.0
-@export var playerRef:CharacterBody2D
+var playerRef
 var isBeingCaptured = false
 @export var abductionSpeed = 200
 var direction = -1
@@ -20,6 +20,8 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.play("walk")
 	else:
 		$AnimatedSprite2D.stop()
+	
+	playerRef = get_parent().playerRef
 	
 	if !playerRef.captureMode:
 		isBeingCaptured = false
@@ -60,7 +62,7 @@ func _on_die_animation_finished(anim_name: StringName) -> void:
 	queue_free()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.get_parent().is_in_group("Player"):
+	if area.get_parent().is_in_group("Player") and area.get_parent().velocity.y > 0:
 		stunned = true
 		$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 		enemyhit.emit()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=4 uid="uid://cbb56ackafflv"]
+[gd_scene load_steps=14 format=4 uid="uid://cbb56ackafflv"]
 
 [ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_be8p3"]
+[ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_lsm0f"]
 [ext_resource type="Script" path="res://Scripts/cloudLayer.gd" id="2_usifc"]
 [ext_resource type="TileSet" uid="uid://6snbq7kucp30" path="res://Tilemaps/tilemapGrass.tres" id="2_xqnp4"]
 [ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="3_6epbx"]
@@ -11,9 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://dslk4qh4sdqk0" path="res://Nodes/player.tscn" id="7_be8p3"]
 [ext_resource type="Texture2D" uid="uid://be2c76axi1tmk" path="res://Art/Sprites/Backgrounds/Background_02.png" id="7_piv82"]
 [ext_resource type="Texture2D" uid="uid://bt8cjtp4o71ns" path="res://Art/Sprites/Backgrounds/Background_01.png" id="8_be8p3"]
+[ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="12_swhxk"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_be8p3")
+
+[node name="HUD" parent="." instance=ExtResource("2_lsm0f")]
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
@@ -56,7 +60,7 @@ tile_map_data = PackedByteArray("AADH/wAAAAACAAAAAADH/wEAAAACAAEAAADH/wIAAAACAAE
 tile_set = ExtResource("2_xqnp4")
 
 [node name="PlayerUFO" parent="." instance=ExtResource("4_xqnp4")]
-position = Vector2(1715, 1713)
+position = Vector2(1435, 1711)
 collision_mask = 2
 
 [node name="Player" parent="." instance=ExtResource("7_be8p3")]
@@ -66,16 +70,19 @@ position = Vector2(433, 1705)
 position = Vector2(0, 1887)
 zoom = Vector2(0.8, 0.8)
 limit_left = 0
-limit_top = 0
 limit_bottom = 1900
 playerRef = NodePath("../Player")
 playerUFORef = NodePath("../PlayerUFO")
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("playerRef") instance=ExtResource("5_o6wln")]
-position = Vector2(739, 1742)
+[node name="EnemyGroup" type="Node2D" parent="." node_paths=PackedStringArray("playerRef")]
+script = ExtResource("12_swhxk")
 playerRef = NodePath("../PlayerUFO")
 
+[node name="Enemy" parent="EnemyGroup" instance=ExtResource("5_o6wln")]
+position = Vector2(739, 1742)
+
+[connection signal="enemyCaptured" from="PlayerUFO" to="." method="_on_player_ufo_enemy_captured"]
 [connection signal="enteredUFO" from="Player" to="." method="_on_player_entered_ufo"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="playerDead" from="Player" to="." method="_on_player_player_dead"]
-[connection signal="enemyhit" from="Enemy" to="Player" method="_on_enemy_enemyhit"]
+[connection signal="enemyhit" from="EnemyGroup/Enemy" to="Player" method="_on_enemy_enemyhit"]

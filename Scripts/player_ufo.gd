@@ -21,6 +21,8 @@ var playerInactive = true
 #Health
 @export var shipHealth = 3 #Not planned, could be something
 
+signal enemyCaptured(captureAmount:int)
+
 func _ready() -> void:
 	$LaserGreen2.modulate.a = 0.0
 	$AnimatedSprite2D.play("inactive")
@@ -97,4 +99,5 @@ func _on_laser_area_exited(area: Area2D) -> void:
 func _on_capture_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("Enemy") and captureMode:
 		enemiesCaptured += 1
+		enemyCaptured.emit(enemiesCaptured)
 		area.get_parent().dieAnimation()
