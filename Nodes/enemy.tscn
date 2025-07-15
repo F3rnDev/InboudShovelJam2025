@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bg5tuvkfkc1t7"]
 
 [ext_resource type="Texture2D" uid="uid://cie3gujrotq63" path="res://Art/Sprites/Enemies/Snail/snail_walk_a.png" id="1_hrxw6"]
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_jpxen"]
+[ext_resource type="Script" uid="uid://dxsw16o6ow56k" path="res://Scripts/enemy.gd" id="1_jpxen"]
 [ext_resource type="Texture2D" uid="uid://cub5fvlt07u4d" path="res://Art/Sprites/Enemies/Snail/snail_walk_b.png" id="2_jpxen"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4erml"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cbb56ackafflv"]
+[gd_scene load_steps=11 format=4 uid="uid://cbb56ackafflv"]
 
 [ext_resource type="Script" uid="uid://drqocjk5017wb" path="res://Scripts/cloudLayer.gd" id="2_usifc"]
 [ext_resource type="TileSet" uid="uid://6snbq7kucp30" path="res://Tilemaps/tilemapGrass.tres" id="2_xqnp4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="4_xqnp4"]
 [ext_resource type="PackedScene" uid="uid://bg5tuvkfkc1t7" path="res://Nodes/enemy.tscn" id="5_o6wln"]
 [ext_resource type="Texture2D" uid="uid://bks2dxx4jek0k" path="res://Art/Sprites/Backgrounds/Background_00.png" id="5_usifc"]
+[ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="6_piv82"]
 [ext_resource type="Texture2D" uid="uid://kafjxix10tt2" path="res://Art/Sprites/Backgrounds/Background_03.png" id="6_t8ssr"]
 [ext_resource type="Texture2D" uid="uid://be2c76axi1tmk" path="res://Art/Sprites/Backgrounds/Background_02.png" id="7_piv82"]
 [ext_resource type="Texture2D" uid="uid://bt8cjtp4o71ns" path="res://Art/Sprites/Backgrounds/Background_01.png" id="8_be8p3"]
@@ -46,6 +47,8 @@ motion_mirroring = Vector2(2560, 0)
 [node name="Sprite2D" type="Sprite2D" parent="Background/01"]
 texture = ExtResource("8_be8p3")
 centered = false
+
+[node name="HUD" parent="." instance=ExtResource("6_piv82")]
 
 [node name="Ground" type="TileMapLayer" parent="."]
 position = Vector2(3681, 1326)

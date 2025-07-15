@@ -87,6 +87,7 @@ script = ExtResource("1_jtrr0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qp7fc")
+animation = &"Inactive"
 
 [node name="Dome" type="Sprite2D" parent="AnimatedSprite2D"]
 position = Vector2(0, -30)
