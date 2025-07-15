@@ -1,17 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bg5tuvkfkc1t7"]
+[gd_scene load_steps=10 format=3 uid="uid://c40fp3q11br15"]
 
-[ext_resource type="Texture2D" uid="uid://cie3gujrotq63" path="res://Art/Sprites/Enemies/Snail/snail_walk_a.png" id="1_hrxw6"]
-[ext_resource type="Script" uid="uid://dxsw16o6ow56k" path="res://Scripts/enemy.gd" id="1_jpxen"]
-[ext_resource type="Texture2D" uid="uid://cub5fvlt07u4d" path="res://Art/Sprites/Enemies/Snail/snail_walk_b.png" id="2_jpxen"]
+[ext_resource type="Script" uid="uid://cb4ig178e652t" path="res://Scripts/enemyBlock.gd" id="1_dudy7"]
+[ext_resource type="Texture2D" uid="uid://bulp2wrmmy7m7" path="res://Art/Sprites/Enemies/Block/slime_block_rest.png" id="2_dudy7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4erml"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_hrxw6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_jpxen")
+"texture": ExtResource("2_dudy7")
 }],
 "loop": true,
 "name": &"walk",
@@ -65,7 +61,7 @@ size = Vector2(66, 3)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_mask = 2
-script = ExtResource("1_jpxen")
+script = ExtResource("1_dudy7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4erml")

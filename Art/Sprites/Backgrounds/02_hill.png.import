@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be2c76axi1tmk"
-path="res://.godot/imported/Background_02.png-48f8808f75ae6d49dc3623af7cbb2f07.ctex"
+uid="uid://dvpvcslxhgh20"
+path="res://.godot/imported/02_hill.png-2212757efb1fa543e55a9e3174b2a1b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Backgrounds/Background_02.png"
-dest_files=["res://.godot/imported/Background_02.png-48f8808f75ae6d49dc3623af7cbb2f07.ctex"]
+source_file="res://Art/Sprites/Backgrounds/02_hill.png"
+dest_files=["res://.godot/imported/02_hill.png-2212757efb1fa543e55a9e3174b2a1b4.ctex"]
 
 [params]
 

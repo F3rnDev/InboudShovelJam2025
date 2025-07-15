@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dslk4qh4sdqk0"]
+[gd_scene load_steps=11 format=3 uid="uid://dl8e2shl6fofv"]
 
 [ext_resource type="Script" uid="uid://bdqdc87vcx51b" path="res://Scripts/player.gd" id="1_qlfej"]
 [ext_resource type="Texture2D" uid="uid://cigjh6lj4wtut" path="res://Art/Sprites/Characters/Green/character_green_idle.png" id="2_hv3sw"]
