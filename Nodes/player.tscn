@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dl8e2shl6fofv"]
+[gd_scene load_steps=11 format=3 uid="uid://dslk4qh4sdqk0"]
 
 [ext_resource type="Script" uid="uid://bdqdc87vcx51b" path="res://Scripts/player.gd" id="1_qlfej"]
 [ext_resource type="Texture2D" uid="uid://cigjh6lj4wtut" path="res://Art/Sprites/Characters/Green/character_green_idle.png" id="2_hv3sw"]
@@ -7,15 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://cnapve2guu3f8" path="res://Art/Sprites/Characters/Green/character_green_jump.png" id="3_r4ynj"]
 [ext_resource type="Texture2D" uid="uid://ufd740hfeemy" path="res://Art/Sprites/Characters/Green/character_green_walk_b.png" id="3_sfp35"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wmu34"]
-atlas = ExtResource("2_r4ynj")
-region = Rect2(0, 0, 128, 128)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_qlfej"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wmu34")
+"texture": ExtResource("2_r4ynj")
 }],
 "loop": true,
 "name": &"Hit",
@@ -89,7 +85,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(1, 64)
+position = Vector2(1, 68)
 shape = SubResource("RectangleShape2D_r4ynj")
 debug_color = Color(0.547816, 0.564661, 1.34766e-06, 0.42)
 

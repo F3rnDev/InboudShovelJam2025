@@ -61,7 +61,7 @@ size = Vector2(64, 53)
 size = Vector2(64, 53)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4erml"]
-size = Vector2(35, 2)
+size = Vector2(45.5, 2)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_mask = 2

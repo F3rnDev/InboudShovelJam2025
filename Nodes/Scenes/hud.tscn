@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://6jg502bjlxcc"]
+
+[ext_resource type="Texture2D" uid="uid://coch0d8ev0quj" path="res://Art/Sprites/Tiles/HUD/Heart/hud_heart.png" id="1_oekg1"]
+[ext_resource type="Texture2D" uid="uid://bqucotcnjxcor" path="res://Art/Sprites/Tiles/HUD/Heart/hud_heart_empty.png" id="1_q117g"]
+[ext_resource type="Texture2D" uid="uid://cqwmhtyjpwyo7" path="res://Art/Sprites/Tiles/HUD/HumanHUD.png" id="3_b12m7"]
+[ext_resource type="FontFile" uid="uid://cpanipk45b054" path="res://Fonts/8-bit Arcade In.ttf" id="4_4xv4v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b12m7"]
+font = ExtResource("4_4xv4v")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LifeHolder" type="BoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="LifeEmpty" type="HBoxContainer" parent="Control/VBoxContainer/LifeHolder"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/LifeEmpty"]
+layout_mode = 2
+texture = ExtResource("1_q117g")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/LifeEmpty"]
+layout_mode = 2
+texture = ExtResource("1_q117g")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/LifeEmpty"]
+layout_mode = 2
+texture = ExtResource("1_q117g")
+
+[node name="Life" type="Node" parent="Control/VBoxContainer/LifeHolder"]
+
+[node name="LifeFull" type="HBoxContainer" parent="Control/VBoxContainer/LifeHolder/Life"]
+offset_right = 200.0
+offset_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/Life/LifeFull"]
+layout_mode = 2
+texture = ExtResource("1_oekg1")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/Life/LifeFull"]
+layout_mode = 2
+texture = ExtResource("1_oekg1")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/Life/LifeFull"]
+layout_mode = 2
+texture = ExtResource("1_oekg1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_b12m7")
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "x 0"
+label_settings = SubResource("LabelSettings_b12m7")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

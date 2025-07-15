@@ -189,4 +189,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 
 func _on_enemy_enemyhit() -> void:
-	Jump()
+	velocity.y = JUMP_VELOCITY
+	jumps = jumpAmount-1
