@@ -28,6 +28,8 @@ signal enteredUFO
 signal playerDead
 signal hit(curHealth:int)
 
+var afterImage = false
+
 func _process(delta: float) -> void:
 	if !playerInactive and !wasHit:
 		Animate()
@@ -41,6 +43,9 @@ func _process(delta: float) -> void:
 	
 	if gameOver:
 		rotation_degrees += 1
+	
+	if afterImage:
+		spawn_afterimage()
 
 func _physics_process(delta: float) -> void:
 	if !playerInactive:
@@ -51,6 +56,9 @@ func _physics_process(delta: float) -> void:
 		wasHit = true
 		hit.emit(0)
 		killPlayer()
+	
+	if is_on_floor() or is_on_wall() or velocity.y > 0:
+		afterImage = false
 
 	move_and_slide()
 
@@ -99,6 +107,9 @@ func Jump():
 	if is_on_wall() and !is_on_floor() and direction!=0:
 		jumps = jumpAmount
 		velocity.x += -wallJumpPush * direction
+	
+	if !is_on_floor() and jumps == 1:
+		afterImage = true
 	
 	if jumps > 0:
 		velocity.y = JUMP_VELOCITY
@@ -194,3 +205,26 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_enemy_enemyhit() -> void:
 	velocity.y = JUMP_VELOCITY
 	jumps = jumpAmount-1
+
+func spawn_afterimage():
+	var ghost := Sprite2D.new()
+	
+	# Copia a aparência do jogador
+	ghost.texture = $AnimatedSprite2D.sprite_frames.get_frame_texture(
+		$AnimatedSprite2D.animation,
+		$AnimatedSprite2D.frame
+	)
+	ghost.flip_h = $AnimatedSprite2D.flip_h
+	ghost.scale = $AnimatedSprite2D.scale
+	ghost.global_position = global_position
+	ghost.rotation = rotation
+	ghost.modulate = Color(0.49, 0.96, 0.82, 0.2)  # semi-transparente
+	ghost.z_index = $AnimatedSprite2D.z_index - 1
+
+	# Adiciona no mesmo pai
+	get_parent().add_child(ghost)
+
+	# Cria tween para sumir suavemente
+	var tween := get_tree().create_tween()
+	tween.tween_property(ghost, "modulate:a", 0.0, 0.3)
+	tween.tween_callback(Callable(ghost, "queue_free"))

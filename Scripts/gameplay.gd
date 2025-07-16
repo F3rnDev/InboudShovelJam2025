@@ -16,13 +16,14 @@ signal wonGame
 func _ready() -> void:
 	setMaxEnemies()
 	$HUD.setCapturedEnemies(maxEnemies)
+	$HUD.setStageText(stageName)
 
 func setMaxEnemies():
 	maxEnemies = $EnemyGroup.get_child_count()
 
 func _process(delta: float) -> void:
 	if gameOver and Input.is_action_just_pressed("Reset"):
-		get_tree().reload_current_scene()
+		TransitionScene.transitionToSameScene()
 	
 	if hasWin and Input.is_action_just_pressed("Confirm"):
 		goToNextStage()
@@ -43,6 +44,7 @@ func _on_player_entered_ufo() -> void:
 
 func _on_player_player_dead() -> void:
 	gameOver = true
+	$HUD.setGameOverText()
 
 func _on_player_hit(health) -> void:
 	$GameCamera.shakeCamera()
@@ -58,3 +60,5 @@ func _on_player_ufo_enemy_captured(captureAmount: int) -> void:
 func winGame():
 	wonGame.emit()
 	hasWin = true
+	
+	$HUD.setGameWinText()

@@ -1,5 +1,14 @@
 extends CanvasLayer
 
+func setStageText(stageName):
+	$Control/CurrentStage.text = "Current Stage\n- " + stageName + " -"
+
+func setGameOverText():
+	$Control/GameOverText/AnimationPlayer.play("blink")
+
+func setGameWinText():
+	$Control/WinGameText/AnimationPlayer.play("blink")
+
 func updateHealth(curHealth):
 	var lifes = $Control/VBoxContainer/LifeHolder/Life/LifeFull
 	
