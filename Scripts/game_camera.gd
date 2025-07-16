@@ -14,10 +14,15 @@ var shakeStr = 0.0
 
 func _ready() -> void:
 	changePlayer(0)
+	position = playerToFollow.position
+	position_smoothing_enabled = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position = playerToFollow.position
+	
+	if position == playerToFollow.position and !position_smoothing_enabled:
+		position_smoothing_enabled = true
 	
 	if shakeStr > 0:
 		shakeStr = lerpf(shakeStr, 0, shakeFade * delta)

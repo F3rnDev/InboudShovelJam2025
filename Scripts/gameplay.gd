@@ -1,8 +1,15 @@
 extends Node2D
+
+#Stage data
+@export var stageID:int
+@export var stageName:String
+
 #do things like win game and game over stuff
 #call signals on other objects
 var gameOver = false
 var maxEnemies = 0
+
+var hasWin = false
 
 signal wonGame
 
@@ -16,6 +23,17 @@ func setMaxEnemies():
 func _process(delta: float) -> void:
 	if gameOver and Input.is_action_just_pressed("Reset"):
 		get_tree().reload_current_scene()
+	
+	if hasWin and Input.is_action_just_pressed("Confirm"):
+		goToNextStage()
+
+func goToNextStage():
+	var stagePath = "res://Nodes/Scenes/Stages/" + str(stageID+1) + ".tscn"
+	
+	if FileAccess.file_exists(stagePath):
+		TransitionScene.transitionToScene(stagePath)
+	else:
+		print("stage doesn't exist")
 
 func _on_player_entered_ufo() -> void:
 	$GameCamera.changePlayer(1)
@@ -39,3 +57,4 @@ func _on_player_ufo_enemy_captured(captureAmount: int) -> void:
 
 func winGame():
 	wonGame.emit()
+	hasWin = true

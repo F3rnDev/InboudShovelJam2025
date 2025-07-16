@@ -46,13 +46,18 @@ func _physics_process(delta: float) -> void:
 	if !playerInactive:
 		HorizontalMovement(delta)
 		VerticalMovement(delta)
+	
+	if global_position.y >= 1900 and !gameOver:
+		wasHit = true
+		hit.emit(0)
+		killPlayer()
 
 	move_and_slide()
 
 func HorizontalMovement(delta):
 	var direction = Input.get_axis("Move Left", "Move Right")
 	var targetSpeed = direction * SPEED
-	if direction and !wasHit:
+	if direction and !wasHit and !gameOver:
 		var changing_direction = sign(direction) != sign(velocity.x) and abs(velocity.x) > 10
 		var effective_accel = acceleration * 3.0 if changing_direction else acceleration
 		velocity.x = move_toward(velocity.x, targetSpeed, effective_accel * delta)
@@ -76,7 +81,7 @@ func VerticalMovement(delta):
 		jumps = jumpAmount
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and !wasHit:
+	if Input.is_action_just_pressed("Jump") and !wasHit and !gameOver:
 		Jump()
 	
 	#Stop jump if button is released
@@ -170,7 +175,6 @@ func playerHit(enemyPos):
 
 func killPlayer():
 	gameOver = true
-	$AnimatedSprite2D.play("Hit")
 	
 	var playerDir = -1 if $AnimatedSprite2D.flip_h else 1
 	var knockbackStrength = Vector2(0, -600)
