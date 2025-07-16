@@ -81,6 +81,7 @@ position = Vector2(1060, 1704)
 position = Vector2(0, 1887)
 zoom = Vector2(0.8, 0.8)
 limit_left = 0
+limit_top = -512
 limit_bottom = 1900
 playerRef = NodePath("../Player")
 playerUFORef = NodePath("../PlayerUFO")
