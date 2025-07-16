@@ -187,7 +187,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("Enemy"):
 		playerHit(area.global_position)
 
-
 func _on_enemy_enemyhit() -> void:
 	velocity.y = JUMP_VELOCITY
 	jumps = jumpAmount-1

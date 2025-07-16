@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=3 uid="uid://c40fp3q11br15"]
+
+[ext_resource type="Script" uid="uid://cb4ig178e652t" path="res://Scripts/enemyBlock.gd" id="1_dudy7"]
+[ext_resource type="Texture2D" uid="uid://bulp2wrmmy7m7" path="res://Art/Sprites/Enemies/Block/slime_block_rest.png" id="2_dudy7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4erml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dudy7")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_4erml"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jpxen"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(0.0647043, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ojtsa"]
+_data = {
+&"RESET": SubResource("Animation_4erml"),
+&"die": SubResource("Animation_jpxen")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojtsa"]
+size = Vector2(64, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpxen"]
+size = Vector2(64, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4erml"]
+size = Vector2(66, 3)
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_mask = 2
+script = ExtResource("1_dudy7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4erml")
+animation = &"walk"
+frame_progress = 0.979787
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_ojtsa")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_ojtsa")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_jpxen")
+debug_color = Color(0.949624, 1.44392e-06, 0.572582, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -22.5)
+shape = SubResource("RectangleShape2D_4erml")
+debug_color = Color(0.651728, 0.518974, 3.85046e-07, 0.42)
+
+[node name="RayCastWall" type="RayCast2D" parent="."]
+target_position = Vector2(-45, 0)
+collision_mask = 2
+
+[node name="RayCastFloor" type="RayCast2D" parent="."]
+target_position = Vector2(0, 45)
+collision_mask = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_die_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dslk4qh4sdqk0"]
+[gd_scene load_steps=11 format=3 uid="uid://dl8e2shl6fofv"]
 
 [ext_resource type="Script" uid="uid://bdqdc87vcx51b" path="res://Scripts/player.gd" id="1_qlfej"]
 [ext_resource type="Texture2D" uid="uid://cigjh6lj4wtut" path="res://Art/Sprites/Characters/Green/character_green_idle.png" id="2_hv3sw"]
@@ -53,7 +53,7 @@ height = 94.0
 size = Vector2(28, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4ynj"]
-size = Vector2(56, 5)
+size = Vector2(56, 13.5)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 2
@@ -85,7 +85,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(1, 68)
+position = Vector2(1, 72.25)
 shape = SubResource("RectangleShape2D_r4ynj")
 debug_color = Color(0.547816, 0.564661, 1.34766e-06, 0.42)
 

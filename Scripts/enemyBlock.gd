@@ -28,13 +28,6 @@ func _physics_process(delta: float) -> void:
 	if isBeingCaptured:
 		var direction = (playerRef.global_position - global_position).normalized()
 		velocity = direction * abductionSpeed
-	else:
-		verticalMovement(delta)
-		
-		if !stunned:
-			horizontalMovement(delta)
-		else:
-			velocity.x = 0
 
 	move_and_slide()
 
@@ -60,7 +53,7 @@ func _on_die_animation_finished(anim_name: StringName) -> void:
 	queue_free()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	if area.get_parent().is_in_group("Player") and area.get_parent().velocity.y > 0:
+	if area.get_parent().is_in_group("Player"):
 		stunned = true
 		$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 		get_parent().enemyhit.emit()
