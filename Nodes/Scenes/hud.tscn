@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://6jg502bjlxcc"]
+[gd_scene load_steps=14 format=3 uid="uid://6jg502bjlxcc"]
 
 [ext_resource type="Script" uid="uid://b3bjetqxi0kvj" path="res://Scripts/gamehud.gd" id="1_ic5la"]
 [ext_resource type="Texture2D" uid="uid://coch0d8ev0quj" path="res://Art/Sprites/Tiles/HUD/Heart/hud_heart.png" id="1_oekg1"]
@@ -30,7 +30,41 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(405.5, -200)]
+}
+
+[sub_resource type="Animation" id="Animation_ktl86"]
+resource_name = "stageAppear"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(0.170755, 1, 2.46229, 1),
+"update": 0,
+"values": [Vector2(405.5, -200), Vector2(405.5, 20), Vector2(405.5, 20), Vector2(405.5, -200)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktl86"]
+_data = {
+&"RESET": SubResource("Animation_wqp3y"),
+&"stageAppear": SubResource("Animation_ktl86")
 }
 
 [sub_resource type="Animation" id="Animation_ic5la"]
@@ -50,9 +84,24 @@ tracks/0/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktl86"]
+[sub_resource type="Animation" id="Animation_bvtjh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fg304"]
 _data = {
-&"RESET": SubResource("Animation_wqp3y"),
+&"RESET": SubResource("Animation_bvtjh"),
 &"blink": SubResource("Animation_ic5la")
 }
 
@@ -128,7 +177,6 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="CurrentStage" type="Label" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -148,7 +196,7 @@ vertical_alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_ktl86")
 }
-autoplay = "curStage"
+autoplay = "stageAppear"
 
 [node name="GameOverText" type="Label" parent="Control"]
 visible = false
@@ -172,7 +220,7 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/GameOverText"]
 libraries = {
-&"": SubResource("AnimationLibrary_ktl86")
+&"": SubResource("AnimationLibrary_fg304")
 }
 
 [node name="WinGameText" type="Label" parent="Control"]
@@ -183,9 +231,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -267.0
+offset_left = -321.0
 offset_top = -56.0
-offset_right = 267.0
+offset_right = 321.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -197,5 +245,5 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/WinGameText"]
 libraries = {
-&"": SubResource("AnimationLibrary_ktl86")
+&"": SubResource("AnimationLibrary_fg304")
 }
