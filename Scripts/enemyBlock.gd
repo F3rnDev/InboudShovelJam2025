@@ -28,6 +28,11 @@ func _physics_process(delta: float) -> void:
 	if isBeingCaptured:
 		var direction = (playerRef.global_position - global_position).normalized()
 		velocity = direction * abductionSpeed
+	else:
+		verticalMovement(delta)
+		
+		if is_on_floor():
+			velocity.x = 0
 
 	move_and_slide()
 

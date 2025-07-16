@@ -4,6 +4,8 @@ extends Node2D
 var gameOver = false
 var maxEnemies = 0
 
+signal wonGame
+
 func _ready() -> void:
 	setMaxEnemies()
 	$HUD.setCapturedEnemies(maxEnemies)
@@ -17,6 +19,9 @@ func _process(delta: float) -> void:
 
 func _on_player_entered_ufo() -> void:
 	$GameCamera.changePlayer(1)
+	
+	if maxEnemies <= 0:
+		winGame()
 
 func _on_player_player_dead() -> void:
 	gameOver = true
@@ -33,4 +38,4 @@ func _on_player_ufo_enemy_captured(captureAmount: int) -> void:
 		winGame()
 
 func winGame():
-	print("WIN WOW YAY SHIT ASS YAY")
+	wonGame.emit()

@@ -71,7 +71,7 @@ tile_map_data = PackedByteArray("AAAAABwAAgAGAAEAAAA3ABwAAgAGAAAAAAA2ABwAAgAGAAA
 tile_set = ExtResource("12_lsm0f")
 
 [node name="PlayerUFO" parent="." instance=ExtResource("4_xqnp4")]
-position = Vector2(155, 1142)
+position = Vector2(4339, 1602)
 collision_mask = 2
 
 [node name="Player" parent="." instance=ExtResource("7_be8p3")]
@@ -95,6 +95,9 @@ position = Vector2(2529, 1696)
 [node name="Enemy2" parent="EnemyGroup" instance=ExtResource("14_kjs1d")]
 position = Vector2(3233, 1696)
 
+[connection signal="wonGame" from="." to="PlayerUFO" method="_on_main_won_game"]
+[connection signal="wonGame" from="." to="GameCamera" method="_on_main_won_game"]
+[connection signal="enemyCaptured" from="PlayerUFO" to="." method="_on_player_ufo_enemy_captured"]
 [connection signal="enteredUFO" from="Player" to="." method="_on_player_entered_ufo"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="playerDead" from="Player" to="." method="_on_player_player_dead"]

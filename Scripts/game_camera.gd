@@ -12,12 +12,15 @@ var playerToFollow:CharacterBody2D
 var rng = RandomNumberGenerator.new()
 var shakeStr = 0.0
 
+var playerWon = false
+
 func _ready() -> void:
 	changePlayer(0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position = playerToFollow.position
+	if !playerWon:
+		position = playerToFollow.position
 	
 	if shakeStr > 0:
 		shakeStr = lerpf(shakeStr, 0, shakeFade * delta)
@@ -35,3 +38,6 @@ func shakeCamera():
 
 func randomOffset() -> Vector2:
 	return Vector2(rng.randf_range(-shakeStr, shakeStr), rng.randf_range(-shakeStr, shakeStr))
+
+func _on_main_won_game() -> void:
+	playerWon = true

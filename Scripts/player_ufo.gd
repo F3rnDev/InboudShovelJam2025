@@ -18,6 +18,9 @@ var enemiesCaptured = 0
 #Inactive
 var playerInactive = true
 
+#Player won
+var playerWon = false
+
 #Health
 @export var shipHealth = 3 #Not planned, could be something
 
@@ -38,6 +41,11 @@ func _physics_process(delta: float) -> void:
 	if !playerInactive:
 		Movement(delta)
 		CaptureInput(delta)
+	
+	if playerWon:
+		var direction = Vector2(0, -1)
+		velocity = velocity.move_toward(direction * speed * 2, acceleration * delta)
+	
 	move_and_slide()
 
 func _process(delta: float) -> void:
@@ -74,14 +82,19 @@ func CaptureInput(delta):
 	captureMode = Input.is_action_pressed("Jump")
 	if captureMode:
 		$LaserGreen2.modulate.a = lerp($LaserGreen2.modulate.a, 1.0, 10 * delta)
-		
-		if !animated:
-			$LaserGreen2/AnimationPlayer.play("Open")
-			animated = true
+		openLaser()
 	else:
 		$LaserGreen2.modulate.a = lerp($LaserGreen2.modulate.a, 0.0, 10 * delta)
-		$LaserGreen2/AnimationPlayer.play("Close")
-		animated = false
+		closeLaser()
+
+func openLaser():
+	if !animated:
+		$LaserGreen2/AnimationPlayer.play("Open")
+		animated = true
+
+func closeLaser():
+	$LaserGreen2/AnimationPlayer.play("Close")
+	animated = false
 
 
 func _on_laser_area_entered(area: Area2D) -> void:
@@ -101,3 +114,8 @@ func _on_capture_area_entered(area: Area2D) -> void:
 		enemiesCaptured += 1
 		enemyCaptured.emit(enemiesCaptured)
 		area.get_parent().dieAnimation()
+
+func _on_main_won_game() -> void:
+	playerInactive = true
+	closeLaser()
+	playerWon = true
