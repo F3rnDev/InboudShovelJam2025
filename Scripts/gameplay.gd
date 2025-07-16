@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 func goToNextStage():
 	var stagePath = "res://Nodes/Scenes/Stages/" + str(stageID+1) + ".tscn"
 	
-	if FileAccess.file_exists(stagePath):
+	if ResourceLoader.exists(stagePath):
 		TransitionScene.transitionToScene(stagePath)
 	else:
 		print("stage doesn't exist")
