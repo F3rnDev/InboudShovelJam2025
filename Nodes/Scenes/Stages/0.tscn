@@ -86,9 +86,10 @@ color = Color(0.180392, 0.8, 0.443137, 1)
 tile_map_data = PackedByteArray("AAAZABIAAgAFAAMAAAAaABIAAgAGAAMAAAAbABIAAgAGAAMAAAAcABIAAgAGAAMAAAAdABIAAgAGAAMAAAAeABIAAgAGAAMAAAAfABIAAgAGAAMAAAAgABIAAgAGAAMAAAAhABIAAgAGAAMAAAAiABIAAgAGAAMAAAAjABIAAgAGAAMAAAAkABIAAgAGAAMAAAAlABIAAgAGAAMAAAAmABIAAgAGAAMAAAAnABIAAgAGAAMAAAAoABIAAgAHAAMAAAA=")
 tile_set = ExtResource("9_lim2k")
 
-[node name="PlayerUFO" parent="." instance=ExtResource("10_rmiow")]
+[node name="PlayerUFO" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_rmiow")]
 position = Vector2(2444, 1090)
 collision_mask = 2
+camera = NodePath("../GameCamera")
 
 [node name="Player" parent="." instance=ExtResource("11_xg73q")]
 position = Vector2(1773, 1087)
