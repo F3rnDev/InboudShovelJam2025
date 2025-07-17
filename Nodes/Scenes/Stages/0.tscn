@@ -98,11 +98,11 @@ script = ExtResource("13_5gurx")
 playerRef = NodePath("../PlayerUFO")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 2521.0
-offset_top = 1030.0
-offset_right = 3039.0
-offset_bottom = 1117.0
-text = "<- Get to the ship"
+offset_left = 2534.0
+offset_top = 1032.0
+offset_right = 3052.0
+offset_bottom = 1119.0
+text = "← Get to the ship"
 label_settings = SubResource("LabelSettings_kfmp7")
 
 [connection signal="wonGame" from="." to="PlayerUFO" method="_on_main_won_game"]

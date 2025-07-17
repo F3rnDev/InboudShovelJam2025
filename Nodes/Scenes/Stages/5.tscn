@@ -1,0 +1,129 @@
+[gd_scene load_steps=19 format=4 uid="uid://w678tyx87orm"]
+
+[ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_rqv2g"]
+[ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_q4777"]
+[ext_resource type="Texture2D" uid="uid://bqbehjk01ads1" path="res://Art/Sprites/Backgrounds/05_sky.png" id="3_ybe0m"]
+[ext_resource type="Script" uid="uid://drqocjk5017wb" path="res://Scripts/cloudLayer.gd" id="4_aykfb"]
+[ext_resource type="Texture2D" uid="uid://wsrfjacr3r2b" path="res://Art/Sprites/Backgrounds/04_cloud.png" id="5_rdxyd"]
+[ext_resource type="Texture2D" uid="uid://dcpl1qhfvsx0f" path="res://Art/Sprites/Backgrounds/03_hill_fade.png" id="6_foi5a"]
+[ext_resource type="Texture2D" uid="uid://dvpvcslxhgh20" path="res://Art/Sprites/Backgrounds/02_hill.png" id="7_0gyd6"]
+[ext_resource type="Texture2D" uid="uid://bo3v2nh02hnwh" path="res://Art/Sprites/Backgrounds/01_grass.png" id="8_qqn45"]
+[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap.tres" id="9_lf2sj"]
+[ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="10_3b8en"]
+[ext_resource type="Script" uid="uid://8wpisa3vxswo" path="res://Scripts/Stage Specific/stage2_changeText.gd" id="11_aykfb"]
+[ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="11_oakka"]
+[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="12_5yyl1"]
+[ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="13_k6yai"]
+[ext_resource type="FontFile" uid="uid://cpanipk45b054" path="res://Fonts/8-bit Arcade In.ttf" id="14_0b11y"]
+[ext_resource type="PackedScene" uid="uid://dslakpjmwe1vh" path="res://Nodes/enemyBlock.tscn" id="14_q4777"]
+[ext_resource type="PackedScene" uid="uid://bg5tuvkfkc1t7" path="res://Nodes/enemy.tscn" id="16_ybe0m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ybe0m"]
+font = ExtResource("14_0b11y")
+font_size = 64
+outline_size = 35
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_rqv2g")
+stageID = 2
+stageName = "Enemies"
+
+[node name="HUD" parent="." instance=ExtResource("2_q4777")]
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="Background"]
+position = Vector2(0, -750)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Sky"]
+texture = ExtResource("3_ybe0m")
+centered = false
+
+[node name="Cloud" type="ParallaxLayer" parent="Background"]
+position = Vector2(0, -750)
+motion_mirroring = Vector2(2560, 0)
+script = ExtResource("4_aykfb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Cloud"]
+texture = ExtResource("5_rdxyd")
+centered = false
+
+[node name="HillFade" type="ParallaxLayer" parent="Background"]
+position = Vector2(0, -750)
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/HillFade"]
+texture = ExtResource("6_foi5a")
+centered = false
+
+[node name="Hill" type="ParallaxLayer" parent="Background"]
+position = Vector2(0, -750)
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Hill"]
+texture = ExtResource("7_0gyd6")
+centered = false
+
+[node name="Grass" type="ParallaxLayer" parent="Background"]
+position = Vector2(0, -750)
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Grass"]
+texture = ExtResource("8_qqn45")
+centered = false
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAABsAAgAFAAEAAAAAABoAAgAEAAEAAAAAABkAAgAEAAEAAAAAABgAAgAEAAEAAAAAABcAAgAEAAEAAAAAABYAAgAEAAEAAAAAABUAAgAEAAEAAAAAABQAAgAEAAEAAAAAABMAAgAEAAEAAAAAABIAAgAEAAEAAAAAABEAAgAEAAEAAAAAABAAAgAEAAEAAAAAAA8AAgAEAAEAAAAAAA4AAgAEAAEAAAAAAA0AAgAEAAEAAAAAAAEAAgAEAAEAAAAAAAIAAgAEAAEAAAAAAAMAAgAEAAEAAAAAAAQAAgAEAAEAAAAAAAUAAgAEAAEAAAAAAAYAAgAEAAEAAAAAAAcAAgAEAAEAAAAAAAgAAgAEAAEAAAAAAAkAAgAEAAEAAAAAAAoAAgAEAAEAAAAAAAsAAgAEAAEAAAAAAAwAAgAEAAEAAAABABsAAgAGAAAAAAACABsAAgAGAAAAAAADABsAAgAGAAAAAAAEABsAAgAGAAAAAAAFABsAAgAGAAAAAAAGABsAAgAGAAAAAAAHABsAAgAGAAAAAAAIABsAAgAGAAAAAAAJABsAAgAGAAAAAAAKABsAAgAGAAAAAAALABsAAgAGAAAAAAARABsAAgAGAAEAAAASABsAAgAGAAAAAAAQABsAAgAGAAAAAAATABsAAgAGAAAAAAAPABsAAgAGAAAAAAAOABsAAgAGAAAAAAANABsAAgAGAAAAAAAMABsAAgAGAAAAAAATABwAAgAGAAIAAAASABwAAgAGAAIAAAARABwAAgAGAAIAAAAQABwAAgAGAAIAAAAPABwAAgAGAAIAAAAOABwAAgAGAAIAAAANABwAAgAGAAIAAAAMABwAAgAGAAIAAAALABwAAgAGAAIAAAAKABwAAgAGAAIAAAAJABwAAgAGAAIAAAAIABwAAgAGAAIAAAAHABwAAgAGAAIAAAAGABwAAgAGAAIAAAAFABwAAgAGAAIAAAAEABwAAgAGAAIAAAACABwAAgAGAAIAAAABABwAAgAGAAIAAAAAABwAAgAFAAIAAAADABwAAgAGAAIAAAAUABwAAgAGAAIAAAAUABsAAgAGAAAAAAAVABsAAgAGAAAAAAAWABsAAgAGAAAAAAAWABwAAgAGAAIAAAAXABwAAgAGAAIAAAAXABsAAgAGAAEAAAAVABwAAgAGAAIAAAAYABwAAgAGAAIAAAAYABsAAgAGAAAAAAAZABsAAgAGAAAAAAAZABwAAgAGAAIAAAAaABwAAgAGAAIAAAAaABsAAgAGAAAAAAAbABsAAgAHAAAAAAAbABwAAgAHAAIAAAARABoAAgAEAAAAAAAXABoAAgAEAAAAAAAmABsAAgAGAAAAAAAnABsAAgAGAAAAAAAoABsAAgAGAAAAAAApABsAAgAGAAAAAAApABwAAgAGAAIAAAAoABwAAgAGAAIAAAAnABwAAgAGAAIAAAAmABwAAgAGAAIAAAAlABsAAgAFAAAAAAAlABwAAgAFAAIAAAAqABsAAgAHAAAAAAAqABwAAgAHAAIAAAAAAPT/AgAEAAEAAAAAAPX/AgAEAAEAAAAAAPb/AgAEAAEAAAAAAPf/AgAEAAEAAAAAAPj/AgAEAAEAAAAAAPn/AgAEAAEAAAAAAPr/AgAEAAEAAAAAAPv/AgAEAAEAAAAAAPz/AgAEAAEAAAAAAP3/AgAEAAEAAAAAAP7/AgAEAAEAAAAAAP//AgAEAAEAAAAAAAAAAgAEAAEAAAAAAO//AgAFAAAAAAAAAPD/AgAEAAEAAAAAAPH/AgAEAAEAAAAAAPL/AgAEAAEAAAAAAPP/AgAEAAEAAAAKAO//AgAHAAMAAAAJAO//AgAGAAMAAAAIAO//AgAGAAMAAAAHAO//AgAGAAMAAAAGAO//AgAGAAMAAAAFAO//AgAGAAMAAAAEAO//AgAGAAMAAAADAO//AgAGAAMAAAACAO//AgAGAAMAAAABAO//AgAGAAMAAAA=")
+tile_set = ExtResource("9_lf2sj")
+
+[node name="Jump on him" type="Label" parent="."]
+offset_left = 147.0
+offset_top = 1533.0
+offset_right = 967.0
+offset_bottom = 1671.0
+text = "Jump on enemies head to stun
+↓"
+label_settings = SubResource("LabelSettings_ybe0m")
+horizontal_alignment = 1
+script = ExtResource("11_aykfb")
+
+[node name="PlayerUFO" parent="." instance=ExtResource("10_3b8en")]
+position = Vector2(2559, 1666)
+collision_mask = 2
+
+[node name="Player" parent="." instance=ExtResource("11_oakka")]
+position = Vector2(216, 1664)
+
+[node name="GameCamera" parent="." node_paths=PackedStringArray("playerRef", "playerUFORef") instance=ExtResource("12_5yyl1")]
+position = Vector2(2098, 1789)
+limit_left = 0
+limit_top = -512
+limit_right = 6300
+limit_bottom = 1800
+playerRef = NodePath("../Player")
+playerUFORef = NodePath("../PlayerUFO")
+
+[node name="EnemyGroup" type="Node2D" parent="." node_paths=PackedStringArray("playerRef")]
+script = ExtResource("13_k6yai")
+playerRef = NodePath("../PlayerUFO")
+
+[node name="Enemy" parent="EnemyGroup" instance=ExtResource("14_q4777")]
+position = Vector2(558, 1695)
+
+[node name="Enemy2" parent="EnemyGroup" instance=ExtResource("16_ybe0m")]
+position = Vector2(1310, 1696)
+
+[connection signal="wonGame" from="." to="PlayerUFO" method="_on_main_won_game"]
+[connection signal="wonGame" from="." to="GameCamera" method="_on_main_won_game"]
+[connection signal="captureThemSignal" from="HUD" to="." method="_on_hud_capture_them_signal"]
+[connection signal="enemyCaptured" from="PlayerUFO" to="." method="_on_player_ufo_enemy_captured"]
+[connection signal="enteredUFO" from="Player" to="." method="_on_player_entered_ufo"]
+[connection signal="enteredUFO" from="Player" to="Jump on him" method="_on_player_entered_ufo"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="playerDead" from="Player" to="." method="_on_player_player_dead"]
+[connection signal="enemyhit" from="EnemyGroup" to="Player" method="_on_enemy_enemyhit"]

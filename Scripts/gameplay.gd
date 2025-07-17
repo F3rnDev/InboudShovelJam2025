@@ -38,9 +38,15 @@ func goToNextStage():
 
 func _on_player_entered_ufo() -> void:
 	$GameCamera.changePlayer(1)
+	$PlayerUFO.setPlayerSprite(false)
 	
 	if maxEnemies <= 0:
 		winGame()
+	else:
+		$HUD.setCaptureThemText()
+
+func _on_hud_capture_them_signal() -> void:
+	$PlayerUFO.setPlayerMovement(false)
 
 func _on_player_player_dead() -> void:
 	gameOver = true

@@ -146,8 +146,7 @@ func Animate():
 	elif direction > 0:
 		$AnimatedSprite2D.flip_h = false
 
-func enterUFO(ufo):
-	ufo.setPlayer(false)
+func enterUFO():
 	enteredUFO.emit()
 	queue_free()
 
@@ -192,13 +191,15 @@ func killPlayer():
 	velocity = knockbackStrength
 	
 	$CollisionShape2D.set_deferred("disabled", true)
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+	$Hurtbox/CollisionShape2D.set_deferred("disabled", true)
 	set_process(true)
 	
 	playerDead.emit()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("UFO"):
-		enterUFO(area.get_parent())
+		enterUFO()
 	if area.get_parent().is_in_group("Enemy"):
 		playerHit(area.global_position)
 

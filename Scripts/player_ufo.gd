@@ -30,9 +30,10 @@ func _ready() -> void:
 	$LaserGreen2.modulate.a = 0.0
 	$AnimatedSprite2D.play("inactive")
 
-func setPlayer(active:bool):
+func setPlayerMovement(active:bool):
 	playerInactive = active
-	
+
+func setPlayerSprite(active:bool):
 	var curAnimString = "default" if !active else "inactive"
 	
 	$AnimatedSprite2D.play(curAnimString)

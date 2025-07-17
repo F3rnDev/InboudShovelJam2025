@@ -23,6 +23,11 @@ func _process(delta: float) -> void:
 	
 	if !playerRef.captureMode:
 		isBeingCaptured = false
+	
+	if stunned:
+		modulate.a = 0.3
+	else:
+		modulate.a = 1.0
 
 func _physics_process(delta: float) -> void:
 	if isBeingCaptured:

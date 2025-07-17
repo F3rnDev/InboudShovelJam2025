@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal captureThemSignal
+
 func setStageText(stageName):
 	$Control/CurrentStage.text = "Current Stage\n- " + stageName + " -"
 
@@ -8,6 +10,12 @@ func setGameOverText():
 
 func setGameWinText():
 	$Control/WinGameText/AnimationPlayer.play("blink")
+
+func setCaptureThemText():
+	$"Control/Capture Them/AnimationPlayer".play("captureALL")
+
+func _on_capture_animation_finished(anim_name: StringName) -> void:
+	captureThemSignal.emit()
 
 func updateHealth(curHealth):
 	var lifes = $Control/VBoxContainer/LifeHolder/Life/LifeFull
