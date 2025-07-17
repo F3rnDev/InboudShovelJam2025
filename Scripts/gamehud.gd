@@ -12,7 +12,7 @@ func setGameWinText():
 	$Control/WinGameText/AnimationPlayer.play("blink")
 
 func setCaptureThemText():
-	$"Control/Capture Them/AnimationPlayer".play("captureALL")
+	$"Control/Capture Them/AnimationPlayer".play("captureAll")
 
 func _on_capture_animation_finished(anim_name: StringName) -> void:
 	captureThemSignal.emit()

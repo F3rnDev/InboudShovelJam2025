@@ -8,11 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://dcpl1qhfvsx0f" path="res://Art/Sprites/Backgrounds/03_hill_fade.png" id="6_jctek"]
 [ext_resource type="Texture2D" uid="uid://dvpvcslxhgh20" path="res://Art/Sprites/Backgrounds/02_hill.png" id="7_2yqmo"]
 [ext_resource type="Texture2D" uid="uid://bo3v2nh02hnwh" path="res://Art/Sprites/Backgrounds/01_grass.png" id="8_e3sye"]
-[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap.tres" id="9_btmhw"]
+[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="9_btmhw"]
 [ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="10_ieckw"]
 [ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="11_uhetr"]
-[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="12_ory6k"]
-[ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="13_804n1"]
+[ext_resource type="PackedScene" path="res://Nodes/gameCamera.tscn" id="12_ory6k"]
+[ext_resource type="Script" path="res://Scripts/enemy_group.gd" id="13_804n1"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_q6bdj")

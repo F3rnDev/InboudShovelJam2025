@@ -97,7 +97,7 @@ func VerticalMovement(delta):
 	elif Input.is_action_just_pressed("Jump") and jumps > 0:
 		Jump()
 	
-	if !$JumpBuffer.is_stopped() and is_on_floor():
+	if !$JumpBuffer.is_stopped() and (is_on_floor() or is_on_wall()):
 		Jump()
 	
 	#Stop jump if button is released

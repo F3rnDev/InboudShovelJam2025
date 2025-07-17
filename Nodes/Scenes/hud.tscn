@@ -1,22 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://6jg502bjlxcc"]
+[gd_scene load_steps=15 format=3 uid="uid://6jg502bjlxcc"]
 
 [ext_resource type="Script" uid="uid://b3bjetqxi0kvj" path="res://Scripts/gamehud.gd" id="1_ic5la"]
 [ext_resource type="Texture2D" uid="uid://coch0d8ev0quj" path="res://Art/Sprites/Tiles/HUD/Heart/hud_heart.png" id="1_oekg1"]
 [ext_resource type="Texture2D" uid="uid://bqucotcnjxcor" path="res://Art/Sprites/Tiles/HUD/Heart/hud_heart_empty.png" id="1_q117g"]
 [ext_resource type="Texture2D" uid="uid://cqwmhtyjpwyo7" path="res://Art/Sprites/Tiles/HUD/HumanHUD.png" id="3_b12m7"]
-[ext_resource type="FontFile" uid="uid://cpanipk45b054" path="res://Fonts/8-bit Arcade In.ttf" id="4_4xv4v"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_b12m7"]
-font = ExtResource("4_4xv4v")
-font_size = 64
-outline_size = 35
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ic5la"]
-font = ExtResource("4_4xv4v")
-font_size = 54
-outline_size = 25
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="LabelSettings" uid="uid://da027kwfmrawd" path="res://Fonts/labelSettings.tres" id="5_ic5la"]
 
 [sub_resource type="Animation" id="Animation_wqp3y"]
 length = 0.001
@@ -42,7 +30,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(405.5, -200)]
+"values": [Vector2(309, -200)]
 }
 
 [sub_resource type="Animation" id="Animation_ktl86"]
@@ -58,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(0.170755, 1, 2.46229, 1),
 "update": 0,
-"values": [Vector2(405.5, -200), Vector2(405.5, 20), Vector2(405.5, 20), Vector2(405.5, -200)]
+"values": [Vector2(342, -200), Vector2(342, 20), Vector2(342, 20), Vector2(342, -200)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ktl86"]
@@ -105,77 +93,65 @@ _data = {
 &"blink": SubResource("Animation_ic5la")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_wqp3y"]
-font = ExtResource("4_4xv4v")
-font_size = 128
-outline_size = 35
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ktl86"]
-font = ExtResource("4_4xv4v")
-font_size = 128
-outline_size = 35
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="Animation" id="Animation_fg304"]
+resource_name = "captureAll"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/Capture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9, 2),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/Them:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 1, 1.9, 2),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_4h64r"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Capture:visible")
+tracks/0/path = NodePath("HBoxContainer/Capture:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"transitions": PackedFloat32Array(1e-05),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Them:visible")
+tracks/1/path = NodePath("HBoxContainer/Them:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_fg304"]
-resource_name = "captureALL"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Capture:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Them:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
+"transitions": PackedFloat32Array(1.03526e-05),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4k7rx"]
 _data = {
 &"RESET": SubResource("Animation_4h64r"),
-&"captureALL": SubResource("Animation_fg304")
+&"captureAll": SubResource("Animation_fg304")
 }
 
 [node name="HUD" type="CanvasLayer"]
@@ -236,17 +212,17 @@ texture = ExtResource("1_oekg1")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_b12m7")
+stretch_mode = 3
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "x 0"
-label_settings = SubResource("LabelSettings_b12m7")
-horizontal_alignment = 1
-vertical_alignment = 1
+label_settings = ExtResource("5_ic5la")
 uppercase = true
 
 [node name="CurrentStage" type="Label" parent="Control"]
@@ -254,14 +230,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -170.5
+offset_left = -234.0
 offset_top = -200.0
-offset_right = 170.5
-offset_bottom = -88.0
+offset_right = 234.0
+offset_bottom = -77.0
 grow_horizontal = 2
 text = "Current Stage
 - Stage sex -"
-label_settings = SubResource("LabelSettings_ic5la")
+label_settings = ExtResource("5_ic5la")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -287,7 +263,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Game over
 - press R to restart -"
-label_settings = SubResource("LabelSettings_ic5la")
+label_settings = ExtResource("5_ic5la")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -312,7 +288,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Great job
 - press ENTER to proceed -"
-label_settings = SubResource("LabelSettings_ic5la")
+label_settings = ExtResource("5_ic5la")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -329,39 +305,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Capture" type="Label" parent="Control/Capture Them"]
-visible = false
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Capture Them"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -507.0
-offset_top = -43.0
-offset_right = -59.0
-offset_bottom = 43.0
+offset_left = -230.0
+offset_top = -20.0
+offset_right = 230.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "CAPTURE"
-label_settings = SubResource("LabelSettings_wqp3y")
+theme_override_constants/separation = 100
+alignment = 1
 
-[node name="Them" type="Label" parent="Control/Capture Them"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 67.0
-offset_top = -43.0
-offset_right = 555.0
-offset_bottom = 43.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Capture" type="Label" parent="Control/Capture Them/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "CAPTURE"
+label_settings = ExtResource("5_ic5la")
+
+[node name="Them" type="Label" parent="Control/Capture Them/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
 text = "THEM ALL"
-label_settings = SubResource("LabelSettings_ktl86")
+label_settings = ExtResource("5_ic5la")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Capture Them"]
 libraries = {
