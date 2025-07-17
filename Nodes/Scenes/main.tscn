@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="4_xqnp4"]
 [ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="7_be8p3"]
 [ext_resource type="Texture2D" uid="uid://bqbehjk01ads1" path="res://Art/Sprites/Backgrounds/05_sky.png" id="12_lmsqr"]
-[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap.tres" id="12_lsm0f"]
+[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="12_lsm0f"]
 [ext_resource type="Script" path="res://Scripts/enemy_group.gd" id="12_swhxk"]
 [ext_resource type="Texture2D" uid="uid://wsrfjacr3r2b" path="res://Art/Sprites/Backgrounds/04_cloud.png" id="13_mp4f1"]
 [ext_resource type="Texture2D" uid="uid://dcpl1qhfvsx0f" path="res://Art/Sprites/Backgrounds/03_hill_fade.png" id="14_krec5"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://5lx8i8k1bwb6"]
+[gd_scene load_steps=17 format=4 uid="uid://5lx8i8k1bwb6"]
 
 [ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_2up4p"]
 [ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_igtqb"]
@@ -8,11 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://dcpl1qhfvsx0f" path="res://Art/Sprites/Backgrounds/03_hill_fade.png" id="6_okm22"]
 [ext_resource type="Texture2D" uid="uid://dvpvcslxhgh20" path="res://Art/Sprites/Backgrounds/02_hill.png" id="7_rsha6"]
 [ext_resource type="Texture2D" uid="uid://bo3v2nh02hnwh" path="res://Art/Sprites/Backgrounds/01_grass.png" id="8_vr84i"]
-[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap.tres" id="9_lim2k"]
+[ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="9_kfmp7"]
+[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="9_lim2k"]
 [ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="10_rmiow"]
 [ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="11_xg73q"]
-[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="12_ljhex"]
-[ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="13_5gurx"]
+[ext_resource type="PackedScene" path="res://Nodes/gameCamera.tscn" id="12_ljhex"]
+[ext_resource type="Script" path="res://Scripts/enemy_group.gd" id="13_5gurx"]
 [ext_resource type="FontFile" uid="uid://cpanipk45b054" path="res://Fonts/8-bit Arcade In.ttf" id="14_tup3k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kfmp7"]
@@ -82,8 +83,12 @@ offset_right = 2560.0
 offset_bottom = 2047.0
 color = Color(0.180392, 0.8, 0.443137, 1)
 
+[node name="Keyboard" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAgAA0ABwAAAAAAAAAeAA0ACgAAAAAAAAAfAAwAAQASAAIAAAAfAA0AAQATAAMAAAA=")
+tile_set = ExtResource("9_kfmp7")
+
 [node name="Ground" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAZABIAAgAFAAMAAAAaABIAAgAGAAMAAAAbABIAAgAGAAMAAAAcABIAAgAGAAMAAAAdABIAAgAGAAMAAAAeABIAAgAGAAMAAAAfABIAAgAGAAMAAAAgABIAAgAGAAMAAAAhABIAAgAGAAMAAAAiABIAAgAGAAMAAAAjABIAAgAGAAMAAAAkABIAAgAGAAMAAAAlABIAAgAGAAMAAAAmABIAAgAGAAMAAAAnABIAAgAGAAMAAAAoABIAAgAHAAMAAAA=")
+tile_map_data = PackedByteArray("AAAZABIAAgAFAAMAAAAaABIAAgAGAAMAAAAbABIAAgAGAAMAAAAcABIAAgAGAAMAAAAdABIAAgAGAAMAAAAeABIAAgAGAAMAAAAfABIAAgAGAAMAAAAgABIAAgAGAAMAAAAhABIAAgAGAAMAAAAiABIAAgAGAAMAAAAjABIAAgAGAAMAAAAkABIAAgAGAAMAAAAlABIAAgAGAAMAAAAmABIAAgAGAAMAAAAnABIAAgAGAAMAAAAoABIAAgAHAAMAAAB8AEMAAAASAAIAAAA=")
 tile_set = ExtResource("9_lim2k")
 
 [node name="PlayerUFO" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_rmiow")]
