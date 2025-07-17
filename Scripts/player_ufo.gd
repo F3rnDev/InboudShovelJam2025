@@ -26,6 +26,8 @@ var playerWon = false
 
 signal enemyCaptured(captureAmount:int)
 
+@export var camera:Camera2D
+
 func _ready() -> void:
 	$LaserGreen2.modulate.a = 0.0
 	$AnimatedSprite2D.play("inactive")
@@ -67,6 +69,10 @@ func Movement(delta):
 		velocity = velocity.move_toward(direction * actualSpeed, acceleration * delta)
 	else:
 		velocity *= lerp(1.0, 0.0, delta * frictionMult)
+	
+	#limitMovement
+	position.x = clamp(position.x, camera.limit_left, camera.limit_right)
+	position.y = clamp(position.y, camera.limit_top, camera.limit_bottom)
 
 func TiltSprite(delta):
 	var sprite = $AnimatedSprite2D
