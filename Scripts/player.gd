@@ -30,6 +30,9 @@ signal hit(curHealth:int)
 
 var afterImage = false
 
+#Coyote Time
+var wasOnFloor = false
+
 func _process(delta: float) -> void:
 	if !playerInactive and !wasHit:
 		Animate()
@@ -88,32 +91,50 @@ func VerticalMovement(delta):
 	else:
 		jumps = jumpAmount
 	
-	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and !wasHit and !gameOver:
+	# Handle jump/jumpBuffer
+	if Input.is_action_just_pressed("Jump") and jumps == 0:
+		$JumpBuffer.start()
+	elif Input.is_action_just_pressed("Jump") and jumps > 0:
+		Jump()
+	
+	if !$JumpBuffer.is_stopped() and is_on_floor():
 		Jump()
 	
 	#Stop jump if button is released
 	if Input.is_action_just_released("Jump") and velocity.y < 0:
 		velocity.y = 0
 	
+	#Coyotte time
+	if !is_on_floor() and wasOnFloor:
+		$CoyotteTime.start()
+	
+	wasOnFloor = is_on_floor()
+	
+	#Set jumpAmount if player fell down a platform
+	if !is_on_floor() and jumps == jumpAmount and $CoyotteTime.is_stopped():
+		jumps = jumpAmount-1
+	
 	#Wall slide
 	WallSlide(delta)
 
 func Jump():
-	if !is_on_floor() and jumps == jumpAmount:
-		jumps = jumpAmount-1
+	if wasHit or gameOver:
+		return
+	
+	$CoyotteTime.stop()
+	$JumpBuffer.stop()
 	
 	var direction = Input.get_axis("Move Left", "Move Right")
 	if is_on_wall() and !is_on_floor() and direction!=0:
 		jumps = jumpAmount
 		velocity.x += -wallJumpPush * direction
 	
-	if !is_on_floor() and jumps == 1:
-		afterImage = true
-	
 	if jumps > 0:
 		velocity.y = JUMP_VELOCITY
 		jumps -= 1
+		
+		if jumps == 0:
+			afterImage = true
 
 func WallSlide(delta):
 	if is_on_wall() and !is_on_floor() and !$RayCast2D.is_colliding():
