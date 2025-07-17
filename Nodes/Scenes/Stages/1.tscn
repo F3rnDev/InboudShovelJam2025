@@ -30,6 +30,7 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_2up4p")
 stageID = 1
+stageName = "Movement"
 
 [node name="HUD" parent="." instance=ExtResource("2_igtqb")]
 
