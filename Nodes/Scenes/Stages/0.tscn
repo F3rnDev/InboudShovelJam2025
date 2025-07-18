@@ -109,7 +109,7 @@ playerRef = NodePath("../PlayerUFO")
 [node name="Label" type="Label" parent="."]
 offset_left = 2534.0
 offset_top = 1032.0
-offset_right = 3052.0
+offset_right = 3078.0
 offset_bottom = 1119.0
 text = "← Get to the ship"
 label_settings = ExtResource("15_kfmp7")

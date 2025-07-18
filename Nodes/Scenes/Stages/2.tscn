@@ -76,6 +76,44 @@ centered = false
 tile_map_data = PackedByteArray("AAAAABsAAgAFAAEAAAAAABoAAgAEAAEAAAAAABkAAgAEAAEAAAAAABgAAgAEAAEAAAAAABcAAgAEAAEAAAAAABYAAgAEAAEAAAAAABUAAgAEAAEAAAAAABQAAgAEAAEAAAAAABMAAgAEAAEAAAAAABIAAgAEAAEAAAAAABEAAgAEAAEAAAAAABAAAgAEAAEAAAAAAA8AAgAEAAEAAAAAAA4AAgAEAAEAAAAAAA0AAgAEAAEAAAAAAAEAAgAEAAEAAAAAAAIAAgAEAAEAAAAAAAMAAgAEAAEAAAAAAAQAAgAEAAEAAAAAAAUAAgAEAAEAAAAAAAYAAgAEAAEAAAAAAAcAAgAEAAEAAAAAAAgAAgAEAAEAAAAAAAkAAgAEAAEAAAAAAAoAAgAEAAEAAAAAAAsAAgAEAAEAAAAAAAwAAgAEAAEAAAABABsAAgAGAAAAAAACABsAAgAGAAAAAAADABsAAgAGAAAAAAAEABsAAgAGAAAAAAAFABsAAgAGAAAAAAAGABsAAgAGAAAAAAAHABsAAgAGAAAAAAAIABsAAgAGAAAAAAAJABsAAgAGAAAAAAAKABsAAgAGAAAAAAALABsAAgAGAAAAAAARABsAAgAGAAEAAAASABsAAgAGAAAAAAAQABsAAgAGAAAAAAATABsAAgAGAAAAAAAPABsAAgAGAAAAAAAOABsAAgAGAAAAAAANABsAAgAGAAAAAAAMABsAAgAGAAAAAAATABwAAgAGAAIAAAASABwAAgAGAAIAAAARABwAAgAGAAIAAAAQABwAAgAGAAIAAAAPABwAAgAGAAIAAAAOABwAAgAGAAIAAAANABwAAgAGAAIAAAAMABwAAgAGAAIAAAALABwAAgAGAAIAAAAKABwAAgAGAAIAAAAJABwAAgAGAAIAAAAIABwAAgAGAAIAAAAHABwAAgAGAAIAAAAGABwAAgAGAAIAAAAFABwAAgAGAAIAAAAEABwAAgAGAAIAAAACABwAAgAGAAIAAAABABwAAgAGAAIAAAAAABwAAgAFAAIAAAADABwAAgAGAAIAAAAUABwAAgAGAAIAAAAUABsAAgAGAAAAAAAVABsAAgAGAAAAAAAWABsAAgAGAAAAAAAWABwAAgAGAAIAAAAXABwAAgAGAAIAAAAXABsAAgAGAAEAAAAVABwAAgAGAAIAAAAYABwAAgAGAAIAAAAYABsAAgAGAAAAAAAZABsAAgAGAAAAAAAZABwAAgAGAAIAAAAaABwAAgAGAAIAAAAaABsAAgAGAAAAAAAbABsAAgAHAAAAAAAbABwAAgAHAAIAAAARABoAAgAEAAAAAAAXABoAAgAEAAAAAAAmABsAAgAGAAAAAAAnABsAAgAGAAAAAAAoABsAAgAGAAAAAAApABsAAgAGAAAAAAApABwAAgAGAAIAAAAoABwAAgAGAAIAAAAnABwAAgAGAAIAAAAmABwAAgAGAAIAAAAlABsAAgAFAAAAAAAlABwAAgAFAAIAAAAqABsAAgAHAAAAAAAqABwAAgAHAAIAAAAAAPT/AgAEAAEAAAAAAPX/AgAEAAEAAAAAAPb/AgAEAAEAAAAAAPf/AgAEAAEAAAAAAPj/AgAEAAEAAAAAAPn/AgAEAAEAAAAAAPr/AgAEAAEAAAAAAPv/AgAEAAEAAAAAAPz/AgAEAAEAAAAAAP3/AgAEAAEAAAAAAP7/AgAEAAEAAAAAAP//AgAEAAEAAAAAAAAAAgAEAAEAAAAAAO//AgAFAAAAAAAAAPD/AgAEAAEAAAAAAPH/AgAEAAEAAAAAAPL/AgAEAAEAAAAAAPP/AgAEAAEAAAAKAO//AgAHAAMAAAAJAO//AgAGAAMAAAAIAO//AgAGAAMAAAAHAO//AgAGAAMAAAAGAO//AgAGAAMAAAAFAO//AgAGAAMAAAAEAO//AgAGAAMAAAADAO//AgAGAAMAAAACAO//AgAGAAMAAAABAO//AgAGAAMAAAA=")
 tile_set = ExtResource("9_aykfb")
 
+[node name="Events" type="Node" parent="."]
+script = ExtResource("16_aykfb")
+
+[node name="Jump on him2" type="Label" parent="Events"]
+offset_left = 228.0
+offset_top = 3080.0
+offset_right = 1124.0
+offset_bottom = 3218.0
+text = "Jump on enemies head to stun
+↓"
+label_settings = ExtResource("10_aykfb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Jump on him" type="Label" parent="Events"]
+offset_left = 114.0
+offset_top = 1540.0
+offset_right = 1010.0
+offset_bottom = 1678.0
+text = "Jump on enemies head to stun
+↓"
+label_settings = ExtResource("10_aykfb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UFOTutorial" type="Label" parent="Events"]
+visible = false
+offset_left = 2668.0
+offset_top = 1453.0
+offset_right = 3511.0
+offset_bottom = 1518.0
+text = "Hold SPACE to capture enemies"
+label_settings = ExtResource("10_aykfb")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Events/UFOTutorial"]
+tile_map_data = PackedByteArray("AAAGAAIADQAAAAAAAAA=")
+tile_set = ExtResource("18_rdxyd")
+
 [node name="PlayerUFO" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_lf2sj")]
 position = Vector2(2559, 1666)
 collision_mask = 2
@@ -102,32 +140,6 @@ position = Vector2(558, 1695)
 
 [node name="Enemy2" parent="EnemyGroup" instance=ExtResource("16_ybe0m")]
 position = Vector2(1310, 1696)
-
-[node name="Events" type="Node" parent="."]
-script = ExtResource("16_aykfb")
-
-[node name="Jump on him" type="Label" parent="Events"]
-offset_left = 147.0
-offset_top = 1533.0
-offset_right = 967.0
-offset_bottom = 1671.0
-text = "Jump on enemies head to stun
-↓"
-label_settings = ExtResource("10_aykfb")
-horizontal_alignment = 1
-
-[node name="UFOTutorial" type="Label" parent="Events"]
-visible = false
-offset_left = 2668.0
-offset_top = 1453.0
-offset_right = 3511.0
-offset_bottom = 1518.0
-text = "Hold SPACE to capture enemies"
-label_settings = ExtResource("10_aykfb")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Events/UFOTutorial"]
-tile_map_data = PackedByteArray("AAAGAAIADQAAAAAAAAA=")
-tile_set = ExtResource("18_rdxyd")
 
 [connection signal="wonGame" from="." to="PlayerUFO" method="_on_main_won_game"]
 [connection signal="wonGame" from="." to="GameCamera" method="_on_main_won_game"]

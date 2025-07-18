@@ -23,45 +23,6 @@ stageName = "Movement"
 
 [node name="HUD" parent="." instance=ExtResource("2_igtqb")]
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label3" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 6249.0
-offset_top = 652.0
-offset_right = 6767.0
-offset_bottom = 785.0
-text = "Climb wall"
-label_settings = ExtResource("3_caobg")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 1701.0
-offset_top = 1367.0
-offset_right = 2219.0
-offset_bottom = 1456.0
-text = "SPACE to jump"
-label_settings = ExtResource("3_caobg")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 3171.0
-offset_top = 1280.0
-offset_right = 3689.0
-offset_bottom = 1369.0
-text = "Double jump"
-label_settings = ExtResource("3_caobg")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Background" type="ParallaxBackground" parent="."]
 
 [node name="Sky" type="ParallaxLayer" parent="Background"]
@@ -145,6 +106,45 @@ playerUFORef = NodePath("../PlayerUFO")
 [node name="EnemyGroup" type="Node2D" parent="." node_paths=PackedStringArray("playerRef")]
 script = ExtResource("13_5gurx")
 playerRef = NodePath("../PlayerUFO")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label3" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 6249.0
+offset_top = 652.0
+offset_right = 6767.0
+offset_bottom = 785.0
+text = "Climb wall"
+label_settings = ExtResource("3_caobg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1701.0
+offset_top = 1367.0
+offset_right = 2219.0
+offset_bottom = 1456.0
+text = "SPACE to jump"
+label_settings = ExtResource("3_caobg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 3171.0
+offset_top = 1280.0
+offset_right = 3689.0
+offset_bottom = 1369.0
+text = "Double jump"
+label_settings = ExtResource("3_caobg")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="wonGame" from="." to="PlayerUFO" method="_on_main_won_game"]
 [connection signal="wonGame" from="." to="GameCamera" method="_on_main_won_game"]
