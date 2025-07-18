@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+signal fadeInOver
+signal fadeOutOver
+
 func transitionToScene(path):
 	visible = true
 	$"Transition animation".play("fadeIn")
@@ -20,4 +23,16 @@ func transitionToSameScene():
 	
 	$"Transition animation".play("fadeOut")
 	await $"Transition animation".animation_finished
+	visible = false
+
+func transitionInsideScene():
+	visible = true
+	$"Transition animation".play("fadeIn")
+	await $"Transition animation".animation_finished
+	
+	fadeInOver.emit()
+	
+	$"Transition animation".play("fadeOut")
+	await $"Transition animation".animation_finished
+	fadeOutOver.emit()
 	visible = false

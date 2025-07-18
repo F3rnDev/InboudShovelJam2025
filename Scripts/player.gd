@@ -17,7 +17,7 @@ var jumps = jumpAmount
 var isWallSliding = false
 
 #playerActive
-var playerInactive = false
+@export var playerInactive = false
 var gameOver = false
 
 @export var health = 3
@@ -32,6 +32,10 @@ var afterImage = false
 
 #Coyote Time
 var wasOnFloor = false
+
+func _ready() -> void:
+	if playerInactive:
+		$AnimatedSprite2D.play("Idle")
 
 func _process(delta: float) -> void:
 	if !playerInactive and !wasHit:
@@ -53,7 +57,8 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if !playerInactive:
 		HorizontalMovement(delta)
-		VerticalMovement(delta)
+	
+	VerticalMovement(delta)
 	
 	if global_position.y >= 1900 and !gameOver:
 		wasHit = true
@@ -90,6 +95,9 @@ func VerticalMovement(delta):
 		velocity.y = 0
 	else:
 		jumps = jumpAmount
+	
+	if playerInactive:
+		return
 	
 	# Handle jump/jumpBuffer
 	if Input.is_action_just_pressed("Jump") and jumps == 0:

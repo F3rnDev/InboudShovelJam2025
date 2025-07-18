@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dcpl1qhfvsx0f" path="res://Art/Sprites/Backgrounds/03_hill_fade.png" id="6_rdxyd"]
 [ext_resource type="Texture2D" uid="uid://dvpvcslxhgh20" path="res://Art/Sprites/Backgrounds/02_hill.png" id="7_foi5a"]
 [ext_resource type="Texture2D" uid="uid://bo3v2nh02hnwh" path="res://Art/Sprites/Backgrounds/01_grass.png" id="8_0gyd6"]
-[ext_resource type="TileSet" uid="uid://pp80a6qe5jcr" path="res://Tilemaps/tilemap_world.tres" id="9_aykfb"]
-[ext_resource type="LabelSettings" uid="uid://da027kwfmrawd" path="res://Fonts/labelSettings.tres" id="10_aykfb"]
+[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="9_aykfb"]
+[ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="10_aykfb"]
 [ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="10_lf2sj"]
 [ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="11_3b8en"]
 [ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="12_oakka"]
@@ -17,9 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://dslakpjmwe1vh" path="res://Nodes/enemyBlock.tscn" id="14_q4777"]
 [ext_resource type="Script" uid="uid://dasggqyajeq1c" path="res://Scripts/Stage Specific/stage2_setUFOTutorial.gd" id="16_aykfb"]
 [ext_resource type="PackedScene" uid="uid://bg5tuvkfkc1t7" path="res://Nodes/enemy.tscn" id="16_ybe0m"]
-[ext_resource type="TileSet" uid="uid://7yn5wcm83y1d" path="res://Tilemaps/tilemap_keyboard.tres" id="18_rdxyd"]
+[ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="18_rdxyd"]
 
-[node name="Main" type="Node2D"]
+[node name="Main2" type="Node2D"]
 script = ExtResource("1_xlrks")
 stageID = 2
 stageName = "Enemies"
@@ -76,21 +76,13 @@ centered = false
 tile_map_data = PackedByteArray("AAAAABsAAgAFAAEAAAAAABoAAgAEAAEAAAAAABkAAgAEAAEAAAAAABgAAgAEAAEAAAAAABcAAgAEAAEAAAAAABYAAgAEAAEAAAAAABUAAgAEAAEAAAAAABQAAgAEAAEAAAAAABMAAgAEAAEAAAAAABIAAgAEAAEAAAAAABEAAgAEAAEAAAAAABAAAgAEAAEAAAAAAA8AAgAEAAEAAAAAAA4AAgAEAAEAAAAAAA0AAgAEAAEAAAAAAAEAAgAEAAEAAAAAAAIAAgAEAAEAAAAAAAMAAgAEAAEAAAAAAAQAAgAEAAEAAAAAAAUAAgAEAAEAAAAAAAYAAgAEAAEAAAAAAAcAAgAEAAEAAAAAAAgAAgAEAAEAAAAAAAkAAgAEAAEAAAAAAAoAAgAEAAEAAAAAAAsAAgAEAAEAAAAAAAwAAgAEAAEAAAABABsAAgAGAAAAAAACABsAAgAGAAAAAAADABsAAgAGAAAAAAAEABsAAgAGAAAAAAAFABsAAgAGAAAAAAAGABsAAgAGAAAAAAAHABsAAgAGAAAAAAAIABsAAgAGAAAAAAAJABsAAgAGAAAAAAAKABsAAgAGAAAAAAALABsAAgAGAAAAAAARABsAAgAGAAEAAAASABsAAgAGAAAAAAAQABsAAgAGAAAAAAATABsAAgAGAAAAAAAPABsAAgAGAAAAAAAOABsAAgAGAAAAAAANABsAAgAGAAAAAAAMABsAAgAGAAAAAAATABwAAgAGAAIAAAASABwAAgAGAAIAAAARABwAAgAGAAIAAAAQABwAAgAGAAIAAAAPABwAAgAGAAIAAAAOABwAAgAGAAIAAAANABwAAgAGAAIAAAAMABwAAgAGAAIAAAALABwAAgAGAAIAAAAKABwAAgAGAAIAAAAJABwAAgAGAAIAAAAIABwAAgAGAAIAAAAHABwAAgAGAAIAAAAGABwAAgAGAAIAAAAFABwAAgAGAAIAAAAEABwAAgAGAAIAAAACABwAAgAGAAIAAAABABwAAgAGAAIAAAAAABwAAgAFAAIAAAADABwAAgAGAAIAAAAUABwAAgAGAAIAAAAUABsAAgAGAAAAAAAVABsAAgAGAAAAAAAWABsAAgAGAAAAAAAWABwAAgAGAAIAAAAXABwAAgAGAAIAAAAXABsAAgAGAAEAAAAVABwAAgAGAAIAAAAYABwAAgAGAAIAAAAYABsAAgAGAAAAAAAZABsAAgAGAAAAAAAZABwAAgAGAAIAAAAaABwAAgAGAAIAAAAaABsAAgAGAAAAAAAbABsAAgAHAAAAAAAbABwAAgAHAAIAAAARABoAAgAEAAAAAAAXABoAAgAEAAAAAAAmABsAAgAGAAAAAAAnABsAAgAGAAAAAAAoABsAAgAGAAAAAAApABsAAgAGAAAAAAApABwAAgAGAAIAAAAoABwAAgAGAAIAAAAnABwAAgAGAAIAAAAmABwAAgAGAAIAAAAlABsAAgAFAAAAAAAlABwAAgAFAAIAAAAqABsAAgAHAAAAAAAqABwAAgAHAAIAAAAAAPT/AgAEAAEAAAAAAPX/AgAEAAEAAAAAAPb/AgAEAAEAAAAAAPf/AgAEAAEAAAAAAPj/AgAEAAEAAAAAAPn/AgAEAAEAAAAAAPr/AgAEAAEAAAAAAPv/AgAEAAEAAAAAAPz/AgAEAAEAAAAAAP3/AgAEAAEAAAAAAP7/AgAEAAEAAAAAAP//AgAEAAEAAAAAAAAAAgAEAAEAAAAAAO//AgAFAAAAAAAAAPD/AgAEAAEAAAAAAPH/AgAEAAEAAAAAAPL/AgAEAAEAAAAAAPP/AgAEAAEAAAAKAO//AgAHAAMAAAAJAO//AgAGAAMAAAAIAO//AgAGAAMAAAAHAO//AgAGAAMAAAAGAO//AgAGAAMAAAAFAO//AgAGAAMAAAAEAO//AgAGAAMAAAADAO//AgAGAAMAAAACAO//AgAGAAMAAAABAO//AgAGAAMAAAA=")
 tile_set = ExtResource("9_aykfb")
 
-[node name="Events" type="Node" parent="."]
+[node name="Events" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("16_aykfb")
 
-[node name="Jump on him2" type="Label" parent="Events"]
-offset_left = 228.0
-offset_top = 3080.0
-offset_right = 1124.0
-offset_bottom = 3218.0
-text = "Jump on enemies head to stun
-↓"
-label_settings = ExtResource("10_aykfb")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Jump on him" type="Label" parent="Events"]
+layout_mode = 0
 offset_left = 114.0
 offset_top = 1540.0
 offset_right = 1010.0
@@ -103,15 +95,16 @@ vertical_alignment = 1
 
 [node name="UFOTutorial" type="Label" parent="Events"]
 visible = false
-offset_left = 2668.0
-offset_top = 1453.0
-offset_right = 3511.0
-offset_bottom = 1518.0
+layout_mode = 0
+offset_left = 2130.0
+offset_top = 1361.0
+offset_right = 3058.0
+offset_bottom = 1426.0
 text = "Hold SPACE to capture enemies"
 label_settings = ExtResource("10_aykfb")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Events/UFOTutorial"]
-tile_map_data = PackedByteArray("AAAGAAIADQAAAAAAAAA=")
+[node name="Controls" type="TileMapLayer" parent="Events/UFOTutorial"]
+tile_map_data = PackedByteArray("AAAIAAIADQAAAAAAAAAEAAIACgAAAAAAAAAGAAIABwAAAAAAAAAFAAEABAAAAAAAAAAFAAIAAwAAAAAAAAA=")
 tile_set = ExtResource("18_rdxyd")
 
 [node name="PlayerUFO" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_lf2sj")]

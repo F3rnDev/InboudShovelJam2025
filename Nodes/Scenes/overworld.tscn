@@ -1,0 +1,284 @@
+[gd_scene load_steps=18 format=4 uid="uid://bpr1fe45qrtpj"]
+
+[ext_resource type="Script" uid="uid://go5mpnetdsfk" path="res://Scripts/overworld.gd" id="1_pm8ls"]
+[ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="2_qnp3o"]
+[ext_resource type="Texture2D" uid="uid://bqbehjk01ads1" path="res://Art/Sprites/Backgrounds/05_sky.png" id="2_s7yoc"]
+[ext_resource type="Script" uid="uid://drqocjk5017wb" path="res://Scripts/cloudLayer.gd" id="3_4j7su"]
+[ext_resource type="Texture2D" uid="uid://wsrfjacr3r2b" path="res://Art/Sprites/Backgrounds/04_cloud.png" id="4_hia64"]
+[ext_resource type="Texture2D" uid="uid://dcpl1qhfvsx0f" path="res://Art/Sprites/Backgrounds/03_hill_fade.png" id="5_gddi1"]
+[ext_resource type="Texture2D" uid="uid://dvpvcslxhgh20" path="res://Art/Sprites/Backgrounds/02_hill.png" id="6_pt7b0"]
+[ext_resource type="Texture2D" uid="uid://bo3v2nh02hnwh" path="res://Art/Sprites/Backgrounds/01_grass.png" id="7_jahdj"]
+[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="8_4j7su"]
+[ext_resource type="Texture2D" uid="uid://dk1ls631hbt37" path="res://Art/Sprites/UFO character/Green/UFO/shipGreen_manned.png" id="9_pt7b0"]
+[ext_resource type="Texture2D" uid="uid://digjtneltove4" path="res://Art/Sprites/UFO character/Green/UFO/inactiveUfo.png" id="10_jahdj"]
+[ext_resource type="Texture2D" uid="uid://df75nh80ac535" path="res://Art/Sprites/UFO character/Green/UFO/dome.png" id="11_ldsjk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_80ejm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_pt7b0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_jahdj")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_4516a"]
+resource_name = "IdleAnim"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(576, 388.64), Vector2(576, 350.53), Vector2(576, 388.64)]
+}
+
+[sub_resource type="Animation" id="Animation_aq5v3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 388.64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pt7b0"]
+resource_name = "GoToWorld"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.21914, 1),
+"update": 0,
+"values": [Vector2(576, 388.64), Vector2(1248.99, 388.64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.315905]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hkre"]
+_data = {
+&"GoToWorld": SubResource("Animation_pt7b0"),
+&"IdleAnim": SubResource("Animation_4516a"),
+&"RESET": SubResource("Animation_aq5v3")
+}
+
+[node name="Overworld" type="Node2D"]
+script = ExtResource("1_pm8ls")
+
+[node name="Backgrounds" type="Node2D" parent="."]
+
+[node name="BackgroundTutorial" type="Node2D" parent="Backgrounds"]
+
+[node name="Parallax" type="ParallaxBackground" parent="Backgrounds/BackgroundTutorial"]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="Sky" type="ParallaxLayer" parent="Backgrounds/BackgroundTutorial/Parallax"]
+position = Vector2(0, -750)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundTutorial/Parallax/Sky"]
+texture = ExtResource("2_s7yoc")
+centered = false
+
+[node name="Cloud" type="ParallaxLayer" parent="Backgrounds/BackgroundTutorial/Parallax"]
+position = Vector2(0, -750)
+script = ExtResource("3_4j7su")
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundTutorial/Parallax/Cloud"]
+texture = ExtResource("4_hia64")
+centered = false
+
+[node name="HillFade" type="ParallaxLayer" parent="Backgrounds/BackgroundTutorial/Parallax"]
+position = Vector2(0, -750)
+motion_scale = Vector2(0.2, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundTutorial/Parallax/HillFade"]
+texture = ExtResource("5_gddi1")
+centered = false
+
+[node name="Hill" type="ParallaxLayer" parent="Backgrounds/BackgroundTutorial/Parallax"]
+position = Vector2(0, -750)
+motion_scale = Vector2(0.3, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundTutorial/Parallax/Hill"]
+texture = ExtResource("6_pt7b0")
+centered = false
+
+[node name="Grass" type="ParallaxLayer" parent="Backgrounds/BackgroundTutorial/Parallax"]
+position = Vector2(0, -750)
+motion_scale = Vector2(0.4, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundTutorial/Parallax/Grass"]
+texture = ExtResource("7_jahdj")
+centered = false
+
+[node name="GrennContinuos" type="ParallaxLayer" parent="Backgrounds/BackgroundTutorial/Parallax"]
+
+[node name="ColorRect" type="ColorRect" parent="Backgrounds/BackgroundTutorial/Parallax/GrennContinuos"]
+offset_top = 1792.0
+offset_right = 2560.0
+offset_bottom = 2047.0
+color = Color(0.180392, 0.8, 0.443137, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Backgrounds/BackgroundTutorial"]
+tile_map_data = PackedByteArray("AAARAAkAAgAHAAAAAAAQAAkAAgAGAAAAAAAPAAkAAgAGAAAAAAAOAAkAAgAGAAAAAAANAAkAAgAGAAAAAAAMAAkAAgAGAAAAAAALAAkAAgAGAAAAAAAKAAkAAgAGAAAAAAAJAAkAAgAGAAAAAAAIAAkAAgAGAAAAAAAHAAkAAgAGAAAAAAAGAAkAAgAGAAAAAAAFAAkAAgAGAAAAAAAEAAkAAgAGAAAAAAADAAkAAgAGAAAAAAACAAkAAgAGAAAAAAABAAkAAgAGAAAAAAAAAAkAAgAFAAAAAAAAAAoAAgAFAAIAAAABAAoAAgAGAAIAAAACAAoAAgAGAAIAAAADAAoAAgAGAAIAAAAEAAoAAgAGAAIAAAAFAAoAAgAGAAIAAAAGAAoAAgAGAAIAAAAHAAoAAgAGAAIAAAAIAAoAAgAGAAIAAAAJAAoAAgAGAAIAAAAKAAoAAgAGAAIAAAALAAoAAgAGAAIAAAAMAAoAAgAGAAIAAAANAAoAAgAGAAIAAAAOAAoAAgAGAAIAAAAPAAoAAgAGAAIAAAAQAAoAAgAGAAIAAAARAAoAAgAHAAIAAAA=")
+tile_set = ExtResource("8_4j7su")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Backgrounds/BackgroundTutorial"]
+position = Vector2(576, 388.64)
+sprite_frames = SubResource("SpriteFrames_80ejm")
+
+[node name="Dome" type="Sprite2D" parent="Backgrounds/BackgroundTutorial/AnimatedSprite2D"]
+position = Vector2(0, -30)
+texture = ExtResource("11_ldsjk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Backgrounds/BackgroundTutorial/AnimatedSprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_3hkre")
+}
+autoplay = "IdleAnim"
+
+[node name="BackgroundLab" type="Node2D" parent="Backgrounds"]
+visible = false
+
+[node name="Parallax" type="ParallaxBackground" parent="Backgrounds/BackgroundLab"]
+visible = false
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="Sky" type="ParallaxLayer" parent="Backgrounds/BackgroundLab/Parallax"]
+position = Vector2(0, -750)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundLab/Parallax/Sky"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("2_s7yoc")
+centered = false
+
+[node name="Cloud" type="ParallaxLayer" parent="Backgrounds/BackgroundLab/Parallax"]
+position = Vector2(0, -750)
+script = ExtResource("3_4j7su")
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundLab/Parallax/Cloud"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("4_hia64")
+centered = false
+
+[node name="HillFade" type="ParallaxLayer" parent="Backgrounds/BackgroundLab/Parallax"]
+position = Vector2(0, -750)
+motion_scale = Vector2(0.2, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundLab/Parallax/HillFade"]
+self_modulate = Color(1, 0, 1, 1)
+texture = ExtResource("5_gddi1")
+centered = false
+
+[node name="Hill" type="ParallaxLayer" parent="Backgrounds/BackgroundLab/Parallax"]
+position = Vector2(0, -750)
+motion_scale = Vector2(0.3, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundLab/Parallax/Hill"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("6_pt7b0")
+centered = false
+
+[node name="Grass" type="ParallaxLayer" parent="Backgrounds/BackgroundLab/Parallax"]
+position = Vector2(0, -750)
+motion_scale = Vector2(0.4, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/BackgroundLab/Parallax/Grass"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("7_jahdj")
+centered = false
+
+[node name="GrennContinuos" type="ParallaxLayer" parent="Backgrounds/BackgroundLab/Parallax"]
+
+[node name="ColorRect" type="ColorRect" parent="Backgrounds/BackgroundLab/Parallax/GrennContinuos"]
+modulate = Color(1, 0, 1, 1)
+offset_top = 1792.0
+offset_right = 2560.0
+offset_bottom = 2047.0
+color = Color(0.180392, 0.8, 0.443137, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Backgrounds/BackgroundLab"]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAkAAgANAAAAAAABAAkAAgAOAAAAAAACAAkAAgAOAAAAAAADAAkAAgAOAAAAAAAEAAkAAgAOAAAAAAAFAAkAAgAOAAAAAAAGAAkAAgAOAAAAAAAHAAkAAgAOAAAAAAAIAAkAAgAOAAAAAAAJAAkAAgAOAAAAAAAKAAkAAgAOAAAAAAALAAkAAgAOAAAAAAAMAAkAAgAOAAAAAAANAAkAAgAOAAAAAAAOAAkAAgAOAAAAAAAPAAkAAgAOAAAAAAAQAAkAAgAOAAAAAAARAAkAAgAPAAAAAAARAAoAAgAPAAIAAAAQAAoAAgAOAAIAAAAPAAoAAgAOAAIAAAAKAAoAAgAOAAIAAAALAAoAAgAOAAIAAAAMAAoAAgAOAAIAAAANAAoAAgAOAAIAAAAOAAoAAgAOAAIAAAAJAAoAAgAOAAIAAAAIAAoAAgAOAAIAAAAHAAoAAgAOAAIAAAAGAAoAAgAOAAIAAAAFAAoAAgAOAAIAAAAEAAoAAgAOAAIAAAADAAoAAgAOAAIAAAACAAoAAgAOAAIAAAABAAoAAgAOAAIAAAAAAAoAAgANAAIAAAA=")
+tile_set = ExtResource("8_4j7su")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="WorldName" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 107.35
+offset_right = 192.0
+offset_bottom = 139.35
+grow_horizontal = 2
+text = "← Tutorial →"
+label_settings = ExtResource("2_qnp3o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WORLD SELECTION" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 43.335
+offset_right = 240.0
+offset_bottom = 75.335
+grow_horizontal = 2
+text = "WORLD SELECTION"
+label_settings = ExtResource("2_qnp3o")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 325)

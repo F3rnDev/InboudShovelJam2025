@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 func triggerEvent():
 	$"Jump on him".visible = false

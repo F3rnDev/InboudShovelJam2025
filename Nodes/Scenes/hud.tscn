@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://coch0d8ev0quj" path="res://Art/Sprites/Tiles/HUD/Heart/hud_heart.png" id="1_oekg1"]
 [ext_resource type="Texture2D" uid="uid://bqucotcnjxcor" path="res://Art/Sprites/Tiles/HUD/Heart/hud_heart_empty.png" id="1_q117g"]
 [ext_resource type="Texture2D" uid="uid://cqwmhtyjpwyo7" path="res://Art/Sprites/Tiles/HUD/HumanHUD.png" id="3_b12m7"]
-[ext_resource type="LabelSettings" uid="uid://da027kwfmrawd" path="res://Fonts/labelSettings.tres" id="5_ic5la"]
+[ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="5_ic5la"]
 
 [sub_resource type="Animation" id="Animation_wqp3y"]
 length = 0.001
