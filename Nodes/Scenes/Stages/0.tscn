@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://5lx8i8k1bwb6"]
+[gd_scene load_steps=16 format=4 uid="uid://5lx8i8k1bwb6"]
 
 [ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_2up4p"]
 [ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_igtqb"]
@@ -14,13 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="11_xg73q"]
 [ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="12_ljhex"]
 [ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="13_5gurx"]
-[ext_resource type="FontFile" uid="uid://cpanipk45b054" path="res://Fonts/8-bit Arcade In.ttf" id="14_tup3k"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_kfmp7"]
-font = ExtResource("14_tup3k")
-font_size = 64
-outline_size = 35
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="LabelSettings" uid="uid://da027kwfmrawd" path="res://Fonts/labelSettings.tres" id="15_kfmp7"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_2up4p")
@@ -118,7 +112,7 @@ offset_top = 1032.0
 offset_right = 3052.0
 offset_bottom = 1119.0
 text = "← Get to the ship"
-label_settings = SubResource("LabelSettings_kfmp7")
+label_settings = ExtResource("15_kfmp7")
 
 [connection signal="wonGame" from="." to="PlayerUFO" method="_on_main_won_game"]
 [connection signal="wonGame" from="." to="GameCamera" method="_on_main_won_game"]

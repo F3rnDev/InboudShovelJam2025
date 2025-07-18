@@ -1,9 +1,9 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://da027kwfmrawd"]
 
-[ext_resource type="FontFile" uid="uid://bvkwqev42qi0m" path="res://Fonts/FiveByFive.ttf" id="1_1qwej"]
+[ext_resource type="FontFile" uid="uid://cpfdt6r6k0lmi" path="res://Fonts/MinecraftStandard.otf" id="1_1qwej"]
 
 [resource]
 font = ExtResource("1_1qwej")
 font_size = 32
-outline_size = 8
+outline_size = 16
 outline_color = Color(0, 0, 0, 1)
