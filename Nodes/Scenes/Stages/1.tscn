@@ -16,10 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="12_ljhex"]
 [ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="13_5gurx"]
 
-[node name="Main" type="Node2D"]
+[node name="Movement" type="Node2D"]
 script = ExtResource("1_2up4p")
-stageID = 1
-stageName = "Movement"
+nextStage = "uid://cf4rbsl2p2a8e"
 
 [node name="HUD" parent="." instance=ExtResource("2_igtqb")]
 

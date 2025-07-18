@@ -55,7 +55,7 @@ func setPlayerPosition():
 
 func setStageText():
 	var stageNode = $Stages.get_child(selectedStageID).getLevelNode()
-	var stageName = stageNode.stageName
+	var stageName = stageNode.name
 	$HUD/StageName.text = "- " + stageName + " -"
 
 func playStage():

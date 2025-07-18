@@ -29,7 +29,7 @@ animations = [{
 
 [node name="OverworldStage" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_l426i")
-frame_progress = 0.439042
+frame_progress = 0.00682778
 script = ExtResource("4_he2it")
 
 [node name="LineReference" type="Node2D" parent="."]

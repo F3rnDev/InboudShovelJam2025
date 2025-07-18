@@ -19,10 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://bg5tuvkfkc1t7" path="res://Nodes/enemy.tscn" id="16_ybe0m"]
 [ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="18_rdxyd"]
 
-[node name="Main2" type="Node2D"]
+[node name="Enemies" type="Node2D"]
 script = ExtResource("1_xlrks")
-stageID = 2
-stageName = "Enemies"
 
 [node name="HUD" parent="." instance=ExtResource("2_rqv2g")]
 

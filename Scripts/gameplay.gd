@@ -1,8 +1,7 @@
 extends Node2D
 
 #Stage data
-@export var stageID:int
-@export var stageName:String
+@export_file("*tscn") var nextStage:String
 
 #do things like win game and game over stuff
 #call signals on other objects
@@ -16,7 +15,7 @@ signal wonGame
 func _ready() -> void:
 	setMaxEnemies()
 	$HUD.setCapturedEnemies(maxEnemies)
-	$HUD.setStageText(stageName)
+	$HUD.setStageText(name)
 
 func setMaxEnemies():
 	maxEnemies = $EnemyGroup.get_child_count()
@@ -29,10 +28,8 @@ func _process(delta: float) -> void:
 		goToNextStage()
 
 func goToNextStage():
-	var stagePath = "res://Nodes/Scenes/Stages/" + str(stageID+1) + ".tscn"
-	
-	if ResourceLoader.exists(stagePath):
-		TransitionScene.transitionToScene(stagePath)
+	if ResourceLoader.exists(nextStage):
+		TransitionScene.transitionToScene(nextStage)
 	else:
 		print("stage doesn't exist")
 

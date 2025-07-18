@@ -4,6 +4,9 @@ signal fadeInOver
 signal fadeOutOver
 
 func transitionToScene(path):
+	if $"Transition animation".is_playing():
+		await $"Transition animation".animation_finished
+	
 	visible = true
 	$"Transition animation".play("fadeIn")
 	await $"Transition animation".animation_finished
@@ -15,6 +18,9 @@ func transitionToScene(path):
 	visible = false
 
 func transitionToSameScene():
+	if $"Transition animation".is_playing():
+		await $"Transition animation".animation_finished
+	
 	visible = true
 	$"Transition animation".play("fadeIn")
 	await $"Transition animation".animation_finished
@@ -26,6 +32,9 @@ func transitionToSameScene():
 	visible = false
 
 func transitionInsideScene():
+	if $"Transition animation".is_playing():
+		await $"Transition animation".animation_finished
+	
 	visible = true
 	$"Transition animation".play("fadeIn")
 	await $"Transition animation".animation_finished

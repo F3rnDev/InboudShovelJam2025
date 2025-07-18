@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ShovelJam2025"
-run/main_scene="uid://5lx8i8k1bwb6"
+run/main_scene="uid://dbnsg65g0jkqf"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
