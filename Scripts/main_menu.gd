@@ -5,7 +5,7 @@ func _ready() -> void:
 	$CanvasLayer/Options/Play.grab_focus()
 
 func _on_play_button_down() -> void:
-	TransitionScene.transitionToScene("res://Nodes/Scenes/Stages/0.tscn")
+	TransitionScene.transitionToScene("res://Nodes/Scenes/overworld.tscn")
 
 func _on_exit_button_down() -> void:
 	get_tree().quit()

@@ -1,64 +1,66 @@
 extends Node2D
 
-var selectedWorldID = 0
+var selectedStageID = 0
 
-var canChange = true
-
-enum worlds
+enum Stages
 {
 	Tutorial,
-	Lab #Just Testing it out btw
+	Lab #Just Testing it out >:D
 }
 
+#player
+@export var playerYOffset = 100
+@export var playerSpeed = 100
+var playerPos
+
 func _ready() -> void:
-	setWorldGraphic()
-	TransitionScene.fadeInOver.connect(setWorldGraphic)
-	TransitionScene.fadeOutOver.connect(setCanChange)
+	setStageLines()
+	setPlayerPosition()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Move Left") and canChange:
-		setWorld(-1)
+	if $Player.position != playerPos:
+		$Player.position = $Player.position.move_toward(playerPos, playerSpeed * delta)
+	
+	if Input.is_action_just_pressed("Move Left"):
+		setStage(-1)
+		setStageText()
+		setPlayerPosition()
 		
-	if Input.is_action_just_pressed("Move Right") and canChange:
-		setWorld(1)
+	if Input.is_action_just_pressed("Move Right"):
+		setStage(1)
+		setStageText()
+		setPlayerPosition()
+	
+	if Input.is_action_just_pressed("Confirm"):
+		playStage()
 	
 	if Input.is_action_just_pressed("Cancel"):
 		TransitionScene.transitionToScene("res://Nodes/Scenes/mainMenu.tscn")
 
-func setWorld(addTo):
-	setCanChange(false)
+func setStage(addTo):
+	var newStageID = selectedStageID + addTo
+	var StageAmount = $Stages.get_child_count() - 1
 	
-	var newWorldID = selectedWorldID + addTo
-	var worldAmount = worlds.size() - 1
+	if newStageID > StageAmount:
+		newStageID = StageAmount
+	elif newStageID < 0:
+		newStageID = 0
 	
-	if newWorldID > worldAmount:
-		newWorldID = 0
-	elif newWorldID < 0:
-		newWorldID = worldAmount
-	
-	selectedWorldID = newWorldID
-	
-	TransitionScene.transitionInsideScene()
+	selectedStageID = newStageID
 
-func setWorldText():
-	var curWorldName = worlds.find_key(selectedWorldID)
-	$HUD/WorldName.text = "← " + curWorldName + " →"
+func setPlayerPosition():
+	var newPos = $Stages.get_child(selectedStageID).global_position
+	playerPos = Vector2(newPos.x, newPos.y - playerYOffset)
 
-func setWorldGraphic():
-	setWorldText()
-	
-	var curWorld = "Background" + worlds.find_key(selectedWorldID)
-	
-	for background in $Backgrounds.get_children():
-		var displayBackground = false
-		
-		if background.name == curWorld:
-			displayBackground = true
-		
-		background.visible = displayBackground
-		for element in background.get_children():
-			element.visible = displayBackground
+func setStageText():
+	var stageNode = $Stages.get_child(selectedStageID).getLevelNode()
+	var stageName = stageNode.stageName
+	$HUD/StageName.text = "- " + stageName + " -"
 
-func setCanChange(change:bool = true):
-	canChange = change
+func playStage():
+	$Stages.get_child(selectedStageID).goToLevel()
+
+func setStageLines():
+	for stage in $Stages.get_children():
+		$StageConnection.add_point(stage.getLineRef().global_position)
