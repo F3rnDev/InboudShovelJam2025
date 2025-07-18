@@ -13,15 +13,26 @@ enum Stages
 @export var playerSpeed = 100
 var playerPos
 
+#playerTilting
+@export var tilt_amount := 25.0 # graus
+@export var tilt_speed := 10.0
+
 func _ready() -> void:
 	setStageLines()
 	setPlayerPosition()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#PLAYER
 	if $Player.position != playerPos:
 		$Player.position = $Player.position.move_toward(playerPos, playerSpeed * delta)
 	
+	var direction = sign(playerPos.x - $Player.position.x)
+	var target_rotation = deg_to_rad(tilt_amount * direction)
+
+	$Player.rotation = lerp($Player.rotation, target_rotation, delta * tilt_speed)
+	
+	#INPUT	
 	if Input.is_action_just_pressed("Move Left"):
 		setStage(-1)
 		setStageText()
