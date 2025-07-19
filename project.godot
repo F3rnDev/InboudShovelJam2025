@@ -31,6 +31,7 @@ window/canvas_textures/default_texture_filter=1
 Enemy="Enemies of the game"
 Player="Player ship"
 UFO=""
+Spikes=""
 
 [input]
 

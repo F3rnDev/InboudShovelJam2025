@@ -258,3 +258,7 @@ func spawn_afterimage():
 	var tween := get_tree().create_tween()
 	tween.tween_property(ghost, "modulate:a", 0.0, 0.3)
 	tween.tween_callback(Callable(ghost, "queue_free"))
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body is TileMapLayer:
+		playerHit(global_position)
