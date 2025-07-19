@@ -11,11 +11,11 @@
 [ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="9_t4er1"]
 [ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="10_08rat"]
 [ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="11_i16d4"]
-[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="12_x83hm"]
-[ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="13_ppcch"]
+[ext_resource type="PackedScene" path="res://Nodes/gameCamera.tscn" id="12_x83hm"]
+[ext_resource type="Script" path="res://Scripts/enemy_group.gd" id="13_ppcch"]
 [ext_resource type="PackedScene" uid="uid://dslakpjmwe1vh" path="res://Nodes/enemyBlock.tscn" id="14_lyhsh"]
 [ext_resource type="PackedScene" uid="uid://bg5tuvkfkc1t7" path="res://Nodes/enemy.tscn" id="15_54wgl"]
-[ext_resource type="PackedScene" uid="uid://dukadcev2pjn" path="res://Nodes/PauseMenu.tscn" id="16_yn4g5"]
+[ext_resource type="PackedScene" path="res://Nodes/PauseMenu.tscn" id="16_yn4g5"]
 
 [node name="1 - 1" type="Node2D"]
 script = ExtResource("1_dtspg")
