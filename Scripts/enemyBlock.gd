@@ -11,6 +11,11 @@ var direction = -1
 
 var stunned = false
 
+var initialPos
+
+func _ready() -> void:
+	initialPos = global_position
+
 func _process(delta: float) -> void:
 	$AnimatedSprite2D.flip_h = direction > 0
 	
@@ -28,6 +33,9 @@ func _process(delta: float) -> void:
 		modulate.a = 0.3
 	else:
 		modulate.a = 1.0
+	
+	if global_position.y >= 1900:
+		global_position = initialPos
 
 func _physics_process(delta: float) -> void:
 	if isBeingCaptured:

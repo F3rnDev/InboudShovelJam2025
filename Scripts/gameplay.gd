@@ -31,7 +31,7 @@ func goToNextStage():
 	if ResourceLoader.exists(nextStage):
 		TransitionScene.transitionToScene(nextStage)
 	else:
-		print("stage doesn't exist")
+		TransitionScene.transitionToScene("res://Nodes/Scenes/overworld.tscn")
 
 func _on_player_entered_ufo() -> void:
 	$GameCamera.changePlayer(1)
