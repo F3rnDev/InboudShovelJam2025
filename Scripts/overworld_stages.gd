@@ -5,7 +5,21 @@ extends AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	play("active")
+	setAnimation()
+
+func setAnimation():
+	if stageAvailable():
+		play("active")
+	else:
+		play("default")
+
+func stageAvailable():
+	var data = PlayerData.getStageData(levelNode.instantiate().get_scene_file_path())
+	
+	if data!=null and data["completed"] == true:
+		return true
+	
+	return false
 
 func goToLevel():
 	TransitionScene.transitionToScene(levelPath)

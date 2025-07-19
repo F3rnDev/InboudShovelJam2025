@@ -2,6 +2,11 @@ extends Node2D
 
 #Stage data
 @export_file("*tscn") var nextStage:String
+@onready var stageData = {
+	"stageName" = self.name,
+	"stagePath" = self.get_scene_file_path(),
+	"completed" = false
+}
 
 #do things like win game and game over stuff
 #call signals on other objects
@@ -63,5 +68,8 @@ func _on_player_ufo_enemy_captured(captureAmount: int) -> void:
 func winGame():
 	wonGame.emit()
 	hasWin = true
+	
+	stageData["completed"] = true
+	PlayerData.setStageData(stageData)
 	
 	$HUD.setGameWinText()

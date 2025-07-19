@@ -58,6 +58,14 @@ func setStage(addTo):
 	elif newStageID < 0:
 		newStageID = 0
 	
+	#check if you have stage available
+	for stageID in $Stages.get_child_count():
+		var stage = $Stages.get_child(stageID)
+		
+		if !stage.stageAvailable() and newStageID > stageID:
+			newStageID = stageID
+			break
+	
 	selectedStageID = newStageID
 
 func setPlayerPosition():
@@ -73,5 +81,12 @@ func playStage():
 	$Stages.get_child(selectedStageID).goToLevel()
 
 func setStageLines():
+	var selectedLastStage = false
+	
 	for stage in $Stages.get_children():
+		if !stage.stageAvailable() and selectedLastStage:
+			break
+		elif !stage.stageAvailable() and !selectedLastStage:
+			selectedLastStage = true
+		
 		$StageConnection.add_point(stage.getLineRef().global_position)
