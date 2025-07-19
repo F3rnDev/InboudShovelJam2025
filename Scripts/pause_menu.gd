@@ -9,7 +9,7 @@ func _ready() -> void:
 	$Options.visible = false
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Cancel"):
+	if Input.is_action_just_pressed("Cancel") and !inOptions:
 		pauseGame()
 
 func pauseGame():

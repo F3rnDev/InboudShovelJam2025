@@ -18,6 +18,10 @@ func _ready() -> void:
 	loadPlayerConfig()
 	setSliderLabels()
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Cancel") and self.visible:
+		applyOptions()
+
 func setFocus():
 	$"VBoxContainer/ScreenSection/Fullscreen check".grab_focus()
 

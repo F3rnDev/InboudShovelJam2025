@@ -8,18 +8,36 @@
 process_mode = 3
 script = ExtResource("1_j47ys")
 
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -385.0
+offset_top = -291.0
+offset_right = 386.0
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_51ait")
+
 [node name="SettingsLabel" type="Label" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -128.0
-offset_top = 50.0
+offset_top = 66.2
 offset_right = 128.0
-offset_bottom = 82.0
+offset_bottom = 98.2
 grow_horizontal = 2
 theme = ExtResource("2_51ait")
 text = "Settings"
 label_settings = ExtResource("1_5mdym")
+
+[node name="HSeparator" type="HSeparator" parent="."]
+offset_right = 40.0
+offset_bottom = 4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -28,9 +46,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -328.0
-offset_top = -85.0
+offset_top = -200.935
 offset_right = 328.0
-offset_bottom = 85.0
+offset_bottom = 248.065
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_51ait")
@@ -41,8 +59,8 @@ layout_mode = 2
 
 [node name="Screen" type="Label" parent="VBoxContainer/ScreenSection"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Screen"
-label_settings = ExtResource("1_5mdym")
 
 [node name="TitleSeparator" type="HSeparator" parent="VBoxContainer/ScreenSection"]
 layout_mode = 2
@@ -57,8 +75,8 @@ layout_mode = 2
 
 [node name="Audio" type="Label" parent="VBoxContainer/AudioSection"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Audio"
-label_settings = ExtResource("1_5mdym")
 
 [node name="TitleSeparator" type="HSeparator" parent="VBoxContainer/AudioSection"]
 layout_mode = 2
