@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpr1fe45qrtpj"]
+[gd_scene load_steps=9 format=4 uid="uid://bpr1fe45qrtpj"]
 
 [ext_resource type="Script" uid="uid://go5mpnetdsfk" path="res://Scripts/overworld.gd" id="1_pm8ls"]
 [ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="2_qnp3o"]
 [ext_resource type="PackedScene" uid="uid://bprpv4cyx5jwc" path="res://Nodes/overworldStages.tscn" id="3_3rnvp"]
+[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="7_yn5qt"]
 [ext_resource type="Texture2D" uid="uid://dk1ls631hbt37" path="res://Art/Sprites/UFO character/Green/UFO/shipGreen_manned.png" id="9_pt7b0"]
 [ext_resource type="Texture2D" uid="uid://digjtneltove4" path="res://Art/Sprites/UFO character/Green/UFO/inactiveUfo.png" id="10_jahdj"]
 [ext_resource type="Texture2D" uid="uid://df75nh80ac535" path="res://Art/Sprites/UFO character/Green/UFO/dome.png" id="11_ldsjk"]
@@ -68,15 +69,15 @@ joint_mode = 1
 [node name="Stages" type="Node2D" parent="."]
 
 [node name="OverworldStage" parent="Stages" instance=ExtResource("3_3rnvp")]
-position = Vector2(315, 446)
+position = Vector2(234, 478)
 levelPath = "uid://5lx8i8k1bwb6"
 
 [node name="OverworldStage2" parent="Stages" instance=ExtResource("3_3rnvp")]
-position = Vector2(552, 335)
+position = Vector2(547, 353)
 levelPath = "uid://xmph6rei8q8j"
 
 [node name="OverworldStage3" parent="Stages" instance=ExtResource("3_3rnvp")]
-position = Vector2(863, 435)
+position = Vector2(822, 419)
 levelPath = "uid://cf4rbsl2p2a8e"
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
@@ -87,3 +88,7 @@ sprite_frames = SubResource("SpriteFrames_d2we2")
 [node name="Dome" type="Sprite2D" parent="Player"]
 position = Vector2(0, -30)
 texture = ExtResource("11_ldsjk")
+
+[node name="World" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAkAAgAFAAMAAAABAAkAAgAGAAMAAAACAAkAAgAGAAMAAAADAAkAAgAGAAIAAAAEAAkAAgAGAAIAAAAFAAkAAgAGAAMAAAAGAAkAAgAGAAMAAAAHAAkAAgAGAAIAAAAIAAkAAgAGAAIAAAAJAAkAAgAGAAIAAAAKAAkAAgAGAAMAAAALAAkAAgAGAAMAAAAMAAkAAgAGAAIAAAANAAkAAgAGAAIAAAAOAAkAAgAGAAMAAAAPAAkAAgAGAAMAAAAQAAkAAgAGAAMAAAARAAkAAgAHAAMAAAAEAAgAAgAHAAAAAAAHAAgAAgAFAAEAAAAIAAgAAgAGAAEAAAAJAAgAAgAHAAEAAAAJAAcAAgAHAAAAAAAIAAcAAgAGAAEAAAAHAAcAAgAFAAAAAAAIAAYAAgAEAAAAAAAMAAgAAgAFAAEAAAANAAgAAgAHAAEAAAANAAcAAgAHAAAAAAAMAAcAAgAFAAAAAAADAAgAAgAFAAAAAAA=")
+tile_set = ExtResource("7_yn5qt")
