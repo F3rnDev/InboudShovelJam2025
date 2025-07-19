@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="10_rmiow"]
 [ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="11_0kq4j"]
 [ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="11_xg73q"]
-[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="12_ljhex"]
-[ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="13_5gurx"]
+[ext_resource type="PackedScene" path="res://Nodes/gameCamera.tscn" id="12_ljhex"]
+[ext_resource type="Script" path="res://Scripts/enemy_group.gd" id="13_5gurx"]
 
 [node name="Movement" type="Node2D"]
 script = ExtResource("1_2up4p")
