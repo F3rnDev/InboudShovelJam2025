@@ -133,7 +133,7 @@ func Jump():
 	$JumpBuffer.stop()
 	
 	var direction = Input.get_axis("Move Left", "Move Right")
-	if is_on_wall() and !is_on_floor() and direction!=0:
+	if is_on_wall() and !is_on_floor():
 		jumps = jumpAmount
 		velocity.x += -wallJumpPush * direction
 	

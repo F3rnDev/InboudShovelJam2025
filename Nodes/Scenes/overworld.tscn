@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://bpr1fe45qrtpj"]
+[gd_scene load_steps=11 format=4 uid="uid://bpr1fe45qrtpj"]
 
 [ext_resource type="Script" uid="uid://go5mpnetdsfk" path="res://Scripts/overworld.gd" id="1_pm8ls"]
 [ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="2_qnp3o"]
 [ext_resource type="PackedScene" uid="uid://bprpv4cyx5jwc" path="res://Nodes/overworldStages.tscn" id="3_3rnvp"]
+[ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Themes/gameTheme.tres" id="4_4j7su"]
+[ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="5_hia64"]
 [ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="7_yn5qt"]
 [ext_resource type="Texture2D" uid="uid://dk1ls631hbt37" path="res://Art/Sprites/UFO character/Green/UFO/shipGreen_manned.png" id="9_pt7b0"]
 [ext_resource type="Texture2D" uid="uid://digjtneltove4" path="res://Art/Sprites/UFO character/Green/UFO/inactiveUfo.png" id="10_jahdj"]
@@ -71,6 +73,38 @@ grow_horizontal = 2
 text = "STAGE SELECTION"
 label_settings = ExtResource("2_qnp3o")
 horizontal_alignment = 1
+
+[node name="Controls" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 22.715
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Exit" type="Label" parent="HUD/Controls"]
+layout_mode = 2
+offset_left = 103.0
+offset_top = 617.0
+offset_right = 263.0
+offset_bottom = 633.0
+theme = ExtResource("4_4j7su")
+text = "Main Menu"
+
+[node name="PlayStage" type="Label" parent="HUD/Controls"]
+layout_mode = 0
+offset_left = 361.81
+offset_top = 617.0
+offset_right = 521.81
+offset_bottom = 633.0
+theme = ExtResource("4_4j7su")
+text = "Play Stage"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="HUD/Controls"]
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAABABMAAQAgAAEAAAACABMAAQAhAAEAAAAJABMAAQAgAAMAAAAJABIAAQAgAAIAAAAKABMAAQAhAAMAAAAKABIAAQAhAAIAAAA=")
+tile_set = ExtResource("5_hia64")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 325)
