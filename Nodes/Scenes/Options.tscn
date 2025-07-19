@@ -67,7 +67,26 @@ layout_mode = 2
 
 [node name="Fullscreen check" type="CheckBox" parent="VBoxContainer/ScreenSection"]
 layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_51ait")
+autowrap_mode = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="VBoxContainer/ScreenSection/Fullscreen check"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -8.0
+offset_right = -96.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "FULLSCREEN"
 
 [node name="AudioSection" type="VBoxContainer" parent="VBoxContainer"]
@@ -92,6 +111,7 @@ theme = ExtResource("2_51ait")
 [node name="HSlider" type="HSlider" parent="VBoxContainer/AudioSection/MasterSlider"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
 step = 10.0
 value = 100.0
 
@@ -112,6 +132,7 @@ theme = ExtResource("2_51ait")
 [node name="HSlider" type="HSlider" parent="VBoxContainer/AudioSection/MusicSlider"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
 step = 10.0
 value = 100.0
 
@@ -131,6 +152,7 @@ theme = ExtResource("2_51ait")
 [node name="HSlider" type="HSlider" parent="VBoxContainer/AudioSection/SFXSlider"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
 step = 10.0
 value = 100.0
 
@@ -142,6 +164,7 @@ text = "0%"
 [node name="Apply" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_51ait")
 text = "Apply"
 

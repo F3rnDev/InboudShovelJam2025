@@ -1,10 +1,10 @@
 [gd_resource type="Theme" load_steps=8 format=3 uid="uid://bgagwfbb2plbh"]
 
+[ext_resource type="StyleBox" uid="uid://j4cq3tk4iv2y" path="res://Themes/Buttons/ButtonHover.tres" id="1_0aoap"]
 [ext_resource type="FontFile" uid="uid://cx71wccictfs2" path="res://Fonts/PressStart2P-Regular.ttf" id="1_trwei"]
-[ext_resource type="StyleBox" path="res://Themes/ButtonHover.tres" id="1_yjnkl"]
-[ext_resource type="StyleBox" path="res://Themes/ButtonNormal.tres" id="2_6e0xf"]
-[ext_resource type="StyleBox" path="res://Themes/SliderTop.tres" id="3_0aoap"]
-[ext_resource type="StyleBox" path="res://Themes/SliderBottom.tres" id="4_htqiu"]
+[ext_resource type="StyleBox" uid="uid://buul0an841hev" path="res://Themes/Buttons/ButtonNormal.tres" id="2_htqiu"]
+[ext_resource type="StyleBox" uid="uid://dojuqpw28dvo7" path="res://Themes/Slider/SliderHover.tres" id="3_0aoap"]
+[ext_resource type="StyleBox" uid="uid://bjxtmjgnswjrn" path="res://Themes/Slider/SliderNormal.tres" id="4_htqiu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htqiu"]
 bg_color = Color(0.295752, 0.0626187, 0.0634579, 1)
@@ -16,26 +16,26 @@ expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0aoap"]
-bg_color = Color(0.65651, 0.115754, 0.115226, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.945098, 0.309804, 0.309804, 1)
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+bg_color = Color(0.513726, 0.117647, 0.117647, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 5
+border_color = Color(0.67451, 0.196078, 0.196078, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
 [resource]
 default_font = ExtResource("1_trwei")
 BoxContainer/constants/separation = 15
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/constants/outline_size = 8
-Button/styles/focus = ExtResource("1_yjnkl")
-Button/styles/hover = ExtResource("1_yjnkl")
-Button/styles/normal = ExtResource("2_6e0xf")
-Button/styles/pressed = ExtResource("2_6e0xf")
+Button/styles/focus = ExtResource("1_0aoap")
+Button/styles/hover = ExtResource("1_0aoap")
+Button/styles/normal = ExtResource("2_htqiu")
+Button/styles/pressed = ExtResource("2_htqiu")
 CheckBox/constants/icon_max_width = 32
 HSlider/styles/grabber_area = ExtResource("3_0aoap")
 HSlider/styles/grabber_area_highlight = ExtResource("4_htqiu")
