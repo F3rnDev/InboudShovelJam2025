@@ -1,11 +1,28 @@
 extends Node2D
 
+var inOptions = false
+
 func _ready() -> void:
 	#set the play button with focus
-	$CanvasLayer/Options/Play.grab_focus()
+	$MenuCanvas/Options/Play.grab_focus()
+	$Options.visible = false
+	
+	if OS.has_feature("web"):
+		$MenuCanvas/Options/Exit.visible = false
 
 func _on_play_button_down() -> void:
 	TransitionScene.transitionToScene("res://Nodes/Scenes/overworld.tscn")
 
 func _on_exit_button_down() -> void:
 	get_tree().quit()
+
+func setOptionMenu():
+	inOptions = !inOptions
+
+	$MenuCanvas.visible = !inOptions
+	$Options.visible = inOptions
+	
+	if inOptions:
+		$Options.setFocus()
+	else:
+		$MenuCanvas/Options/Play.grab_focus()

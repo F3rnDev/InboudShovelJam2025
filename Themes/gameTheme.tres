@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bgagwfbb2plbh"]
+
+[ext_resource type="FontFile" uid="uid://cx71wccictfs2" path="res://Fonts/PressStart2P-Regular.ttf" id="1_trwei"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f872w"]
+
+[resource]
+default_font = ExtResource("1_trwei")
+BoxContainer/constants/separation = 15
+Button/styles/normal = SubResource("StyleBoxFlat_f872w")
+VBoxContainer/constants/separation = 15

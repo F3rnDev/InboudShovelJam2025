@@ -1,0 +1,133 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1bg154t410gi"]
+
+[ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="1_5mdym"]
+[ext_resource type="Script" uid="uid://bjrdh10s0q6pu" path="res://Scripts/options.gd" id="1_j47ys"]
+[ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Themes/gameTheme.tres" id="2_51ait"]
+
+[node name="Options" type="CanvasLayer"]
+script = ExtResource("1_j47ys")
+
+[node name="SettingsLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 50.0
+offset_right = 128.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme = ExtResource("2_51ait")
+text = "Settings"
+label_settings = ExtResource("1_5mdym")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = -85.0
+offset_right = 328.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_51ait")
+theme_override_constants/separation = 55
+
+[node name="ScreenSection" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Screen" type="Label" parent="VBoxContainer/ScreenSection"]
+layout_mode = 2
+text = "Screen"
+label_settings = ExtResource("1_5mdym")
+
+[node name="TitleSeparator" type="HSeparator" parent="VBoxContainer/ScreenSection"]
+layout_mode = 2
+
+[node name="Fullscreen check" type="CheckBox" parent="VBoxContainer/ScreenSection"]
+layout_mode = 2
+theme = ExtResource("2_51ait")
+text = "FULLSCREEN"
+
+[node name="AudioSection" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Audio" type="Label" parent="VBoxContainer/AudioSection"]
+layout_mode = 2
+text = "Audio"
+label_settings = ExtResource("1_5mdym")
+
+[node name="TitleSeparator" type="HSeparator" parent="VBoxContainer/AudioSection"]
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="VBoxContainer/AudioSection"]
+layout_mode = 2
+text = "Master"
+
+[node name="MasterSlider" type="HBoxContainer" parent="VBoxContainer/AudioSection"]
+layout_mode = 2
+theme = ExtResource("2_51ait")
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/AudioSection/MasterSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 10.0
+value = 100.0
+
+[node name="Label" type="Label" parent="VBoxContainer/AudioSection/MasterSlider"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "0%"
+vertical_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="VBoxContainer/AudioSection"]
+layout_mode = 2
+text = "Music"
+
+[node name="MusicSlider" type="HBoxContainer" parent="VBoxContainer/AudioSection"]
+layout_mode = 2
+theme = ExtResource("2_51ait")
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/AudioSection/MusicSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 10.0
+value = 100.0
+
+[node name="Label" type="Label" parent="VBoxContainer/AudioSection/MusicSlider"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "0%"
+
+[node name="SFXLabel" type="Label" parent="VBoxContainer/AudioSection"]
+layout_mode = 2
+text = "Sound Effects"
+
+[node name="SFXSlider" type="HBoxContainer" parent="VBoxContainer/AudioSection"]
+layout_mode = 2
+theme = ExtResource("2_51ait")
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/AudioSection/SFXSlider"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 10.0
+value = 100.0
+
+[node name="Label" type="Label" parent="VBoxContainer/AudioSection/SFXSlider"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "0%"
+
+[node name="Apply" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_51ait")
+text = "Apply"
+
+[connection signal="toggled" from="VBoxContainer/ScreenSection/Fullscreen check" to="." method="_on_fullscreen_check_toggled"]
+[connection signal="value_changed" from="VBoxContainer/AudioSection/MasterSlider/HSlider" to="." method="_on_masterSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/AudioSection/MusicSlider/HSlider" to="." method="_on_musicSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/AudioSection/SFXSlider/HSlider" to="." method="_on_SfxSlider_value_changed"]
+[connection signal="button_down" from="VBoxContainer/Apply" to="." method="_on_apply_button_down"]
