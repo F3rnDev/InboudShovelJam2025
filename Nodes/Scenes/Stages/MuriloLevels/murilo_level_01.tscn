@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://c3yq62f4x8a6y"]
+[gd_scene load_steps=17 format=4 uid="uid://c3yq62f4x8a6y"]
 
 [ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_1vjpr"]
 [ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_rlejx"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="13_akic0"]
 [ext_resource type="PackedScene" uid="uid://dslakpjmwe1vh" path="res://Nodes/enemyBlock.tscn" id="14_dbeq8"]
 [ext_resource type="PackedScene" uid="uid://bg5tuvkfkc1t7" path="res://Nodes/enemy.tscn" id="15_rmkag"]
+[ext_resource type="PackedScene" uid="uid://dukadcev2pjn" path="res://Nodes/PauseMenu.tscn" id="16_rlejx"]
 
 [node name="Jumper" type="Node2D"]
 script = ExtResource("1_1vjpr")
@@ -127,6 +128,8 @@ position = Vector2(864, 353)
 
 [node name="Enemy9" parent="EnemyGroup" instance=ExtResource("15_rmkag")]
 position = Vector2(6621, 1745)
+
+[node name="PauseMenu" parent="." instance=ExtResource("16_rlejx")]
 
 [connection signal="wonGame" from="." to="PlayerUFO" method="_on_main_won_game"]
 [connection signal="wonGame" from="." to="GameCamera" method="_on_main_won_game"]

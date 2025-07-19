@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://5lx8i8k1bwb6"]
+[gd_scene load_steps=17 format=4 uid="uid://5lx8i8k1bwb6"]
 
 [ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_2up4p"]
 [ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_igtqb"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="12_ljhex"]
 [ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="13_5gurx"]
 [ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="15_kfmp7"]
+[ext_resource type="PackedScene" uid="uid://dukadcev2pjn" path="res://Nodes/PauseMenu.tscn" id="16_3d66w"]
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_2up4p")
@@ -113,6 +114,8 @@ playerUFORef = NodePath("../PlayerUFO")
 [node name="EnemyGroup" type="Node2D" parent="." node_paths=PackedStringArray("playerRef")]
 script = ExtResource("13_5gurx")
 playerRef = NodePath("../PlayerUFO")
+
+[node name="PauseMenu" parent="." instance=ExtResource("16_3d66w")]
 
 [connection signal="wonGame" from="." to="PlayerUFO" method="_on_main_won_game"]
 [connection signal="wonGame" from="." to="GameCamera" method="_on_main_won_game"]

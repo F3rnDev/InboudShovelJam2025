@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cf4rbsl2p2a8e"]
+[gd_scene load_steps=20 format=4 uid="uid://cf4rbsl2p2a8e"]
 
 [ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_xlrks"]
 [ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_rqv2g"]
@@ -12,12 +12,13 @@
 [ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="10_aykfb"]
 [ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="10_lf2sj"]
 [ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="11_3b8en"]
-[ext_resource type="PackedScene" path="res://Nodes/gameCamera.tscn" id="12_oakka"]
-[ext_resource type="Script" path="res://Scripts/enemy_group.gd" id="13_5yyl1"]
+[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="12_oakka"]
+[ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="13_5yyl1"]
 [ext_resource type="PackedScene" uid="uid://dslakpjmwe1vh" path="res://Nodes/enemyBlock.tscn" id="14_q4777"]
 [ext_resource type="Script" uid="uid://dasggqyajeq1c" path="res://Scripts/Stage Specific/stage2_setUFOTutorial.gd" id="16_aykfb"]
 [ext_resource type="PackedScene" uid="uid://bg5tuvkfkc1t7" path="res://Nodes/enemy.tscn" id="16_ybe0m"]
 [ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="18_rdxyd"]
+[ext_resource type="PackedScene" uid="uid://dukadcev2pjn" path="res://Nodes/PauseMenu.tscn" id="19_foi5a"]
 
 [node name="Enemies" type="Node2D"]
 script = ExtResource("1_xlrks")
@@ -131,6 +132,8 @@ position = Vector2(558, 1695)
 
 [node name="Enemy2" parent="EnemyGroup" instance=ExtResource("16_ybe0m")]
 position = Vector2(1310, 1696)
+
+[node name="PauseMenu" parent="." instance=ExtResource("19_foi5a")]
 
 [connection signal="wonGame" from="." to="PlayerUFO" method="_on_main_won_game"]
 [connection signal="wonGame" from="." to="GameCamera" method="_on_main_won_game"]

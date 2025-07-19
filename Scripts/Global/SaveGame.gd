@@ -19,7 +19,7 @@ func _ready() -> void:
 
 #CONFIGURATION
 func getConfigData():
-	if !FileAccess.file_exists("user://configFile.config"):
+	if !FileAccess.file_exists("user://config.json"):
 		return
 	
 	var save_file = FileAccess.open("user://config.json", FileAccess.READ)

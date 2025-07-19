@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Themes/gameTheme.tres" id="2_51ait"]
 
 [node name="Options" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_j47ys")
 
 [node name="SettingsLabel" type="Label" parent="."]
