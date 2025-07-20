@@ -159,9 +159,12 @@ texture = ExtResource("11_ldsjk")
 
 [node name="SelectSfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("10_hia64")
+bus = &"Sound Effects"
 
 [node name="ConfirmSfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("11_gddi1")
+bus = &"Sound Effects"
 
 [node name="CancelSfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("12_pt7b0")
+bus = &"Sound Effects"

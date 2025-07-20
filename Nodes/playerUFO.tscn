@@ -136,11 +136,13 @@ bus = &"Sound Effects"
 
 [node name="Ufo Engine" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("6_ht0yp")
+volume_db = 5.0
 bus = &"Sound Effects"
 parameters/looping = true
 
 [node name="Ufo Capture" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("8_gmaef")
+volume_db = 5.0
 bus = &"Sound Effects"
 parameters/looping = true
 

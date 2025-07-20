@@ -27,6 +27,7 @@ general/default_playback_type.web=0
 
 TransitionScene="*res://Nodes/transitionScene.tscn"
 PlayerData="*res://Scripts/Global/SaveGame.gd"
+BackgroundMusic="*res://Nodes/Scenes/BackgroundMusic.tscn"
 
 [display]
 

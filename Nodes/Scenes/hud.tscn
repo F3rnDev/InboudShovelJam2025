@@ -49,7 +49,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 2, 3),
 "transitions": PackedFloat32Array(0.170755, 1, 2.46229, 1),
 "update": 0,
-"values": [Vector2(208, -200), Vector2(208, 0), Vector2(208, 0), Vector2(208, -200)]
+"values": [Vector2(208, -200), Vector2(208, 0), Vector2(208, 0), Vector2(342, -200)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ktl86"]
@@ -134,10 +134,22 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("JustGetStarted:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_fg304"]
 resource_name = "captureAll"
-length = 2.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -145,10 +157,10 @@ tracks/0/path = NodePath("HBoxContainer/Capture:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.9, 2),
-"transitions": PackedFloat32Array(1e-05, 1e-05, 1),
+"times": PackedFloat32Array(0, 0.9, 1, 2.9, 3),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -157,7 +169,7 @@ tracks/1/path = NodePath("HBoxContainer/Them:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.9, 1, 1.9, 2),
+"times": PackedFloat32Array(0, 1.9, 2, 2.9, 3),
 "transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -169,10 +181,22 @@ tracks/2/path = NodePath("CaptureTHEM Audio:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.9, 1.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, true]
+"values": [true, true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("JustGetStarted:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1e-05, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4k7rx"]
@@ -258,9 +282,8 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -368.0
-offset_top = -172.86
 offset_right = 368.0
-offset_bottom = -49.86
+offset_bottom = 123.0
 grow_horizontal = 2
 theme = ExtResource("6_wqp3y")
 theme_override_constants/outline_size = 16
@@ -334,6 +357,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="JustGetStarted" type="Label" parent="Control/Capture Them"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -110.525
+offset_right = 320.0
+offset_bottom = -78.525
+grow_horizontal = 2
+grow_vertical = 2
+text = "- JUST GET STARTED -"
+label_settings = ExtResource("5_ic5la")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Capture Them"]
 layout_mode = 1
 anchors_preset = 8
@@ -353,14 +393,20 @@ alignment = 1
 [node name="Capture" type="Label" parent="Control/Capture Them/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme = ExtResource("6_wqp3y")
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
 text = "CAPTURE"
-label_settings = ExtResource("5_ic5la")
 
 [node name="Them" type="Label" parent="Control/Capture Them/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme = ExtResource("6_wqp3y")
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
 text = "THEM ALL"
-label_settings = ExtResource("5_ic5la")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Capture Them"]
 libraries = {
@@ -371,6 +417,7 @@ libraries = {
 stream = ExtResource("6_bvtjh")
 
 [node name="Controls" type="Control" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
