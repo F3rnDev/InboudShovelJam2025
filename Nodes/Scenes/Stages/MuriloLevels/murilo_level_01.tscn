@@ -13,11 +13,11 @@
 [ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="9_vxb2a"]
 [ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="10_260sy"]
 [ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="11_wcb1d"]
-[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="12_s2rx1"]
-[ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="13_akic0"]
+[ext_resource type="PackedScene" path="res://Nodes/gameCamera.tscn" id="12_s2rx1"]
+[ext_resource type="Script" path="res://Scripts/enemy_group.gd" id="13_akic0"]
 [ext_resource type="PackedScene" uid="uid://dslakpjmwe1vh" path="res://Nodes/enemyBlock.tscn" id="14_dbeq8"]
 [ext_resource type="PackedScene" uid="uid://bg5tuvkfkc1t7" path="res://Nodes/enemy.tscn" id="15_rmkag"]
-[ext_resource type="PackedScene" uid="uid://dukadcev2pjn" path="res://Nodes/PauseMenu.tscn" id="16_rlejx"]
+[ext_resource type="PackedScene" path="res://Nodes/PauseMenu.tscn" id="16_rlejx"]
 
 [node name="Jumper" type="Node2D"]
 script = ExtResource("1_1vjpr")

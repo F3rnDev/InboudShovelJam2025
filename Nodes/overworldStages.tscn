@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bprpv4cyx5jwc"]
 
-[ext_resource type="Texture2D" uid="uid://cg5gg4u5wqgu6" path="res://Art/Sprites/Tiles/Objects/Flags/flag_red_a.png" id="1_he2it"]
-[ext_resource type="Texture2D" uid="uid://dve753sy2jm5j" path="res://Art/Sprites/Tiles/Objects/Flags/flag_red_b.png" id="2_v6o2x"]
-[ext_resource type="Texture2D" uid="uid://w32abymevdbh" path="res://Art/Sprites/Tiles/Objects/Flags/flag_off.png" id="3_v6o2x"]
+[ext_resource type="Texture2D" uid="uid://cg5gg4u5wqgu6" path="res://Art/Sprites/UI/Flags/flag_red_a.png" id="1_he2it"]
+[ext_resource type="Texture2D" uid="uid://dve753sy2jm5j" path="res://Art/Sprites/UI/Flags/flag_red_b.png" id="2_v6o2x"]
+[ext_resource type="Texture2D" uid="uid://w32abymevdbh" path="res://Art/Sprites/UI/Flags/flag_off.png" id="3_v6o2x"]
 [ext_resource type="Script" uid="uid://c4x4gvp1vq8ce" path="res://Scripts/overworld_stages.gd" id="4_he2it"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l426i"]

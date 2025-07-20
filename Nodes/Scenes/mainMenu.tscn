@@ -10,7 +10,7 @@
 [ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Themes/gameTheme.tres" id="8_rqmlg"]
 [ext_resource type="PackedScene" uid="uid://c1bg154t410gi" path="res://Nodes/Scenes/Options.tscn" id="10_44m5e"]
 [ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="10_fr1cp"]
-[ext_resource type="Texture2D" uid="uid://ba33bvqtd8415" path="res://Art/Sprites/LOGO-Sheet.png" id="10_j6tyu"]
+[ext_resource type="Texture2D" uid="uid://ba33bvqtd8415" path="res://Art/Sprites/UI/Logo/logoSheet.png" id="10_j6tyu"]
 [ext_resource type="AudioStream" uid="uid://biwfqcjesyj06" path="res://Audio/SoundFx/UI/UIMove.mp3" id="12_fr1cp"]
 [ext_resource type="AudioStream" uid="uid://dsteu1u4mwl88" path="res://Audio/SoundFx/UI/UIAccept.mp3" id="13_2swqs"]
 

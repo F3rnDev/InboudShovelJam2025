@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://6jg502bjlxcc"]
 
 [ext_resource type="Script" uid="uid://b3bjetqxi0kvj" path="res://Scripts/gamehud.gd" id="1_ic5la"]
-[ext_resource type="Texture2D" uid="uid://coch0d8ev0quj" path="res://Art/Sprites/Tiles/HUD/Heart/hud_heart.png" id="1_oekg1"]
-[ext_resource type="Texture2D" uid="uid://bqucotcnjxcor" path="res://Art/Sprites/Tiles/HUD/Heart/hud_heart_empty.png" id="1_q117g"]
-[ext_resource type="Texture2D" uid="uid://cqwmhtyjpwyo7" path="res://Art/Sprites/Tiles/HUD/HumanHUD.png" id="3_b12m7"]
+[ext_resource type="Texture2D" uid="uid://coch0d8ev0quj" path="res://Art/Sprites/UI/HUD/Heart/hud_heart.png" id="1_oekg1"]
+[ext_resource type="Texture2D" uid="uid://bqucotcnjxcor" path="res://Art/Sprites/UI/HUD/Heart/hud_heart_empty.png" id="1_q117g"]
+[ext_resource type="Texture2D" uid="uid://cqwmhtyjpwyo7" path="res://Art/Sprites/UI/HUD/enemyIcon.png" id="3_b12m7"]
 [ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="5_ic5la"]
 [ext_resource type="AudioStream" uid="uid://chubouiapie7q" path="res://Audio/SoundFx/CaptureTHEM.mp3" id="6_bvtjh"]
 [ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Themes/gameTheme.tres" id="6_wqp3y"]
@@ -367,7 +367,6 @@ libraries = {
 
 [node name="CaptureTHEM Audio" type="AudioStreamPlayer" parent="Control/Capture Them"]
 stream = ExtResource("6_bvtjh")
-bus = &"Sound Effects"
 
 [node name="Controls" type="Control" parent="Control"]
 layout_mode = 1
