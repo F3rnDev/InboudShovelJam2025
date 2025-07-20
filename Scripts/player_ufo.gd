@@ -146,5 +146,8 @@ func _on_capture_area_entered(area: Area2D) -> void:
 func _on_main_won_game() -> void:
 	playerInactive = true
 	closeLaser()
-	playerWon = true
 	$CollisionShape2D.set_deferred("disabled", true)
+	$"Capture Area".set_deferred("disabled", true)
+	
+	playerWon = true
+	captureMode = false
