@@ -62,6 +62,8 @@ func _physics_process(delta: float) -> void:
 	
 	if global_position.y >= 1900 and !gameOver:
 		wasHit = true
+		$Audio/PlayerHit.pitch_scale = 0.7
+		$Audio/PlayerHit.play()
 		hit.emit(0)
 		killPlayer()
 	
@@ -122,6 +124,10 @@ func VerticalMovement(delta):
 	if !is_on_floor() and jumps == jumpAmount and $CoyotteTime.is_stopped():
 		jumps = jumpAmount-1
 	
+	#SetEnemyHitPitchAudio
+	if is_on_floor():
+		$Audio/PlayerEnemyHit.pitch_scale = 0.9
+	
 	#Wall slide
 	WallSlide(delta)
 
@@ -141,8 +147,13 @@ func Jump():
 		velocity.y = JUMP_VELOCITY
 		jumps -= 1
 		
+		$Audio/PlayerJump.pitch_scale = 1.0
+		
 		if jumps == 0:
 			afterImage = true
+			$Audio/PlayerJump.pitch_scale = 1.5
+		
+		$Audio/PlayerJump.play()
 
 func WallSlide(delta):
 	if is_on_wall() and !is_on_floor() and !$RayCast2D.is_colliding():
@@ -157,6 +168,12 @@ func WallSlide(delta):
 	if isWallSliding:
 		velocity.y += wallSlideGravity * delta
 		velocity.y = min(velocity.y, wallSlideGravity)
+	
+	if isWallSliding and !$Audio/PlayerSlide.playing and velocity.y > 80:
+		$Audio/PlayerSlide.play()
+	
+	if !isWallSliding:
+		$Audio/PlayerSlide.stop()
 
 func Animate():
 	#Animate character
@@ -174,6 +191,11 @@ func Animate():
 		$AnimatedSprite2D.flip_h = true
 	elif direction > 0:
 		$AnimatedSprite2D.flip_h = false
+	
+	#PlayAudio
+	if $AnimatedSprite2D.animation == "Walk" and $AnimatedSprite2D.frame == 1:
+		$Audio/PlayerWalk.pitch_scale = randf_range(0.9, 1.2)
+		$Audio/PlayerWalk.play()
 
 func enterUFO():
 	enteredUFO.emit()
@@ -190,8 +212,13 @@ func playerHit(enemyPos):
 	hit.emit(health)
 	
 	if health <= 0:
+		$Audio/PlayerHit.pitch_scale = 0.7
+		$Audio/PlayerHit.play()
 		killPlayer()
 		return
+	
+	$Audio/PlayerHit.pitch_scale = randf_range(0.9, 1.2)
+	$Audio/PlayerHit.play()
 	
 	#Player Knockback
 	var knockbackDirection = (global_position - enemyPos).normalized()
@@ -233,6 +260,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		playerHit(area.global_position)
 
 func _on_enemy_enemyhit() -> void:
+	if $Audio/PlayerEnemyHit.pitch_scale <= 2.0:
+		$Audio/PlayerEnemyHit.pitch_scale += 0.05
+	$Audio/PlayerEnemyHit.play()
 	velocity.y = JUMP_VELOCITY
 	jumps = jumpAmount-1
 
