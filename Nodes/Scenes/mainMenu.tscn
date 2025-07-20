@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqbehjk01ads1" path="res://Art/Sprites/Backgrounds/05_sky.png" id="1_oli08"]
 [ext_resource type="Script" uid="uid://drqocjk5017wb" path="res://Scripts/cloudLayer.gd" id="2_texk2"]
 [ext_resource type="Texture2D" uid="uid://wsrfjacr3r2b" path="res://Art/Sprites/Backgrounds/04_cloud.png" id="3_f872w"]
-[ext_resource type="Texture2D" uid="uid://dcpl1qhfvsx0f" path="res://Art/Sprites/Backgrounds/03_hill_fade.png" id="4_rqmlg"]
+[ext_resource type="Texture2D" uid="uid://gfs07qdv1hf7" path="res://Art/Sprites/Backgrounds/03.5_big_hill_fade.png" id="5_2swqs"]
 [ext_resource type="Texture2D" uid="uid://dvpvcslxhgh20" path="res://Art/Sprites/Backgrounds/02_hill.png" id="5_44m5e"]
 [ext_resource type="Texture2D" uid="uid://bo3v2nh02hnwh" path="res://Art/Sprites/Backgrounds/01_grass.png" id="6_j6tyu"]
 [ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Themes/gameTheme.tres" id="8_rqmlg"]
@@ -151,7 +151,7 @@ position = Vector2(0, -750)
 motion_scale = Vector2(0.2, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/HillFade"]
-texture = ExtResource("4_rqmlg")
+texture = ExtResource("5_2swqs")
 centered = false
 
 [node name="Hill" type="ParallaxLayer" parent="Background"]
@@ -258,6 +258,7 @@ bus = &"Sound Effects"
 
 [node name="ConfirmSfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("13_2swqs")
+bus = &"Sound Effects"
 
 [connection signal="button_down" from="MenuCanvas/Options/Play" to="." method="_on_play_button_down"]
 [connection signal="button_down" from="MenuCanvas/Options/Play" to="." method="_on_btn_pressed"]

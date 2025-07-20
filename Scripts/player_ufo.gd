@@ -47,8 +47,24 @@ func _physics_process(delta: float) -> void:
 	
 	if playerWon:
 		var direction = Vector2(0, -1)
+		$"Audio/Ufo Capture".stop()
 		velocity = velocity.move_toward(direction * speed * 2, acceleration * delta)
 	
+	if !playerInactive or playerWon: 
+		#PlaySound
+		if !$"Audio/Ufo Engine".playing:
+			$"Audio/Ufo Engine".play()
+		
+		#Set Pitch
+		var speed_factor = velocity.length() / speed
+		speed_factor = clamp(speed_factor, 0.5, 2.0)
+
+		$"Audio/Ufo Engine".pitch_scale = speed_factor
+		
+		#Set Volume
+		if position.y < camera.limit_top and $"Audio/Ufo Engine".volume_db > -80.0:
+			$"Audio/Ufo Engine".volume_db -= 20.0 * delta
+		
 	move_and_slide()
 
 func _process(delta: float) -> void:
@@ -93,6 +109,10 @@ func CaptureInput(delta):
 	else:
 		$LaserGreen2.modulate.a = lerp($LaserGreen2.modulate.a, 0.0, 10 * delta)
 		closeLaser()
+		$"Audio/Ufo Capture".stop()
+	
+	if !$"Audio/Ufo Capture".playing and captureMode:
+		$"Audio/Ufo Capture".play()
 
 func openLaser():
 	if !animated:
@@ -120,6 +140,7 @@ func _on_capture_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("Enemy") and captureMode:
 		enemiesCaptured += 1
 		enemyCaptured.emit(enemiesCaptured)
+		$Audio/EnemiesCaptured.play()
 		area.get_parent().dieAnimation()
 
 func _on_main_won_game() -> void:

@@ -168,12 +168,6 @@ func WallSlide(delta):
 	if isWallSliding:
 		velocity.y += wallSlideGravity * delta
 		velocity.y = min(velocity.y, wallSlideGravity)
-	
-	if isWallSliding and !$Audio/PlayerSlide.playing and velocity.y > 80:
-		$Audio/PlayerSlide.play()
-	
-	if !isWallSliding:
-		$Audio/PlayerSlide.stop()
 
 func Animate():
 	#Animate character

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://oagjoc8qq8ui"]
+[gd_scene load_steps=9 format=3 uid="uid://oagjoc8qq8ui"]
 
 [ext_resource type="Script" uid="uid://2rl2715fd83i" path="res://Scripts/transition_scene.gd" id="1_d8bo0"]
 [ext_resource type="Shader" uid="uid://c14dx2b8sk4re" path="res://Shaders/defaultTransition.gdshader" id="2_c4vg6"]
+[ext_resource type="AudioStream" uid="uid://c8ybhtee2lc4a" path="res://Audio/SoundFx/sweepOn.mp3" id="3_dracm"]
+[ext_resource type="AudioStream" uid="uid://4sm0bt46r165" path="res://Audio/SoundFx/sweepOff.mp3" id="3_xf20e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dracm"]
 shader = ExtResource("2_c4vg6")
@@ -74,6 +76,8 @@ _data = {
 layer = 2
 visible = false
 script = ExtResource("1_d8bo0")
+sweepOn = ExtResource("3_dracm")
+sweepOff = ExtResource("3_xf20e")
 
 [node name="Transition" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_dracm")
@@ -89,3 +93,8 @@ root_node = NodePath("../Transition")
 libraries = {
 &"": SubResource("AnimationLibrary_aapda")
 }
+
+[node name="Sweep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dracm")
+volume_db = -10.291
+bus = &"Sound Effects"
