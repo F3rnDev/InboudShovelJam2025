@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dukadcev2pjn"]
+[gd_scene load_steps=7 format=3 uid="uid://dukadcev2pjn"]
 
 [ext_resource type="Script" uid="uid://cflsfqe8jmqau" path="res://Scripts/pause_menu.gd" id="1_8xdnx"]
 [ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="1_h13p5"]
 [ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Themes/gameTheme.tres" id="2_8xdnx"]
 [ext_resource type="PackedScene" uid="uid://c1bg154t410gi" path="res://Nodes/Scenes/Options.tscn" id="4_rfcqb"]
+[ext_resource type="AudioStream" uid="uid://biwfqcjesyj06" path="res://Audio/SoundFx/UI/UIMove.mp3" id="5_5qaah"]
+[ext_resource type="AudioStream" uid="uid://dsteu1u4mwl88" path="res://Audio/SoundFx/UI/UIAccept.mp3" id="6_8p5y7"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -35,33 +37,52 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -42.395
-offset_right = 125.0
-offset_bottom = 99.605
+offset_left = -170.0
+offset_top = -52.955
+offset_right = 170.0
+offset_bottom = 147.045
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 32
+theme_override_constants/separation = 16
 
 [node name="Resume" type="Button" parent="Pause/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_8xdnx")
 text = "Resume"
 
 [node name="Options" type="Button" parent="Pause/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_8xdnx")
 text = "Options"
 
 [node name="Overworld" type="Button" parent="Pause/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_8xdnx")
 text = "Go to Overworld"
 
 [node name="Options" parent="." instance=ExtResource("4_rfcqb")]
 visible = false
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="SelectSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_5qaah")
+bus = &"Sound Effects"
+
+[node name="ConfirmSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_8p5y7")
+bus = &"Sound Effects"
+
+[connection signal="button_down" from="Pause/VBoxContainer/Resume" to="." method="_on_button_down"]
 [connection signal="button_down" from="Pause/VBoxContainer/Resume" to="." method="_on_resume_button_down"]
+[connection signal="focus_entered" from="Pause/VBoxContainer/Resume" to="." method="_on_focus_entered"]
+[connection signal="button_down" from="Pause/VBoxContainer/Options" to="." method="_on_button_down"]
 [connection signal="button_down" from="Pause/VBoxContainer/Options" to="." method="toggleOptions"]
+[connection signal="focus_entered" from="Pause/VBoxContainer/Options" to="." method="_on_focus_entered"]
+[connection signal="button_down" from="Pause/VBoxContainer/Overworld" to="." method="_on_button_down"]
 [connection signal="button_down" from="Pause/VBoxContainer/Overworld" to="." method="_on_overworld_button_down"]
+[connection signal="focus_entered" from="Pause/VBoxContainer/Overworld" to="." method="_on_focus_entered"]
 [connection signal="applyConfig" from="Options" to="." method="toggleOptions"]

@@ -47,6 +47,7 @@ func _process(delta: float) -> void:
 		playStage()
 	
 	if Input.is_action_just_pressed("Cancel"):
+		$Audio/CancelSfx.play()
 		TransitionScene.transitionToScene("res://Nodes/Scenes/mainMenu.tscn")
 
 func setStage(addTo):
@@ -66,6 +67,9 @@ func setStage(addTo):
 			newStageID = stageID
 			break
 	
+	if selectedStageID != newStageID:
+		$Audio/SelectSfx.play()
+	
 	selectedStageID = newStageID
 
 func setPlayerPosition():
@@ -78,6 +82,7 @@ func setStageText():
 	$HUD/StageName.text = "- " + stageName + " -"
 
 func playStage():
+	$Audio/ConfirmSfx.play()
 	$Stages.get_child(selectedStageID).goToLevel()
 
 func setStageLines():

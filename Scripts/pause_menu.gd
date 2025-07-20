@@ -15,8 +15,6 @@ func _process(delta: float) -> void:
 func pauseGame():
 	paused = !paused
 	
-	print(paused)
-	
 	get_tree().paused = paused
 	self.visible = paused
 	$Pause.visible = paused
@@ -41,3 +39,10 @@ func toggleOptions():
 		$Pause/VBoxContainer/Resume.grab_focus()
 	else:
 		$"Options/VBoxContainer/ScreenSection/Fullscreen check".grab_focus()
+
+
+func _on_focus_entered() -> void:
+	$Audio/SelectSfx.play()
+
+func _on_button_down() -> void:
+	$Audio/ConfirmSfx.play()

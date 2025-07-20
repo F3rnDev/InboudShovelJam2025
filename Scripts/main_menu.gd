@@ -26,3 +26,10 @@ func setOptionMenu():
 		$Options.setFocus()
 	else:
 		$MenuCanvas/Options/Play.grab_focus()
+
+
+func _on_btn_focus_entered() -> void:
+	$Audio/SelectSfx.play()
+
+func _on_btn_pressed() -> void:
+	$Audio/ConfirmSfx.play()

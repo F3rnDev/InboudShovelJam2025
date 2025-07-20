@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bpr1fe45qrtpj"]
+[gd_scene load_steps=14 format=4 uid="uid://bpr1fe45qrtpj"]
 
 [ext_resource type="Script" uid="uid://go5mpnetdsfk" path="res://Scripts/overworld.gd" id="1_pm8ls"]
 [ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="2_qnp3o"]
@@ -7,8 +7,11 @@
 [ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="5_hia64"]
 [ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="7_yn5qt"]
 [ext_resource type="Texture2D" uid="uid://dk1ls631hbt37" path="res://Art/Sprites/UFO character/Green/UFO/shipGreen_manned.png" id="9_pt7b0"]
+[ext_resource type="AudioStream" uid="uid://biwfqcjesyj06" path="res://Audio/SoundFx/UI/UIMove.mp3" id="10_hia64"]
 [ext_resource type="Texture2D" uid="uid://digjtneltove4" path="res://Art/Sprites/UFO character/Green/UFO/inactiveUfo.png" id="10_jahdj"]
+[ext_resource type="AudioStream" uid="uid://dsteu1u4mwl88" path="res://Audio/SoundFx/UI/UIAccept.mp3" id="11_gddi1"]
 [ext_resource type="Texture2D" uid="uid://df75nh80ac535" path="res://Art/Sprites/UFO character/Green/UFO/dome.png" id="11_ldsjk"]
+[ext_resource type="AudioStream" uid="uid://xyc8li1ujymg" path="res://Audio/SoundFx/UI/UICancel.mp3" id="12_pt7b0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d2we2"]
 animations = [{
@@ -135,3 +138,17 @@ sprite_frames = SubResource("SpriteFrames_d2we2")
 [node name="Dome" type="Sprite2D" parent="Player"]
 position = Vector2(0, -30)
 texture = ExtResource("11_ldsjk")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="SelectSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_hia64")
+bus = &"Sound Effects"
+
+[node name="ConfirmSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("11_gddi1")
+bus = &"Sound Effects"
+
+[node name="CancelSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_pt7b0")
+bus = &"Sound Effects"

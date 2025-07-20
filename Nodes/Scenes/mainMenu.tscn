@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dbnsg65g0jkqf"]
+[gd_scene load_steps=27 format=3 uid="uid://dbnsg65g0jkqf"]
 
 [ext_resource type="Script" uid="uid://cnk0djki2s0bp" path="res://Scripts/main_menu.gd" id="1_f872w"]
 [ext_resource type="Texture2D" uid="uid://bqbehjk01ads1" path="res://Art/Sprites/Backgrounds/05_sky.png" id="1_oli08"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c1bg154t410gi" path="res://Nodes/Scenes/Options.tscn" id="10_44m5e"]
 [ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="10_fr1cp"]
 [ext_resource type="Texture2D" uid="uid://ba33bvqtd8415" path="res://Art/Sprites/LOGO-Sheet.png" id="10_j6tyu"]
+[ext_resource type="AudioStream" uid="uid://biwfqcjesyj06" path="res://Audio/SoundFx/UI/UIMove.mp3" id="12_fr1cp"]
+[ext_resource type="AudioStream" uid="uid://dsteu1u4mwl88" path="res://Audio/SoundFx/UI/UIAccept.mp3" id="13_2swqs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_44m5e"]
 atlas = ExtResource("10_j6tyu")
@@ -178,46 +180,6 @@ color = Color(0.180392, 0.8, 0.443137, 1)
 
 [node name="MenuCanvas" type="CanvasLayer" parent="."]
 
-[node name="Options" type="VBoxContainer" parent="MenuCanvas"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -61.0
-offset_top = 3.815
-offset_right = 61.0
-offset_bottom = 145.815
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("8_rqmlg")
-theme_override_constants/separation = 32
-
-[node name="Play" type="Button" parent="MenuCanvas/Options"]
-layout_mode = 2
-theme = ExtResource("8_rqmlg")
-text = "Play"
-
-[node name="Options" type="Button" parent="MenuCanvas/Options"]
-layout_mode = 2
-text = "Options"
-
-[node name="Exit" type="Button" parent="MenuCanvas/Options"]
-layout_mode = 2
-text = "Exit"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MenuCanvas"]
-position = Vector2(576, 150)
-sprite_frames = SubResource("SpriteFrames_gn6vb")
-autoplay = "default"
-frame_progress = 0.0568076
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuCanvas/AnimatedSprite2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_fr1cp")
-}
-autoplay = "logo"
-
 [node name="Controls" type="Control" parent="MenuCanvas"]
 layout_mode = 3
 anchors_preset = 15
@@ -241,10 +203,72 @@ scale = Vector2(0.5, 0.5)
 tile_map_data = PackedByteArray(0, 0, 1, 0, 19, 0, 1, 0, 32, 0, 3, 0, 0, 0, 2, 0, 19, 0, 1, 0, 33, 0, 3, 0, 0, 0, 2, 0, 18, 0, 1, 0, 33, 0, 2, 0, 0, 0, 1, 0, 18, 0, 1, 0, 32, 0, 2, 0, 0, 0)
 tile_set = ExtResource("10_fr1cp")
 
+[node name="Options" type="VBoxContainer" parent="MenuCanvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -2.70999
+offset_right = 81.0
+offset_bottom = 259.29
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("8_rqmlg")
+theme_override_constants/separation = 16
+
+[node name="Play" type="Button" parent="MenuCanvas/Options"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("8_rqmlg")
+text = "Play"
+
+[node name="Options" type="Button" parent="MenuCanvas/Options"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Options"
+
+[node name="Exit" type="Button" parent="MenuCanvas/Options"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Exit"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MenuCanvas"]
+position = Vector2(576, 150)
+sprite_frames = SubResource("SpriteFrames_gn6vb")
+autoplay = "default"
+frame_progress = 0.0568076
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuCanvas/AnimatedSprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_fr1cp")
+}
+autoplay = "logo"
+
 [node name="Options" parent="." instance=ExtResource("10_44m5e")]
 visible = false
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="SelectSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("12_fr1cp")
+bus = &"Sound Effects"
+
+[node name="ConfirmSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_2swqs")
+
 [connection signal="button_down" from="MenuCanvas/Options/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="MenuCanvas/Options/Play" to="." method="_on_btn_pressed"]
+[connection signal="focus_entered" from="MenuCanvas/Options/Play" to="." method="_on_btn_focus_entered"]
+[connection signal="mouse_entered" from="MenuCanvas/Options/Play" to="." method="_on_btn_focus_entered"]
 [connection signal="button_down" from="MenuCanvas/Options/Options" to="." method="setOptionMenu"]
+[connection signal="button_down" from="MenuCanvas/Options/Options" to="." method="_on_btn_pressed"]
+[connection signal="focus_entered" from="MenuCanvas/Options/Options" to="." method="_on_btn_focus_entered"]
+[connection signal="mouse_entered" from="MenuCanvas/Options/Options" to="." method="_on_btn_focus_entered"]
 [connection signal="button_down" from="MenuCanvas/Options/Exit" to="." method="_on_exit_button_down"]
+[connection signal="button_down" from="MenuCanvas/Options/Exit" to="." method="_on_btn_pressed"]
+[connection signal="focus_entered" from="MenuCanvas/Options/Exit" to="." method="_on_btn_focus_entered"]
+[connection signal="mouse_entered" from="MenuCanvas/Options/Exit" to="." method="_on_btn_focus_entered"]
 [connection signal="applyConfig" from="Options" to="." method="setOptionMenu"]

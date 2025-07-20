@@ -3,7 +3,6 @@
 [ext_resource type="FontFile" uid="uid://cx71wccictfs2" path="res://Fonts/PressStart2P-Regular.ttf" id="1_1qwej"]
 
 [resource]
-line_spacing = 20.0
 font = ExtResource("1_1qwej")
 font_size = 32
 outline_size = 16

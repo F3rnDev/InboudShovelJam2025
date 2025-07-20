@@ -35,6 +35,13 @@ func loadConfig(configData = null):
 	DisplayServer.window_set_mode(windowType)
 	
 	#SetAudio
+	var masterAudioID = AudioServer.get_bus_index("Master")
+	var musicAudioID = AudioServer.get_bus_index("Music")
+	var sfxAudioID = AudioServer.get_bus_index("Sound Effects")
+	
+	AudioServer.set_bus_volume_db(masterAudioID, linear_to_db(configDict["masterVolume"]))
+	AudioServer.set_bus_volume_db(musicAudioID, linear_to_db(configDict["musicVolume"]))
+	AudioServer.set_bus_volume_db(sfxAudioID, linear_to_db(configDict["sfxVolume"]))
 
 func setConfigData(newConfig):
 	configDict = newConfig

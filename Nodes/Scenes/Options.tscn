@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1bg154t410gi"]
+[gd_scene load_steps=6 format=3 uid="uid://c1bg154t410gi"]
 
 [ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="1_5mdym"]
 [ext_resource type="Script" uid="uid://bjrdh10s0q6pu" path="res://Scripts/options.gd" id="1_j47ys"]
 [ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Themes/gameTheme.tres" id="2_51ait"]
+[ext_resource type="AudioStream" uid="uid://biwfqcjesyj06" path="res://Audio/SoundFx/UI/UIMove.mp3" id="4_mlima"]
+[ext_resource type="AudioStream" uid="uid://dsteu1u4mwl88" path="res://Audio/SoundFx/UI/UIAccept.mp3" id="5_ini4s"]
 
 [node name="Options" type="CanvasLayer"]
 process_mode = 3
@@ -46,13 +48,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -328.0
-offset_top = -200.935
+offset_top = -198.96
 offset_right = 328.0
-offset_bottom = 248.065
+offset_bottom = 264.04
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_51ait")
-theme_override_constants/separation = 55
+theme_override_constants/separation = 32
 
 [node name="ScreenSection" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -67,7 +69,26 @@ layout_mode = 2
 
 [node name="Fullscreen check" type="CheckBox" parent="VBoxContainer/ScreenSection"]
 layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_51ait")
+autowrap_mode = 3
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="VBoxContainer/ScreenSection/Fullscreen check"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -8.0
+offset_right = -96.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "FULLSCREEN"
 
 [node name="AudioSection" type="VBoxContainer" parent="VBoxContainer"]
@@ -92,8 +113,10 @@ theme = ExtResource("2_51ait")
 [node name="HSlider" type="HSlider" parent="VBoxContainer/AudioSection/MasterSlider"]
 layout_mode = 2
 size_flags_horizontal = 3
-step = 10.0
-value = 100.0
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
 
 [node name="Label" type="Label" parent="VBoxContainer/AudioSection/MasterSlider"]
 layout_mode = 2
@@ -112,8 +135,10 @@ theme = ExtResource("2_51ait")
 [node name="HSlider" type="HSlider" parent="VBoxContainer/AudioSection/MusicSlider"]
 layout_mode = 2
 size_flags_horizontal = 3
-step = 10.0
-value = 100.0
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
 
 [node name="Label" type="Label" parent="VBoxContainer/AudioSection/MusicSlider"]
 layout_mode = 2
@@ -131,8 +156,10 @@ theme = ExtResource("2_51ait")
 [node name="HSlider" type="HSlider" parent="VBoxContainer/AudioSection/SFXSlider"]
 layout_mode = 2
 size_flags_horizontal = 3
-step = 10.0
-value = 100.0
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
 
 [node name="Label" type="Label" parent="VBoxContainer/AudioSection/SFXSlider"]
 layout_mode = 2
@@ -142,11 +169,29 @@ text = "0%"
 [node name="Apply" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 theme = ExtResource("2_51ait")
 text = "Apply"
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="SelectSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_mlima")
+bus = &"Sound Effects"
+
+[node name="ConfirmSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_ini4s")
+bus = &"Sound Effects"
+
+[connection signal="focus_entered" from="VBoxContainer/ScreenSection/Fullscreen check" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/ScreenSection/Fullscreen check" to="." method="_on_focus_entered"]
 [connection signal="toggled" from="VBoxContainer/ScreenSection/Fullscreen check" to="." method="_on_fullscreen_check_toggled"]
+[connection signal="focus_entered" from="VBoxContainer/AudioSection/MasterSlider/HSlider" to="." method="_on_focus_entered"]
 [connection signal="value_changed" from="VBoxContainer/AudioSection/MasterSlider/HSlider" to="." method="_on_masterSlider_value_changed"]
+[connection signal="focus_entered" from="VBoxContainer/AudioSection/MusicSlider/HSlider" to="." method="_on_focus_entered"]
 [connection signal="value_changed" from="VBoxContainer/AudioSection/MusicSlider/HSlider" to="." method="_on_musicSlider_value_changed"]
+[connection signal="focus_entered" from="VBoxContainer/AudioSection/SFXSlider/HSlider" to="." method="_on_focus_entered"]
 [connection signal="value_changed" from="VBoxContainer/AudioSection/SFXSlider/HSlider" to="." method="_on_SfxSlider_value_changed"]
 [connection signal="button_down" from="VBoxContainer/Apply" to="." method="_on_apply_button_down"]
+[connection signal="focus_entered" from="VBoxContainer/Apply" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="VBoxContainer/Apply" to="." method="_on_focus_entered"]

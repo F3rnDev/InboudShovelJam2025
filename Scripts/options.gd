@@ -32,18 +32,29 @@ func loadPlayerConfig():
 	SfxSlider.value = PlayerData.configDict["sfxVolume"]
 
 func setSliderLabels():
-	MasterSliderLabel.text = str(int(MasterSlider.value)) + "%"
-	MusicSliderLabel.text = str(int(MusicSlider.value)) + "%"
-	SfxSliderLabel.text = str(int(SfxSlider.value)) + "%"
+	MasterSliderLabel.text = str(int(MasterSlider.value*100)) + "%"
+	MusicSliderLabel.text = str(int(MusicSlider.value*100)) + "%"
+	SfxSliderLabel.text = str(int(SfxSlider.value*100)) + "%"
 
 func _on_masterSlider_value_changed(value: float) -> void:
-	MasterSliderLabel.text = str(int(value)) + "%"
+	MasterSliderLabel.text = str(int(value*100)) + "%"
+	
+	var audio = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_db(audio, linear_to_db(value))
 
 func _on_musicSlider_value_changed(value: float) -> void:
-	MusicSliderLabel.text = str(int(value)) + "%"
+	MusicSliderLabel.text = str(int(value*100)) + "%"
+	
+	var audio = AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_volume_db(audio, linear_to_db(value))
 
 func _on_SfxSlider_value_changed(value: float) -> void:
-	SfxSliderLabel.text = str(int(value)) + "%"
+	SfxSliderLabel.text = str(int(value*100)) + "%"
+	
+	var audio = AudioServer.get_bus_index("Sound Effects")
+	AudioServer.set_bus_volume_db(audio, linear_to_db(value))
+	
+	$Audio/SelectSfx.play()
 
 func _on_fullscreen_check_toggled(toggled_on: bool) -> void:
 	if toggled_on:
@@ -64,3 +75,8 @@ func applyOptions():
 	}
 	
 	PlayerData.setConfigData(newOptions)
+	
+	$Audio/ConfirmSfx.play()
+
+func _on_focus_entered() -> void:
+	$Audio/SelectSfx.play()
