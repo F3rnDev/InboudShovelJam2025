@@ -19,7 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$AnimatedSprite2D.flip_h = direction > 0
 	
-	if !isBeingCaptured and velocity.x != 0:
+	if !isBeingCaptured and !stunned:
 		$AnimatedSprite2D.play("idle")
 	else:
 		$AnimatedSprite2D.stop()

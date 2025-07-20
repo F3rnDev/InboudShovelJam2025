@@ -59,7 +59,7 @@ offset_top = 107.35
 offset_right = 192.0
 offset_bottom = 139.35
 grow_horizontal = 2
-text = "- Tutorial -"
+text = "- Level 01 -"
 label_settings = ExtResource("2_qnp3o")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -123,12 +123,24 @@ position = Vector2(297, 436)
 levelPath = "uid://5lx8i8k1bwb6"
 
 [node name="OverworldStage2" parent="Stages" instance=ExtResource("3_3rnvp")]
-position = Vector2(494, 380)
+position = Vector2(451, 277)
 levelPath = "uid://xmph6rei8q8j"
 
 [node name="OverworldStage3" parent="Stages" instance=ExtResource("3_3rnvp")]
-position = Vector2(789, 406)
+position = Vector2(541, 410)
 levelPath = "uid://cf4rbsl2p2a8e"
+
+[node name="OverworldStage4" parent="Stages" instance=ExtResource("3_3rnvp")]
+position = Vector2(690, 280)
+levelPath = "uid://c3yq62f4x8a6y"
+
+[node name="OverworldStage5" parent="Stages" instance=ExtResource("3_3rnvp")]
+position = Vector2(770, 414)
+levelPath = "uid://bt27gwow3buaf"
+
+[node name="OverworldStage6" parent="Stages" instance=ExtResource("3_3rnvp")]
+position = Vector2(879, 322)
+levelPath = "uid://cxntwm7o8buvn"
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 position = Vector2(293, 336)

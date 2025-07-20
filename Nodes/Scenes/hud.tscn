@@ -259,11 +259,11 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -267.0
 offset_top = -200.0
-offset_right = 201.0
+offset_right = 469.0
 offset_bottom = -77.0
 grow_horizontal = 2
 text = "Current Stage
-- Stage sex -"
+- Tutorial - Level 01 -"
 label_settings = ExtResource("5_ic5la")
 horizontal_alignment = 1
 vertical_alignment = 1

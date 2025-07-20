@@ -1,13 +1,8 @@
-[gd_scene load_steps=17 format=4 uid="uid://xmph6rei8q8j"]
+[gd_scene load_steps=12 format=4 uid="uid://xmph6rei8q8j"]
 
 [ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_oq5hy"]
 [ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_kwfh7"]
-[ext_resource type="Texture2D" uid="uid://bqbehjk01ads1" path="res://Art/Sprites/Backgrounds/05_sky.png" id="3_rmdnm"]
-[ext_resource type="Script" uid="uid://drqocjk5017wb" path="res://Scripts/cloudLayer.gd" id="4_mw4nx"]
-[ext_resource type="Texture2D" uid="uid://wsrfjacr3r2b" path="res://Art/Sprites/Backgrounds/04_cloud.png" id="5_2vclm"]
-[ext_resource type="Texture2D" uid="uid://dcpl1qhfvsx0f" path="res://Art/Sprites/Backgrounds/03_hill_fade.png" id="6_hr6yb"]
-[ext_resource type="Texture2D" uid="uid://dvpvcslxhgh20" path="res://Art/Sprites/Backgrounds/02_hill.png" id="7_lohf1"]
-[ext_resource type="Texture2D" uid="uid://bo3v2nh02hnwh" path="res://Art/Sprites/Backgrounds/01_grass.png" id="8_h8vk1"]
+[ext_resource type="PackedScene" uid="uid://cab5m6jmd7dji" path="res://Nodes/background.tscn" id="3_yx0a3"]
 [ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="9_geaxm"]
 [ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="10_oxe48"]
 [ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="11_f1fcq"]
@@ -17,66 +12,13 @@
 [ext_resource type="Script" path="res://Scripts/enemy_group.gd" id="15_vjuxx"]
 [ext_resource type="PackedScene" path="res://Nodes/PauseMenu.tscn" id="16_ljsyp"]
 
-[node name="Movement" type="Node2D"]
+[node name="Tutorial - Level 02" type="Node2D"]
 script = ExtResource("1_oq5hy")
 nextStage = "uid://cf4rbsl2p2a8e"
 
 [node name="HUD" parent="." instance=ExtResource("2_kwfh7")]
 
-[node name="Background" type="ParallaxBackground" parent="."]
-
-[node name="Sky" type="ParallaxLayer" parent="Background"]
-position = Vector2(0, -750)
-motion_mirroring = Vector2(2560, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Sky"]
-texture = ExtResource("3_rmdnm")
-centered = false
-
-[node name="Cloud" type="ParallaxLayer" parent="Background"]
-position = Vector2(0, -750)
-motion_mirroring = Vector2(2560, 0)
-script = ExtResource("4_mw4nx")
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Cloud"]
-texture = ExtResource("5_2vclm")
-centered = false
-
-[node name="HillFade" type="ParallaxLayer" parent="Background"]
-position = Vector2(0, -750)
-motion_scale = Vector2(0.2, 1)
-motion_mirroring = Vector2(2560, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/HillFade"]
-texture = ExtResource("6_hr6yb")
-centered = false
-
-[node name="Hill" type="ParallaxLayer" parent="Background"]
-position = Vector2(0, -750)
-motion_scale = Vector2(0.3, 1)
-motion_mirroring = Vector2(2560, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Hill"]
-texture = ExtResource("7_lohf1")
-centered = false
-
-[node name="Grass" type="ParallaxLayer" parent="Background"]
-position = Vector2(0, -750)
-motion_scale = Vector2(0.4, 1)
-motion_mirroring = Vector2(2560, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Grass"]
-texture = ExtResource("8_h8vk1")
-centered = false
-
-[node name="GrennContinuos" type="ParallaxLayer" parent="Background"]
-motion_mirroring = Vector2(2560, 0)
-
-[node name="ColorRect" type="ColorRect" parent="Background/GrennContinuos"]
-offset_top = 1792.0
-offset_right = 2560.0
-offset_bottom = 2047.0
-color = Color(0.180392, 0.8, 0.443137, 1)
+[node name="Background" parent="." instance=ExtResource("3_yx0a3")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

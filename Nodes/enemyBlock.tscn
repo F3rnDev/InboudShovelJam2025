@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b1dynb7u7x4q5" path="res://Art/Sprites/Characters/Enemies/Block/slime_block_hit.png" id="2_qweok"]
 [ext_resource type="Texture2D" uid="uid://m3whtqav6hsx" path="res://Art/Sprites/Characters/Enemies/Block/slime_block_idle.png" id="3_o4f5q"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4erml"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qweok"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -24,7 +24,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="Animation" id="Animation_4erml"]
@@ -77,8 +77,9 @@ collision_mask = 2
 script = ExtResource("1_dudy7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_4erml")
+sprite_frames = SubResource("SpriteFrames_qweok")
 animation = &"idle"
+frame_progress = 0.238592
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
@@ -116,6 +117,5 @@ collision_mask = 2
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 
-[connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_die_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
