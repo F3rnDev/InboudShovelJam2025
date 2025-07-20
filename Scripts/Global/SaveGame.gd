@@ -10,6 +10,7 @@ var configDict = {
 
 #Stage
 var stages = {}
+var lastSelectedStage
 
 func _ready() -> void:
 	getConfigData()

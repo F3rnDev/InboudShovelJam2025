@@ -148,7 +148,7 @@ levelPath = "uid://cxntwm7o8buvn"
 
 [node name="OverworldStage7" parent="Stages" instance=ExtResource("3_3rnvp")]
 position = Vector2(1080, 185)
-levelPath = "uid://c5ppsyox2agj4"
+levelPath = "uid://d17ev1melvhju"
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 position = Vector2(293, 336)

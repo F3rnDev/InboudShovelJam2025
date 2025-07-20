@@ -18,11 +18,39 @@ var playerPos
 @export var tilt_speed := 10.0
 
 func _ready() -> void:
+	setDefaultStage()
+	
 	setStageLines()
 	setPlayerPosition()
 	setStageText()
 	
 	$Player.position = playerPos
+
+func setDefaultStage():
+	if PlayerData.lastSelectedStage == null:
+		setDefaultStageByLast()
+	else:
+		setDefaultStageBySavedData()
+
+func setDefaultStageByLast():
+	var currentID = 0
+	
+	for stageID in $Stages.get_child_count():
+		var stage = $Stages.get_child(stageID)
+		
+		if stage.stageAvailable():
+			currentID = stageID
+	
+	selectedStageID = currentID
+
+func setDefaultStageBySavedData():
+	for stageID in $Stages.get_child_count():
+		var stage = $Stages.get_child(stageID)
+		var stageData = stage.levelNode.instantiate().get_scene_file_path()
+		
+		if PlayerData.lastSelectedStage == stageData:
+			selectedStageID = stageID
+			break
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

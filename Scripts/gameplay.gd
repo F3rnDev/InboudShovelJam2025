@@ -21,6 +21,8 @@ func _ready() -> void:
 	setMaxEnemies()
 	$HUD.setCapturedEnemies(maxEnemies)
 	$HUD.setStageText(name)
+	
+	PlayerData.lastSelectedStage = get_scene_file_path()
 
 func setMaxEnemies():
 	maxEnemies = $EnemyGroup.get_child_count()
