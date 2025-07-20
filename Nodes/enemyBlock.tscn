@@ -1,17 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://dslakpjmwe1vh"]
+[gd_scene load_steps=12 format=3 uid="uid://dslakpjmwe1vh"]
 
 [ext_resource type="Script" uid="uid://cb4ig178e652t" path="res://Scripts/enemyBlock.gd" id="1_dudy7"]
-[ext_resource type="Texture2D" uid="uid://bulp2wrmmy7m7" path="res://Art/Sprites/Enemies/Block/slime_block_rest.png" id="2_dudy7"]
+[ext_resource type="Texture2D" uid="uid://c7pubn2qecj8n" path="res://Art/Sprites/Characters/Enemies/Block/slime_block_blink.png" id="2_dudy7"]
+[ext_resource type="Texture2D" uid="uid://b1dynb7u7x4q5" path="res://Art/Sprites/Characters/Enemies/Block/slime_block_hit.png" id="2_qweok"]
+[ext_resource type="Texture2D" uid="uid://m3whtqav6hsx" path="res://Art/Sprites/Characters/Enemies/Block/slime_block_idle.png" id="3_o4f5q"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4erml"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qweok"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_dudy7")
+"texture": ExtResource("2_qweok")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"hit",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 0.25,
+"texture": ExtResource("2_dudy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o4f5q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
 }]
 
 [sub_resource type="Animation" id="Animation_4erml"]
@@ -64,9 +77,9 @@ collision_mask = 2
 script = ExtResource("1_dudy7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_4erml")
-animation = &"walk"
-frame_progress = 0.979787
+sprite_frames = SubResource("SpriteFrames_qweok")
+animation = &"idle"
+frame_progress = 0.238592
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
@@ -104,6 +117,5 @@ collision_mask = 2
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 
-[connection signal="animation_finished" from="AnimatedSprite2D/AnimationPlayer" to="." method="_on_die_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -97,4 +97,3 @@ libraries = {
 [node name="Sweep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_dracm")
 volume_db = -10.291
-bus = &"Sound Effects"

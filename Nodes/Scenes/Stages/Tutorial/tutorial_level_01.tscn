@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=4 uid="uid://5lx8i8k1bwb6"]
+
+[ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_mdw0m"]
+[ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_o4o6q"]
+[ext_resource type="PackedScene" uid="uid://cab5m6jmd7dji" path="res://Nodes/background.tscn" id="3_jcd8x"]
+[ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="9_vj8c5"]
+[ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="10_8ir73"]
+[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="11_cqhuj"]
+[ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="12_wfs53"]
+[ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="13_2alra"]
+[ext_resource type="PackedScene" path="res://Nodes/gameCamera.tscn" id="14_aedrx"]
+[ext_resource type="Script" path="res://Scripts/enemy_group.gd" id="15_ospjk"]
+[ext_resource type="PackedScene" path="res://Nodes/PauseMenu.tscn" id="16_fwuoe"]
+
+[node name="Tutorial - Level 01" type="Node2D"]
+script = ExtResource("1_mdw0m")
+nextStage = "uid://xmph6rei8q8j"
+
+[node name="HUD" parent="." instance=ExtResource("2_o4o6q")]
+
+[node name="Background" parent="." instance=ExtResource("3_jcd8x")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2534.0
+offset_top = 1032.0
+offset_right = 3078.0
+offset_bottom = 1119.0
+text = "← Get to the ship"
+label_settings = ExtResource("9_vj8c5")
+
+[node name="Keyboard" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAgAA0ABwAAAAAAAAAeAA0ACgAAAAAAAAAfAAwAAQASAAIAAAAfAA0AAQATAAMAAAA=")
+tile_set = ExtResource("10_8ir73")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAZABIAAgAFAAMAAAAaABIAAgAGAAMAAAAbABIAAgAGAAMAAAAcABIAAgAGAAMAAAAdABIAAgAGAAMAAAAeABIAAgAGAAMAAAAfABIAAgAGAAMAAAAgABIAAgAGAAMAAAAhABIAAgAGAAMAAAAiABIAAgAGAAMAAAAjABIAAgAGAAMAAAAkABIAAgAGAAMAAAAlABIAAgAGAAMAAAAmABIAAgAGAAMAAAAnABIAAgAGAAMAAAAoABIAAgAHAAMAAAB8AEMAAAASAAIAAAA=")
+tile_set = ExtResource("11_cqhuj")
+
+[node name="PlayerUFO" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("12_wfs53")]
+position = Vector2(2444, 1090)
+collision_mask = 2
+camera = NodePath("../GameCamera")
+
+[node name="Player" parent="." instance=ExtResource("13_2alra")]
+position = Vector2(1773, 1087)
+
+[node name="GameCamera" parent="." node_paths=PackedStringArray("playerRef", "playerUFORef") instance=ExtResource("14_aedrx")]
+position = Vector2(2100, 1663)
+limit_left = 0
+limit_top = -512
+limit_right = 6300
+limit_bottom = 1760
+playerRef = NodePath("../Player")
+playerUFORef = NodePath("../PlayerUFO")
+
+[node name="EnemyGroup" type="Node2D" parent="." node_paths=PackedStringArray("playerRef")]
+script = ExtResource("15_ospjk")
+playerRef = NodePath("../PlayerUFO")
+
+[node name="PauseMenu" parent="." instance=ExtResource("16_fwuoe")]
+
+[connection signal="wonGame" from="." to="PlayerUFO" method="_on_main_won_game"]
+[connection signal="wonGame" from="." to="GameCamera" method="_on_main_won_game"]
+[connection signal="enemyCaptured" from="PlayerUFO" to="." method="_on_player_ufo_enemy_captured"]
+[connection signal="enteredUFO" from="Player" to="." method="_on_player_entered_ufo"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="playerDead" from="Player" to="." method="_on_player_player_dead"]
+[connection signal="enemyhit" from="EnemyGroup" to="Player" method="_on_enemy_enemyhit"]

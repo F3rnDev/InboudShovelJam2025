@@ -1,11 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://bg5tuvkfkc1t7"]
+[gd_scene load_steps=12 format=3 uid="uid://bg5tuvkfkc1t7"]
 
-[ext_resource type="Texture2D" uid="uid://cie3gujrotq63" path="res://Art/Sprites/Enemies/Snail/snail_walk_a.png" id="1_hrxw6"]
+[ext_resource type="Texture2D" uid="uid://cie3gujrotq63" path="res://Art/Sprites/Characters/Enemies/Snail/snail_walk_a.png" id="1_hrxw6"]
 [ext_resource type="Script" uid="uid://dxsw16o6ow56k" path="res://Scripts/enemy.gd" id="1_jpxen"]
-[ext_resource type="Texture2D" uid="uid://cub5fvlt07u4d" path="res://Art/Sprites/Enemies/Snail/snail_walk_b.png" id="2_jpxen"]
+[ext_resource type="Texture2D" uid="uid://cdccufmhda8l8" path="res://Art/Sprites/Characters/Enemies/Snail/snail_shell.png" id="2_4erml"]
+[ext_resource type="Texture2D" uid="uid://cub5fvlt07u4d" path="res://Art/Sprites/Characters/Enemies/Snail/snail_walk_b.png" id="2_jpxen"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4erml"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4erml")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_hrxw6")
@@ -70,7 +79,6 @@ script = ExtResource("1_jpxen")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4erml")
 animation = &"walk"
-frame_progress = 0.979787
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {

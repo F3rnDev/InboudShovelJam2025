@@ -20,6 +20,9 @@ var playerPos
 func _ready() -> void:
 	setStageLines()
 	setPlayerPosition()
+	setStageText()
+	
+	$Player.position = playerPos
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

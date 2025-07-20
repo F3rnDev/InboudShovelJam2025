@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=3 uid="uid://dl8e2shl6fofv"]
 
 [ext_resource type="Script" uid="uid://bdqdc87vcx51b" path="res://Scripts/player.gd" id="1_qlfej"]
-[ext_resource type="Texture2D" uid="uid://cigjh6lj4wtut" path="res://Art/Sprites/Characters/Green/character_green_idle.png" id="2_hv3sw"]
-[ext_resource type="Texture2D" uid="uid://dl2aa05lebbar" path="res://Art/Sprites/Characters/Green/character_green_walk_a.png" id="2_pie2b"]
-[ext_resource type="Texture2D" uid="uid://dp0yxnrwhecdw" path="res://Art/Sprites/Characters/Green/character_green_hit.png" id="2_r4ynj"]
-[ext_resource type="Texture2D" uid="uid://cnapve2guu3f8" path="res://Art/Sprites/Characters/Green/character_green_jump.png" id="3_r4ynj"]
-[ext_resource type="Texture2D" uid="uid://ufd740hfeemy" path="res://Art/Sprites/Characters/Green/character_green_walk_b.png" id="3_sfp35"]
+[ext_resource type="Texture2D" uid="uid://cigjh6lj4wtut" path="res://Art/Sprites/Characters/Player/AnimationFrames/character_green_idle.png" id="2_hv3sw"]
+[ext_resource type="Texture2D" uid="uid://dl2aa05lebbar" path="res://Art/Sprites/Characters/Player/AnimationFrames/character_green_walk_a.png" id="2_pie2b"]
+[ext_resource type="Texture2D" uid="uid://dp0yxnrwhecdw" path="res://Art/Sprites/Characters/Player/AnimationFrames/character_green_hit.png" id="2_r4ynj"]
+[ext_resource type="Texture2D" uid="uid://cnapve2guu3f8" path="res://Art/Sprites/Characters/Player/AnimationFrames/character_green_jump.png" id="3_r4ynj"]
+[ext_resource type="Texture2D" uid="uid://ufd740hfeemy" path="res://Art/Sprites/Characters/Player/AnimationFrames/character_green_walk_b.png" id="3_sfp35"]
 [ext_resource type="AudioStream" uid="uid://2xojkcxyon2v" path="res://Audio/SoundFx/Player/Normal/playerWalk.mp3" id="7_wmu34"]
 [ext_resource type="AudioStream" uid="uid://c31qevb8lu2d6" path="res://Audio/SoundFx/Player/Normal/playerJump.mp3" id="8_0bouj"]
 [ext_resource type="AudioStream" uid="uid://t8g2ogh6vy7p" path="res://Audio/SoundFx/Player/Normal/playerHit.mp3" id="10_e3gfx"]
@@ -105,19 +105,15 @@ one_shot = true
 
 [node name="PlayerWalk" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_wmu34")
-bus = &"Sound Effects"
 
 [node name="PlayerJump" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("8_0bouj")
-bus = &"Sound Effects"
 
 [node name="PlayerHit" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("10_e3gfx")
-bus = &"Sound Effects"
 
 [node name="PlayerEnemyHit" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("11_x5p36")
-bus = &"Sound Effects"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -19,8 +19,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$AnimatedSprite2D.flip_h = direction > 0
 	
-	if !isBeingCaptured and velocity.x != 0:
-		$AnimatedSprite2D.play("walk")
+	if !isBeingCaptured and !stunned:
+		$AnimatedSprite2D.play("idle")
 	else:
 		$AnimatedSprite2D.stop()
 	
@@ -72,6 +72,7 @@ func _on_die_animation_finished(anim_name: StringName) -> void:
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("Player"):
+		$AnimatedSprite2D.play("hit")
 		stunned = true
 		$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 		get_parent().enemyhit.emit()

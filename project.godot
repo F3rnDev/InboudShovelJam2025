@@ -16,8 +16,8 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-boot_splash/image="uid://b6krnkyao2wud"
-config/icon="res://icon.svg"
+boot_splash/image="uid://bxw1xr8070hf8"
+config/icon="uid://tb73fo71k46g"
 
 [audio]
 

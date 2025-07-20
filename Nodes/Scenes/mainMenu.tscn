@@ -1,16 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://dbnsg65g0jkqf"]
+[gd_scene load_steps=22 format=3 uid="uid://dbnsg65g0jkqf"]
 
 [ext_resource type="Script" uid="uid://cnk0djki2s0bp" path="res://Scripts/main_menu.gd" id="1_f872w"]
-[ext_resource type="Texture2D" uid="uid://bqbehjk01ads1" path="res://Art/Sprites/Backgrounds/05_sky.png" id="1_oli08"]
-[ext_resource type="Script" uid="uid://drqocjk5017wb" path="res://Scripts/cloudLayer.gd" id="2_texk2"]
-[ext_resource type="Texture2D" uid="uid://wsrfjacr3r2b" path="res://Art/Sprites/Backgrounds/04_cloud.png" id="3_f872w"]
-[ext_resource type="Texture2D" uid="uid://gfs07qdv1hf7" path="res://Art/Sprites/Backgrounds/03.5_big_hill_fade.png" id="5_2swqs"]
-[ext_resource type="Texture2D" uid="uid://dvpvcslxhgh20" path="res://Art/Sprites/Backgrounds/02_hill.png" id="5_44m5e"]
-[ext_resource type="Texture2D" uid="uid://bo3v2nh02hnwh" path="res://Art/Sprites/Backgrounds/01_grass.png" id="6_j6tyu"]
+[ext_resource type="PackedScene" uid="uid://cab5m6jmd7dji" path="res://Nodes/background.tscn" id="5_f872w"]
 [ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Themes/gameTheme.tres" id="8_rqmlg"]
 [ext_resource type="PackedScene" uid="uid://c1bg154t410gi" path="res://Nodes/Scenes/Options.tscn" id="10_44m5e"]
 [ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="10_fr1cp"]
-[ext_resource type="Texture2D" uid="uid://ba33bvqtd8415" path="res://Art/Sprites/LOGO-Sheet.png" id="10_j6tyu"]
+[ext_resource type="Texture2D" uid="uid://ba33bvqtd8415" path="res://Art/Sprites/UI/Logo/logoSheet.png" id="10_j6tyu"]
 [ext_resource type="AudioStream" uid="uid://biwfqcjesyj06" path="res://Audio/SoundFx/UI/UIMove.mp3" id="12_fr1cp"]
 [ext_resource type="AudioStream" uid="uid://dsteu1u4mwl88" path="res://Audio/SoundFx/UI/UIAccept.mp3" id="13_2swqs"]
 
@@ -126,58 +121,6 @@ _data = {
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_f872w")
 
-[node name="Background" type="ParallaxBackground" parent="."]
-scale = Vector2(0.5, 0.5)
-transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
-
-[node name="Sky" type="ParallaxLayer" parent="Background"]
-position = Vector2(0, -750)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Sky"]
-texture = ExtResource("1_oli08")
-centered = false
-
-[node name="Cloud" type="ParallaxLayer" parent="Background"]
-position = Vector2(0, -750)
-motion_mirroring = Vector2(2560, 0)
-script = ExtResource("2_texk2")
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Cloud"]
-texture = ExtResource("3_f872w")
-centered = false
-
-[node name="HillFade" type="ParallaxLayer" parent="Background"]
-position = Vector2(0, -750)
-motion_scale = Vector2(0.2, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/HillFade"]
-texture = ExtResource("5_2swqs")
-centered = false
-
-[node name="Hill" type="ParallaxLayer" parent="Background"]
-position = Vector2(0, -750)
-motion_scale = Vector2(0.3, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Hill"]
-texture = ExtResource("5_44m5e")
-centered = false
-
-[node name="Grass" type="ParallaxLayer" parent="Background"]
-position = Vector2(0, -750)
-motion_scale = Vector2(0.4, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Background/Grass"]
-texture = ExtResource("6_j6tyu")
-centered = false
-
-[node name="GrennContinuos" type="ParallaxLayer" parent="Background"]
-
-[node name="ColorRect" type="ColorRect" parent="Background/GrennContinuos"]
-offset_top = 1792.0
-offset_right = 2560.0
-offset_bottom = 2047.0
-color = Color(0.180392, 0.8, 0.443137, 1)
-
 [node name="MenuCanvas" type="CanvasLayer" parent="."]
 
 [node name="Controls" type="Control" parent="MenuCanvas"]
@@ -247,6 +190,10 @@ libraries = {
 }
 autoplay = "logo"
 
+[node name="Background" parent="." instance=ExtResource("5_f872w")]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
 [node name="Options" parent="." instance=ExtResource("10_44m5e")]
 visible = false
 
@@ -254,11 +201,9 @@ visible = false
 
 [node name="SelectSfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("12_fr1cp")
-bus = &"Sound Effects"
 
 [node name="ConfirmSfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("13_2swqs")
-bus = &"Sound Effects"
 
 [connection signal="button_down" from="MenuCanvas/Options/Play" to="." method="_on_play_button_down"]
 [connection signal="button_down" from="MenuCanvas/Options/Play" to="." method="_on_btn_pressed"]
