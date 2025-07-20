@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://6jg502bjlxcc"]
+[gd_scene load_steps=18 format=3 uid="uid://6jg502bjlxcc"]
 
 [ext_resource type="Script" uid="uid://b3bjetqxi0kvj" path="res://Scripts/gamehud.gd" id="1_ic5la"]
 [ext_resource type="Texture2D" uid="uid://coch0d8ev0quj" path="res://Art/Sprites/Tiles/HUD/Heart/hud_heart.png" id="1_oekg1"]
 [ext_resource type="Texture2D" uid="uid://bqucotcnjxcor" path="res://Art/Sprites/Tiles/HUD/Heart/hud_heart_empty.png" id="1_q117g"]
 [ext_resource type="Texture2D" uid="uid://cqwmhtyjpwyo7" path="res://Art/Sprites/Tiles/HUD/HumanHUD.png" id="3_b12m7"]
 [ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Fonts/labelSettings.tres" id="5_ic5la"]
+[ext_resource type="AudioStream" uid="uid://chubouiapie7q" path="res://Audio/SoundFx/CaptureTHEM.mp3" id="6_bvtjh"]
 [ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Themes/gameTheme.tres" id="6_wqp3y"]
 [ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Tilemaps/tilemap_keyboard.tres" id="7_ktl86"]
 
@@ -121,6 +122,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CaptureTHEM Audio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_fg304"]
 resource_name = "captureAll"
@@ -148,6 +161,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CaptureTHEM Audio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4k7rx"]
@@ -232,9 +257,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -234.0
+offset_left = -267.0
 offset_top = -200.0
-offset_right = 234.0
+offset_right = 201.0
 offset_bottom = -77.0
 grow_horizontal = 2
 text = "Current Stage
@@ -339,6 +364,10 @@ label_settings = ExtResource("5_ic5la")
 libraries = {
 &"": SubResource("AnimationLibrary_4k7rx")
 }
+
+[node name="CaptureTHEM Audio" type="AudioStreamPlayer" parent="Control/Capture Them"]
+stream = ExtResource("6_bvtjh")
+bus = &"Sound Effects"
 
 [node name="Controls" type="Control" parent="Control"]
 layout_mode = 1

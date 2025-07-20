@@ -28,3 +28,6 @@ func updateHealth(curHealth):
 
 func setCapturedEnemies(enemies):
 	$Control/VBoxContainer/HBoxContainer/Label.text = "x " + str(enemies)
+
+func playCaptureThemAudio():
+	$"Control/Capture Them/CaptureTHEM Audio".play()
