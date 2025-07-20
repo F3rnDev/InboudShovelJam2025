@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://c3yq62f4x8a6y"]
+[gd_scene load_steps=19 format=4 uid="uid://c3yq62f4x8a6y"]
 
 [ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_1vjpr"]
 [ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_rlejx"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://drqocjk5017wb" path="res://Scripts/cloudLayer.gd" id="4_x8tlj"]
 [ext_resource type="Texture2D" uid="uid://wsrfjacr3r2b" path="res://Art/Sprites/Backgrounds/04_cloud.png" id="5_v75gp"]
 [ext_resource type="Texture2D" uid="uid://dcpl1qhfvsx0f" path="res://Art/Sprites/Backgrounds/03_hill_fade.png" id="6_ackmn"]
+[ext_resource type="Texture2D" uid="uid://gfs07qdv1hf7" path="res://Art/Sprites/Backgrounds/03.5_big_hill_fade.png" id="6_x8tlj"]
+[ext_resource type="Texture2D" uid="uid://b5am73r24i85" path="res://Art/Sprites/Backgrounds/02.5_hill_fade.png" id="7_h4b3u"]
 [ext_resource type="Texture2D" uid="uid://dvpvcslxhgh20" path="res://Art/Sprites/Backgrounds/02_hill.png" id="7_scr1h"]
 [ext_resource type="Texture2D" uid="uid://bo3v2nh02hnwh" path="res://Art/Sprites/Backgrounds/01_grass.png" id="8_lblks"]
 [ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="9_vxb2a"]
@@ -42,13 +44,31 @@ script = ExtResource("4_x8tlj")
 texture = ExtResource("5_v75gp")
 centered = false
 
-[node name="HillFade" type="ParallaxLayer" parent="Background"]
+[node name="BigHillFade" type="ParallaxLayer" parent="Background"]
+position = Vector2(0, -750)
+motion_scale = Vector2(0.25, 1)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/BigHillFade"]
+texture = ExtResource("6_x8tlj")
+centered = false
+
+[node name="BigHill" type="ParallaxLayer" parent="Background"]
 position = Vector2(0, -750)
 motion_scale = Vector2(0.2, 1)
 motion_mirroring = Vector2(2560, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/HillFade"]
+[node name="Sprite2D" type="Sprite2D" parent="Background/BigHill"]
 texture = ExtResource("6_ackmn")
+centered = false
+
+[node name="HillFade" type="ParallaxLayer" parent="Background"]
+position = Vector2(0, -750)
+motion_scale = Vector2(0.35, 1)
+motion_mirroring = Vector2(2560, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/HillFade"]
+texture = ExtResource("7_h4b3u")
 centered = false
 
 [node name="Hill" type="ParallaxLayer" parent="Background"]
