@@ -10,6 +10,7 @@ var direction = -1
 @onready var floorRay = $RayCastFloor
 
 var stunned = false
+var dead = false
 
 var initialPos
 
@@ -68,6 +69,7 @@ func horizontalMovement(delta):
 
 func dieAnimation():
 	$AnimatedSprite2D/AnimationPlayer.play("die")
+	dead = true
 
 func _on_die_animation_finished(anim_name: StringName) -> void:
 	queue_free()

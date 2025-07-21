@@ -137,7 +137,7 @@ func _on_laser_area_exited(area: Area2D) -> void:
 		area.get_parent().isBeingCaptured = false
 
 func _on_capture_area_entered(area: Area2D) -> void:
-	if area.get_parent().is_in_group("Enemy") and captureMode:
+	if area.get_parent().is_in_group("Enemy") and captureMode and !area.get_parent().dead:
 		enemiesCaptured += 1
 		enemyCaptured.emit(enemiesCaptured)
 		$Audio/EnemiesCaptured.play()

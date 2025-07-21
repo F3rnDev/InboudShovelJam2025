@@ -44,13 +44,19 @@ func setDefaultStageByLast():
 	selectedStageID = currentID
 
 func setDefaultStageBySavedData():
+	var foundStage = false
+	
 	for stageID in $Stages.get_child_count():
 		var stage = $Stages.get_child(stageID)
 		var stageData = stage.levelNode.instantiate().get_scene_file_path()
 		
 		if PlayerData.lastSelectedStage == stageData:
 			selectedStageID = stageID
+			foundStage = true
 			break
+	
+	if !foundStage:
+		setDefaultStageByLast()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
