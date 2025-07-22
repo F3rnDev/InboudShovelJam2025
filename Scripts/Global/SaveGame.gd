@@ -3,9 +3,9 @@ extends Node
 #Configurations and their defaults
 var configDict = {
 	"fullscreen" = false,
-	"masterVolume" = 100.0,
-	"musicVolume" = 100.0,
-	"sfxVolume" = 100.0
+	"masterVolume" = 1.0,
+	"musicVolume" = 1.0,
+	"sfxVolume" = 1.0
 }
 
 #Stage
@@ -39,6 +39,7 @@ func loadConfig(configData = null):
 	var masterAudioID = AudioServer.get_bus_index("Master")
 	var musicAudioID = AudioServer.get_bus_index("Music")
 	var sfxAudioID = AudioServer.get_bus_index("Sound Effects")
+	
 	
 	AudioServer.set_bus_volume_db(masterAudioID, linear_to_db(configDict["masterVolume"]))
 	AudioServer.set_bus_volume_db(musicAudioID, linear_to_db(configDict["musicVolume"]))
