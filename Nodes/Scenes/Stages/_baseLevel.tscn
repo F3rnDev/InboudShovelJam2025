@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=4 uid="uid://hurqogmwbtkn"]
 
-[ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_q6bdj"]
-[ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_jrmng"]
-[ext_resource type="PackedScene" uid="uid://cab5m6jmd7dji" path="res://Nodes/background.tscn" id="3_lukqi"]
-[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="9_btmhw"]
-[ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="10_ieckw"]
-[ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="11_uhetr"]
-[ext_resource type="PackedScene" path="res://Nodes/gameCamera.tscn" id="12_ory6k"]
-[ext_resource type="Script" path="res://Scripts/enemy_group.gd" id="13_804n1"]
-[ext_resource type="PackedScene" path="res://Nodes/PauseMenu.tscn" id="14_ycns1"]
+[ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/Scenes/gameplay.gd" id="1_q6bdj"]
+[ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Global Components/hud.tscn" id="2_jrmng"]
+[ext_resource type="PackedScene" uid="uid://cab5m6jmd7dji" path="res://Nodes/Global Components/background.tscn" id="3_lukqi"]
+[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Assets/Tilemaps/tilemap_world.tres" id="9_btmhw"]
+[ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/Player/playerUFO.tscn" id="10_ieckw"]
+[ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/Player/player.tscn" id="11_uhetr"]
+[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/Global Components/gameCamera.tscn" id="12_ory6k"]
+[ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/Enemy/enemy_group.gd" id="13_804n1"]
+[ext_resource type="PackedScene" uid="uid://dukadcev2pjn" path="res://Nodes/Scenes/Menu/PauseMenu.tscn" id="14_ycns1"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_q6bdj")

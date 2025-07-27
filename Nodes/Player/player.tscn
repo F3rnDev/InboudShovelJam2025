@@ -1,0 +1,141 @@
+[gd_scene load_steps=16 format=3 uid="uid://dl8e2shl6fofv"]
+
+[ext_resource type="Script" uid="uid://bdqdc87vcx51b" path="res://Scripts/Player/player.gd" id="1_qlfej"]
+[ext_resource type="Texture2D" uid="uid://c4pn81ipd5uir" path="res://Assets/Art/Sprites/Characters/Player/PlayerNES-Sheet.png" id="3_50h10"]
+[ext_resource type="AudioStream" uid="uid://2xojkcxyon2v" path="res://Assets/Audio/SoundFx/Player/Normal/playerWalk.mp3" id="7_wmu34"]
+[ext_resource type="AudioStream" uid="uid://c31qevb8lu2d6" path="res://Assets/Audio/SoundFx/Player/Normal/playerJump.mp3" id="8_0bouj"]
+[ext_resource type="AudioStream" uid="uid://t8g2ogh6vy7p" path="res://Assets/Audio/SoundFx/Player/Normal/playerHit.mp3" id="10_e3gfx"]
+[ext_resource type="AudioStream" uid="uid://dd5rjx8l1eeme" path="res://Assets/Audio/SoundFx/Player/Normal/playerEnemyHit.mp3" id="11_x5p36"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0yf7"]
+atlas = ExtResource("3_50h10")
+region = Rect2(64, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4jjx"]
+atlas = ExtResource("3_50h10")
+region = Rect2(0, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdvti"]
+atlas = ExtResource("3_50h10")
+region = Rect2(48, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hu6s"]
+atlas = ExtResource("3_50h10")
+region = Rect2(32, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ripo5"]
+atlas = ExtResource("3_50h10")
+region = Rect2(16, 0, 16, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlfej"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0yf7")
+}],
+"loop": true,
+"name": &"Hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4jjx")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdvti")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hu6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ripo5")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv3sw"]
+radius = 33.5
+height = 76.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hv3sw"]
+size = Vector2(28, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4ynj"]
+size = Vector2(56, 13.5)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 2
+script = ExtResource("1_qlfej")
+frictionMult = 7
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qlfej")
+animation = &"Walk"
+frame_progress = 0.872745
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_hv3sw")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 99)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_hv3sw")
+debug_color = Color(0.953185, 6.73831e-07, 0.554854, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_r4ynj")
+debug_color = Color(0.547816, 0.564661, 1.34766e-06, 0.42)
+
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="CoyotteTime" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="PlayerWalk" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_wmu34")
+bus = &"Sound Effects"
+
+[node name="PlayerJump" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_0bouj")
+bus = &"Sound Effects"
+
+[node name="PlayerHit" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_e3gfx")
+bus = &"Sound Effects"
+
+[node name="PlayerEnemyHit" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("11_x5p36")
+bus = &"Sound Effects"
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

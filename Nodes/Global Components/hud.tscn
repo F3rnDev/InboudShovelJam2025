@@ -1,0 +1,441 @@
+[gd_scene load_steps=18 format=3 uid="uid://6jg502bjlxcc"]
+
+[ext_resource type="Script" uid="uid://b3bjetqxi0kvj" path="res://Scripts/Components/gamehud.gd" id="1_5463y"]
+[ext_resource type="Texture2D" uid="uid://bqucotcnjxcor" path="res://Assets/Art/Sprites/UI/HUD/Heart/hud_heart_empty.png" id="2_wepyn"]
+[ext_resource type="Texture2D" uid="uid://coch0d8ev0quj" path="res://Assets/Art/Sprites/UI/HUD/Heart/hud_heart.png" id="3_oqmaw"]
+[ext_resource type="Texture2D" uid="uid://cqwmhtyjpwyo7" path="res://Assets/Art/Sprites/UI/HUD/enemyIcon.png" id="4_tfmcx"]
+[ext_resource type="LabelSettings" uid="uid://b4ygd0rhiokqe" path="res://Assets/Fonts/labelSettings.tres" id="5_xnc4s"]
+[ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Assets/Themes/gameTheme.tres" id="6_pe2bj"]
+[ext_resource type="AudioStream" uid="uid://chubouiapie7q" path="res://Assets/Audio/SoundFx/CaptureTHEM.mp3" id="7_1pm4o"]
+[ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Assets/Tilemaps/tilemap_keyboard.tres" id="8_ftetf"]
+
+[sub_resource type="Animation" id="Animation_wqp3y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(208, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ktl86"]
+resource_name = "stageAppear"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(0.170755, 1, 2.46229, 1),
+"update": 0,
+"values": [Vector2(208, -200), Vector2(208, 0), Vector2(208, 0), Vector2(208, -200)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ktl86"]
+_data = {
+&"RESET": SubResource("Animation_wqp3y"),
+&"stageAppear": SubResource("Animation_ktl86")
+}
+
+[sub_resource type="Animation" id="Animation_bvtjh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ic5la"]
+resource_name = "blink"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fg304"]
+_data = {
+&"RESET": SubResource("Animation_bvtjh"),
+&"blink": SubResource("Animation_ic5la")
+}
+
+[sub_resource type="Animation" id="Animation_4h64r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/Capture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1e-05),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/Them:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1.03526e-05),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CaptureTHEM Audio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("JustGetStarted:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fg304"]
+resource_name = "captureAll"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/Capture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1, 2.9, 3),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/Them:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9, 2, 2.9, 3),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CaptureTHEM Audio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("JustGetStarted:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1e-05, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4k7rx"]
+_data = {
+&"RESET": SubResource("Animation_4h64r"),
+&"captureAll": SubResource("Animation_fg304")
+}
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_5463y")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 152.0
+
+[node name="LifeHolder" type="BoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="LifeEmpty" type="HBoxContainer" parent="Control/VBoxContainer/LifeHolder"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/LifeEmpty"]
+layout_mode = 2
+texture = ExtResource("2_wepyn")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/LifeEmpty"]
+layout_mode = 2
+texture = ExtResource("2_wepyn")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/LifeEmpty"]
+layout_mode = 2
+texture = ExtResource("2_wepyn")
+
+[node name="Life" type="Node" parent="Control/VBoxContainer/LifeHolder"]
+
+[node name="LifeFull" type="HBoxContainer" parent="Control/VBoxContainer/LifeHolder/Life"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 84.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/Life/LifeFull"]
+layout_mode = 2
+texture = ExtResource("3_oqmaw")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/Life/LifeFull"]
+layout_mode = 2
+texture = ExtResource("3_oqmaw")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/VBoxContainer/LifeHolder/Life/LifeFull"]
+layout_mode = 2
+texture = ExtResource("3_oqmaw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_tfmcx")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "x 0"
+label_settings = ExtResource("5_xnc4s")
+uppercase = true
+
+[node name="CurrentStage" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -368.0
+offset_right = 368.0
+offset_bottom = 123.0
+grow_horizontal = 2
+theme = ExtResource("6_pe2bj")
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 25
+text = "Current Stage
+- Tutorial - Level 01 -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/CurrentStage"]
+libraries = {
+&"": SubResource("AnimationLibrary_ktl86")
+}
+autoplay = "stageAppear"
+
+[node name="GameOverText" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -56.0
+offset_right = 267.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game over
+- press R to restart -"
+label_settings = ExtResource("5_xnc4s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/GameOverText"]
+libraries = {
+&"": SubResource("AnimationLibrary_fg304")
+}
+
+[node name="WinGameText" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -321.0
+offset_top = -56.0
+offset_right = 321.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Great job
+- press ENTER to proceed -"
+label_settings = ExtResource("5_xnc4s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/WinGameText"]
+libraries = {
+&"": SubResource("AnimationLibrary_fg304")
+}
+
+[node name="Capture Them" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JustGetStarted" type="Label" parent="Control/Capture Them"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -110.525
+offset_right = 320.0
+offset_bottom = -78.525
+grow_horizontal = 2
+grow_vertical = 2
+text = "- JUST GET STARTED -"
+label_settings = ExtResource("5_xnc4s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Capture Them"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -20.0
+offset_right = 230.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Capture" type="Label" parent="Control/Capture Them/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("6_pe2bj")
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+text = "CAPTURE"
+
+[node name="Them" type="Label" parent="Control/Capture Them/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("6_pe2bj")
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 32
+text = "THEM ALL"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Capture Them"]
+libraries = {
+&"": SubResource("AnimationLibrary_4k7rx")
+}
+
+[node name="CaptureTHEM Audio" type="AudioStreamPlayer" parent="Control/Capture Them"]
+stream = ExtResource("7_1pm4o")
+
+[node name="Controls" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Exit" type="Label" parent="Control/Controls"]
+layout_mode = 2
+offset_left = 103.0
+offset_top = 617.0
+offset_right = 263.0
+offset_bottom = 633.0
+theme = ExtResource("6_pe2bj")
+text = "Pause Game"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Control/Controls"]
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 19, 0, 1, 0, 32, 0, 1, 0, 0, 0, 2, 0, 19, 0, 1, 0, 33, 0, 1, 0, 0, 0)
+tile_set = ExtResource("8_ftetf")
+
+[connection signal="animation_finished" from="Control/Capture Them/AnimationPlayer" to="." method="_on_capture_animation_finished"]

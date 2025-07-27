@@ -21,13 +21,14 @@ config/icon="uid://tb73fo71k46g"
 
 [audio]
 
+buses/default_bus_layout="res://Assets/Audio/default_bus_layout.tres"
 general/default_playback_type.web=0
 
 [autoload]
 
-TransitionScene="*res://Nodes/transitionScene.tscn"
+TransitionScene="*res://Nodes/Global Components/transitionScene.tscn"
 PlayerData="*res://Scripts/Global/SaveGame.gd"
-BackgroundMusic="*res://Nodes/Scenes/BackgroundMusic.tscn"
+BackgroundMusic="*res://Nodes/Global Components/BackgroundMusic.tscn"
 
 [display]
 

@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b4ygd0rhiokqe"]
+
+[ext_resource type="FontFile" uid="uid://cx71wccictfs2" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="1_1qwej"]
+
+[resource]
+line_spacing = 19.51
+font = ExtResource("1_1qwej")
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)

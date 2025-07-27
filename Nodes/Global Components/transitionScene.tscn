@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://oagjoc8qq8ui"]
+
+[ext_resource type="Script" uid="uid://2rl2715fd83i" path="res://Scripts/Components/transition_scene.gd" id="1_glvh7"]
+[ext_resource type="AudioStream" uid="uid://c8ybhtee2lc4a" path="res://Assets/Audio/SoundFx/sweepOn.mp3" id="2_u2k0g"]
+[ext_resource type="AudioStream" uid="uid://4sm0bt46r165" path="res://Assets/Audio/SoundFx/sweepOff.mp3" id="3_8nnnk"]
+[ext_resource type="Shader" uid="uid://c14dx2b8sk4re" path="res://Assets/Shaders/defaultTransition.gdshader" id="4_cyt0f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dracm"]
+shader = ExtResource("4_cyt0f")
+shader_parameter/progress = 0.0
+shader_parameter/reverse = false
+
+[sub_resource type="Animation" id="Animation_xf20e"]
+resource_name = "fadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.287175, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/reverse")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_c4vg6"]
+resource_name = "fadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.287175, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/reverse")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aapda"]
+_data = {
+&"fadeIn": SubResource("Animation_xf20e"),
+&"fadeOut": SubResource("Animation_c4vg6")
+}
+
+[node name="TransitionScene" type="CanvasLayer"]
+layer = 2
+visible = false
+script = ExtResource("1_glvh7")
+sweepOn = ExtResource("2_u2k0g")
+sweepOff = ExtResource("3_8nnnk")
+
+[node name="Transition" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_dracm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Transition animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Transition")
+libraries = {
+&"": SubResource("AnimationLibrary_aapda")
+}
+
+[node name="Sweep" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_u2k0g")
+volume_db = -10.291
+bus = &"Sound Effects"
+
+[connection signal="animation_finished" from="Transition animation" to="." method="_on_transition_animation_animation_finished"]

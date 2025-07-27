@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=4 uid="uid://kfsxbthau404"]
 
-[ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/gameplay.gd" id="1_ip752"]
-[ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Scenes/hud.tscn" id="2_i1v7k"]
-[ext_resource type="PackedScene" uid="uid://cab5m6jmd7dji" path="res://Nodes/background.tscn" id="3_ayf5c"]
-[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Tilemaps/tilemap_world.tres" id="4_ctlhi"]
-[ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/playerUFO.tscn" id="5_0vw1j"]
-[ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/player.tscn" id="6_vku2b"]
-[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/gameCamera.tscn" id="7_bjtbp"]
-[ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/enemy_group.gd" id="8_8moxm"]
-[ext_resource type="PackedScene" uid="uid://dukadcev2pjn" path="res://Nodes/PauseMenu.tscn" id="11_epk2q"]
+[ext_resource type="Script" uid="uid://ffaygal6lgs0" path="res://Scripts/Scenes/gameplay.gd" id="1_ip752"]
+[ext_resource type="PackedScene" uid="uid://6jg502bjlxcc" path="res://Nodes/Global Components/hud.tscn" id="2_i1v7k"]
+[ext_resource type="PackedScene" uid="uid://cab5m6jmd7dji" path="res://Nodes/Global Components/background.tscn" id="3_ayf5c"]
+[ext_resource type="TileSet" uid="uid://ohv35se0q4xm" path="res://Assets/Tilemaps/tilemap_world.tres" id="4_ctlhi"]
+[ext_resource type="PackedScene" uid="uid://c0i2qcdea4yl" path="res://Nodes/Player/playerUFO.tscn" id="5_0vw1j"]
+[ext_resource type="PackedScene" uid="uid://dl8e2shl6fofv" path="res://Nodes/Player/player.tscn" id="6_vku2b"]
+[ext_resource type="PackedScene" uid="uid://crge5gwsssnoo" path="res://Nodes/Global Components/gameCamera.tscn" id="7_bjtbp"]
+[ext_resource type="Script" uid="uid://bpgusj6w8b8ww" path="res://Scripts/Enemy/enemy_group.gd" id="8_8moxm"]
+[ext_resource type="PackedScene" uid="uid://dukadcev2pjn" path="res://Nodes/Scenes/Menu/PauseMenu.tscn" id="11_epk2q"]
 
 [node name="World 02 - Level 04" type="Node2D"]
 script = ExtResource("1_ip752")

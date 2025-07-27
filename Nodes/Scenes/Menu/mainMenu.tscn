@@ -1,0 +1,220 @@
+[gd_scene load_steps=22 format=3 uid="uid://dbnsg65g0jkqf"]
+
+[ext_resource type="Script" uid="uid://cnk0djki2s0bp" path="res://Scripts/Scenes/main_menu.gd" id="1_17ijl"]
+[ext_resource type="Theme" uid="uid://bgagwfbb2plbh" path="res://Assets/Themes/gameTheme.tres" id="2_njlhe"]
+[ext_resource type="TileSet" uid="uid://bt3vewhvgitgu" path="res://Assets/Tilemaps/tilemap_keyboard.tres" id="3_kg6ya"]
+[ext_resource type="Texture2D" uid="uid://ba33bvqtd8415" path="res://Assets/Art/Sprites/UI/Logo/logoSheet.png" id="4_uf6m6"]
+[ext_resource type="PackedScene" uid="uid://cab5m6jmd7dji" path="res://Nodes/Global Components/background.tscn" id="5_2urji"]
+[ext_resource type="PackedScene" uid="uid://c1bg154t410gi" path="res://Nodes/Scenes/Menu/Options.tscn" id="6_n353f"]
+[ext_resource type="AudioStream" uid="uid://biwfqcjesyj06" path="res://Assets/Audio/SoundFx/UI/UIMove.mp3" id="7_flx1w"]
+[ext_resource type="AudioStream" uid="uid://dsteu1u4mwl88" path="res://Assets/Audio/SoundFx/UI/UIAccept.mp3" id="8_5w15e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44m5e"]
+atlas = ExtResource("4_uf6m6")
+region = Rect2(0, 0, 384, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6tyu"]
+atlas = ExtResource("4_uf6m6")
+region = Rect2(384, 0, 384, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr1cp"]
+atlas = ExtResource("4_uf6m6")
+region = Rect2(768, 0, 384, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2swqs"]
+atlas = ExtResource("4_uf6m6")
+region = Rect2(0, 222, 384, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7u5e"]
+atlas = ExtResource("4_uf6m6")
+region = Rect2(384, 222, 384, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moq7u"]
+atlas = ExtResource("4_uf6m6")
+region = Rect2(768, 222, 384, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68wun"]
+atlas = ExtResource("4_uf6m6")
+region = Rect2(0, 444, 384, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8jwo"]
+atlas = ExtResource("4_uf6m6")
+region = Rect2(384, 444, 384, 222)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax7ox"]
+atlas = ExtResource("4_uf6m6")
+region = Rect2(768, 444, 384, 222)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gn6vb"]
+animations = [{
+"frames": [{
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_44m5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6tyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr1cp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2swqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7u5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moq7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68wun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8jwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax7ox")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_j6tyu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 150)]
+}
+
+[sub_resource type="Animation" id="Animation_44m5e"]
+resource_name = "logo"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(0.392292, 0.420448, 1),
+"update": 0,
+"values": [Vector2(576, 150), Vector2(576, 131.65), Vector2(576, 150)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fr1cp"]
+_data = {
+&"RESET": SubResource("Animation_j6tyu"),
+&"logo": SubResource("Animation_44m5e")
+}
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_17ijl")
+
+[node name="MenuCanvas" type="CanvasLayer" parent="."]
+
+[node name="Controls" type="Control" parent="MenuCanvas"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 22.715
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Select" type="Label" parent="MenuCanvas/Controls"]
+layout_mode = 0
+offset_left = 104.65
+offset_top = 617.0
+offset_right = 264.65
+offset_bottom = 633.0
+theme = ExtResource("2_njlhe")
+text = "Select Option"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="MenuCanvas/Controls"]
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray(0, 0, 1, 0, 19, 0, 1, 0, 32, 0, 3, 0, 0, 0, 2, 0, 19, 0, 1, 0, 33, 0, 3, 0, 0, 0, 2, 0, 18, 0, 1, 0, 33, 0, 2, 0, 0, 0, 1, 0, 18, 0, 1, 0, 32, 0, 2, 0, 0, 0)
+tile_set = ExtResource("3_kg6ya")
+
+[node name="Options" type="VBoxContainer" parent="MenuCanvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -2.70999
+offset_right = 81.0
+offset_bottom = 259.29
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_njlhe")
+theme_override_constants/separation = 16
+
+[node name="Play" type="Button" parent="MenuCanvas/Options"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_njlhe")
+text = "Play"
+
+[node name="Options" type="Button" parent="MenuCanvas/Options"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Options"
+
+[node name="Exit" type="Button" parent="MenuCanvas/Options"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Exit"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MenuCanvas"]
+position = Vector2(576, 150)
+sprite_frames = SubResource("SpriteFrames_gn6vb")
+autoplay = "default"
+frame_progress = 0.0568076
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuCanvas/AnimatedSprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_fr1cp")
+}
+autoplay = "logo"
+
+[node name="Background" parent="." instance=ExtResource("5_2urji")]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="Options" parent="." instance=ExtResource("6_n353f")]
+visible = false
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="SelectSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_flx1w")
+
+[node name="ConfirmSfx" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_5w15e")
+
+[connection signal="button_down" from="MenuCanvas/Options/Play" to="." method="_on_btn_pressed"]
+[connection signal="button_down" from="MenuCanvas/Options/Play" to="." method="_on_play_button_down"]
+[connection signal="focus_entered" from="MenuCanvas/Options/Play" to="." method="_on_btn_focus_entered"]
+[connection signal="mouse_entered" from="MenuCanvas/Options/Play" to="." method="_on_btn_focus_entered"]
+[connection signal="button_down" from="MenuCanvas/Options/Options" to="." method="setOptionMenu"]
+[connection signal="button_down" from="MenuCanvas/Options/Options" to="." method="_on_btn_pressed"]
+[connection signal="focus_entered" from="MenuCanvas/Options/Options" to="." method="_on_btn_focus_entered"]
+[connection signal="mouse_entered" from="MenuCanvas/Options/Options" to="." method="_on_btn_focus_entered"]
+[connection signal="button_down" from="MenuCanvas/Options/Exit" to="." method="_on_exit_button_down"]
+[connection signal="button_down" from="MenuCanvas/Options/Exit" to="." method="_on_btn_pressed"]
+[connection signal="focus_entered" from="MenuCanvas/Options/Exit" to="." method="_on_btn_focus_entered"]
+[connection signal="mouse_entered" from="MenuCanvas/Options/Exit" to="." method="_on_btn_focus_entered"]
+[connection signal="applyConfig" from="Options" to="." method="setOptionMenu"]

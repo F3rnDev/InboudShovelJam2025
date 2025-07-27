@@ -1,0 +1,162 @@
+[gd_scene load_steps=18 format=3 uid="uid://c0i2qcdea4yl"]
+
+[ext_resource type="Script" uid="uid://dofdjubsvauiu" path="res://Scripts/Player/player_ufo.gd" id="1_jtrr0"]
+[ext_resource type="Texture2D" uid="uid://dqk2t8362kx82" path="res://Assets/Art/Sprites/Characters/Player/PlayerUFONES-Sheet.png" id="2_t3liq"]
+[ext_resource type="Texture2D" uid="uid://ccwvady7kl0h6" path="res://Assets/Art/Sprites/Characters/Player/laserGreen2.png" id="3_k1odt"]
+[ext_resource type="AudioStream" uid="uid://btp27ln2mog3o" path="res://Assets/Audio/SoundFx/Player/UFO/ufoIdle.mp3" id="6_ht0yp"]
+[ext_resource type="AudioStream" uid="uid://dsteu1u4mwl88" path="res://Assets/Audio/SoundFx/UI/UIAccept.mp3" id="6_lacuh"]
+[ext_resource type="AudioStream" uid="uid://c0x84xyo7k7n6" path="res://Assets/Audio/SoundFx/Player/UFO/ufoCapture.mp3" id="8_gmaef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5yck"]
+atlas = ExtResource("2_t3liq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76ljb"]
+atlas = ExtResource("2_t3liq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iinax"]
+atlas = ExtResource("2_t3liq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qp7fc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5yck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76ljb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iinax")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1odt"]
+size = Vector2(112, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtrr0"]
+size = Vector2(69, 116)
+
+[sub_resource type="Animation" id="Animation_lacuh"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.225, 1),
+"update": 0,
+"values": [Vector2(1.5, 2), Vector2(0, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_jtrr0"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.225, 1),
+"update": 0,
+"values": [Vector2(0.05, 0), Vector2(1.5, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_i2vrh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_krmus"]
+_data = {
+&"Close": SubResource("Animation_lacuh"),
+&"Open": SubResource("Animation_jtrr0"),
+&"RESET": SubResource("Animation_i2vrh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2vrh"]
+size = Vector2(64, 36)
+
+[node name="PlayerUFO" type="CharacterBody2D" groups=["UFO"]]
+script = ExtResource("1_jtrr0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qp7fc")
+frame_progress = 0.46579
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_k1odt")
+
+[node name="LaserGreen2" type="Sprite2D" parent="."]
+position = Vector2(0, 64)
+texture = ExtResource("3_k1odt")
+offset = Vector2(0, 50)
+
+[node name="Laser Area" type="Area2D" parent="LaserGreen2"]
+position = Vector2(0, 50.115)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserGreen2/Laser Area"]
+position = Vector2(1, -7.11501)
+shape = SubResource("RectangleShape2D_jtrr0")
+debug_color = Color(0.863337, 0.000613956, 0.867291, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LaserGreen2"]
+libraries = {
+&"": SubResource("AnimationLibrary_krmus")
+}
+
+[node name="Capture Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capture Area"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_i2vrh")
+debug_color = Color(0.756339, 0.45326, 0.104897, 0.42)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="EnemiesCaptured" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_lacuh")
+bus = &"Sound Effects"
+
+[node name="Ufo Engine" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("6_ht0yp")
+volume_db = 5.0
+bus = &"Sound Effects"
+parameters/looping = true
+
+[node name="Ufo Capture" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_gmaef")
+volume_db = 5.0
+bus = &"Sound Effects"
+parameters/looping = true
+
+[connection signal="area_entered" from="LaserGreen2/Laser Area" to="." method="_on_laser_area_entered"]
+[connection signal="area_exited" from="LaserGreen2/Laser Area" to="." method="_on_laser_area_exited"]
+[connection signal="area_entered" from="Capture Area" to="." method="_on_capture_area_entered"]
