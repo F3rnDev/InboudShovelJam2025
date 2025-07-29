@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var animations:AnimatedSprite2D
 @export var animationsTransform:AnimationPlayer
 @export var stunCooldown:Timer
-@export var collision:CollisionShape2D
+@export var collisionHitbox:CollisionShape2D
 var playerUFO:CharacterBody2D
 var abductionSpeed:int = 200
 var isBeingCaptured:bool = false
@@ -17,7 +17,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	Respawn()
 	Stunned()
-	pass
 
 func _physics_process(delta: float) -> void:
 	BeingCaptured(delta)
@@ -39,11 +38,11 @@ func BeingCaptured(delta):
 func Stunned():
 	if stun: 
 		animations.play("hit")
-		collision.set_deferred("disabled", true)
+		collisionHitbox.set_deferred("disabled", true)
 		modulate.a = 0.3
 	else:
 		animations.play("idle")
-		collision.set_deferred("disabled", false)
+		collisionHitbox.set_deferred("disabled", false)
 		modulate.a = 1.0
 
 func Respawn():
