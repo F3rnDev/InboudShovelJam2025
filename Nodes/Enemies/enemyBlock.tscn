@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dslakpjmwe1vh"]
 
-[ext_resource type="Script" uid="uid://cb4ig178e652t" path="res://Scripts/Enemy/enemyBlock.gd" id="1_dudy7"]
+[ext_resource type="Script" uid="uid://bbjyaaevixocc" path="res://Scripts/Enemy/staticEnemy.gd" id="1_4kl4m"]
 [ext_resource type="Texture2D" uid="uid://0xyhxjd23hba" path="res://Assets/Art/Sprites/Characters/Enemies/block-Sheet.png" id="2_4kl4m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8m8kf"]
@@ -82,9 +82,13 @@ size = Vector2(48, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4erml"]
 size = Vector2(48, 7.5)
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animations", "animationsTransform", "stunCooldown", "collisionHitbox") groups=["Enemy"]]
 collision_mask = 2
-script = ExtResource("1_dudy7")
+script = ExtResource("1_4kl4m")
+animations = NodePath("AnimatedSprite2D")
+animationsTransform = NodePath("AnimatedSprite2D/AnimationPlayer")
+stunCooldown = NodePath("Timer")
+collisionHitbox = NodePath("Hitbox/CollisionShape2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -126,7 +130,7 @@ target_position = Vector2(0, 45)
 collision_mask = 2
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

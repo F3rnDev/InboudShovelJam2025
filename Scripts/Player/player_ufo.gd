@@ -141,6 +141,7 @@ func _on_capture_area_entered(area: Area2D) -> void:
 		enemiesCaptured += 1
 		enemyCaptured.emit(enemiesCaptured)
 		$Audio/EnemiesCaptured.play()
+		area.get_parent().dead = true
 		area.get_parent().dieAnimation()
 
 func _on_main_won_game() -> void:
