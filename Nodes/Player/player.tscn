@@ -65,15 +65,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv3sw"]
-radius = 33.5
-height = 76.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e0yf7"]
+size = Vector2(48, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv3sw"]
-size = Vector2(28, 51)
+size = Vector2(32, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4ynj"]
-size = Vector2(56, 13.5)
+size = Vector2(48, 4)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 2
@@ -87,8 +86,8 @@ animation = &"Walk"
 frame_progress = 0.872745
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
-shape = SubResource("CapsuleShape2D_hv3sw")
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_e0yf7")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 99)
@@ -98,7 +97,7 @@ collide_with_areas = true
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(1, -2)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_hv3sw")
 debug_color = Color(0.953185, 6.73831e-07, 0.554854, 0.42)
 
@@ -107,7 +106,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 30)
+position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_r4ynj")
 debug_color = Color(0.547816, 0.564661, 1.34766e-06, 0.42)
 

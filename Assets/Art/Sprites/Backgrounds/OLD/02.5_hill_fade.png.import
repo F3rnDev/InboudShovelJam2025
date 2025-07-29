@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvpvcslxhgh20"
-path="res://.godot/imported/02_hill.png-b58a48d775f61ad93e2eb76537c58c85.ctex"
+uid="uid://b5am73r24i85"
+path="res://.godot/imported/02.5_hill_fade.png-52639df82f555406163d928611daffd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Sprites/Backgrounds/02_hill.png"
-dest_files=["res://.godot/imported/02_hill.png-b58a48d775f61ad93e2eb76537c58c85.ctex"]
+source_file="res://Assets/Art/Sprites/Backgrounds/OLD/02.5_hill_fade.png"
+dest_files=["res://.godot/imported/02.5_hill_fade.png-52639df82f555406163d928611daffd0.ctex"]
 
 [params]
 

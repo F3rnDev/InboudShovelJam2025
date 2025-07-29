@@ -191,8 +191,8 @@ libraries = {
 autoplay = "logo"
 
 [node name="Background" parent="." instance=ExtResource("5_2urji")]
-scale = Vector2(0.5, 0.5)
-transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+offset = Vector2(0, -150.645)
+transform = Transform2D(1, 0, 0, 1, 0, -150.645)
 
 [node name="Options" parent="." instance=ExtResource("6_n353f")]
 visible = false
@@ -205,16 +205,16 @@ stream = ExtResource("7_flx1w")
 [node name="ConfirmSfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("8_5w15e")
 
-[connection signal="button_down" from="MenuCanvas/Options/Play" to="." method="_on_btn_pressed"]
 [connection signal="button_down" from="MenuCanvas/Options/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="MenuCanvas/Options/Play" to="." method="_on_btn_pressed"]
 [connection signal="focus_entered" from="MenuCanvas/Options/Play" to="." method="_on_btn_focus_entered"]
 [connection signal="mouse_entered" from="MenuCanvas/Options/Play" to="." method="_on_btn_focus_entered"]
-[connection signal="button_down" from="MenuCanvas/Options/Options" to="." method="setOptionMenu"]
 [connection signal="button_down" from="MenuCanvas/Options/Options" to="." method="_on_btn_pressed"]
+[connection signal="button_down" from="MenuCanvas/Options/Options" to="." method="setOptionMenu"]
 [connection signal="focus_entered" from="MenuCanvas/Options/Options" to="." method="_on_btn_focus_entered"]
 [connection signal="mouse_entered" from="MenuCanvas/Options/Options" to="." method="_on_btn_focus_entered"]
-[connection signal="button_down" from="MenuCanvas/Options/Exit" to="." method="_on_exit_button_down"]
 [connection signal="button_down" from="MenuCanvas/Options/Exit" to="." method="_on_btn_pressed"]
+[connection signal="button_down" from="MenuCanvas/Options/Exit" to="." method="_on_exit_button_down"]
 [connection signal="focus_entered" from="MenuCanvas/Options/Exit" to="." method="_on_btn_focus_entered"]
 [connection signal="mouse_entered" from="MenuCanvas/Options/Exit" to="." method="_on_btn_focus_entered"]
 [connection signal="applyConfig" from="Options" to="." method="setOptionMenu"]

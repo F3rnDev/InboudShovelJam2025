@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b825d0sxtscmd"
-path="res://.godot/imported/03_big_hill.png-f78e285671fad9efbc37334004157601.ctex"
+uid="uid://wsrfjacr3r2b"
+path="res://.godot/imported/04_cloud.png-b34dfcac93199454c05b6792152db641.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Sprites/Backgrounds/03_big_hill.png"
-dest_files=["res://.godot/imported/03_big_hill.png-f78e285671fad9efbc37334004157601.ctex"]
+source_file="res://Assets/Art/Sprites/Backgrounds/OLD/04_cloud.png"
+dest_files=["res://.godot/imported/04_cloud.png-b34dfcac93199454c05b6792152db641.ctex"]
 
 [params]
 

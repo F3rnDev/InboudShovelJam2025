@@ -1,83 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://cab5m6jmd7dji"]
+[gd_scene load_steps=4 format=3 uid="uid://cab5m6jmd7dji"]
 
-[ext_resource type="Texture2D" uid="uid://bqbehjk01ads1" path="res://Assets/Art/Sprites/Backgrounds/05_sky.png" id="1_tgkpp"]
 [ext_resource type="Script" uid="uid://drqocjk5017wb" path="res://Scripts/Components/cloudLayer.gd" id="2_hcltn"]
-[ext_resource type="Texture2D" uid="uid://wsrfjacr3r2b" path="res://Assets/Art/Sprites/Backgrounds/04_cloud.png" id="3_te2dm"]
-[ext_resource type="Texture2D" uid="uid://gfs07qdv1hf7" path="res://Assets/Art/Sprites/Backgrounds/03.5_big_hill_fade.png" id="4_1paou"]
-[ext_resource type="Texture2D" uid="uid://b825d0sxtscmd" path="res://Assets/Art/Sprites/Backgrounds/03_big_hill.png" id="5_tgkpp"]
-[ext_resource type="Texture2D" uid="uid://b5am73r24i85" path="res://Assets/Art/Sprites/Backgrounds/02.5_hill_fade.png" id="6_tndp2"]
-[ext_resource type="Texture2D" uid="uid://dvpvcslxhgh20" path="res://Assets/Art/Sprites/Backgrounds/02_hill.png" id="7_7x2pa"]
-[ext_resource type="Texture2D" uid="uid://bo3v2nh02hnwh" path="res://Assets/Art/Sprites/Backgrounds/01_grass.png" id="8_uxc7j"]
+[ext_resource type="Texture2D" uid="uid://cqffl2ktjrqqb" path="res://Assets/Art/Sprites/Backgrounds/02 - Sky.png" id="2_poska"]
+[ext_resource type="Texture2D" uid="uid://cwo40n6ykeyuo" path="res://Assets/Art/Sprites/Backgrounds/01 - Hills.png" id="3_w6ulu"]
 
 [node name="Background" type="ParallaxBackground"]
-
-[node name="Sky" type="ParallaxLayer" parent="."]
-position = Vector2(0, -750)
-motion_mirroring = Vector2(2560, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Sky"]
-texture = ExtResource("1_tgkpp")
-centered = false
-
-[node name="Cloud" type="ParallaxLayer" parent="."]
-position = Vector2(0, -750)
-motion_mirroring = Vector2(2560, 0)
+scroll_ignore_camera_zoom = true
 script = ExtResource("2_hcltn")
 
-[node name="Sprite2D" type="Sprite2D" parent="Cloud"]
-texture = ExtResource("3_te2dm")
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_poska")
 centered = false
+region_rect = Rect2(0, 80, 1152, 640)
 
-[node name="BigHillFade" type="ParallaxLayer" parent="."]
-position = Vector2(0, -750)
-motion_scale = Vector2(0.25, 1)
-motion_mirroring = Vector2(2560, 0)
+[node name="Hills" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0.5)
+motion_mirroring = Vector2(1260, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="BigHillFade"]
-texture = ExtResource("4_1paou")
+[node name="Sprite2D" type="Sprite2D" parent="Hills"]
+texture = ExtResource("3_w6ulu")
 centered = false
-
-[node name="BigHill" type="ParallaxLayer" parent="."]
-position = Vector2(0, -750)
-motion_scale = Vector2(0.2, 1)
-motion_mirroring = Vector2(2560, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="BigHill"]
-texture = ExtResource("5_tgkpp")
-centered = false
-
-[node name="HillFade" type="ParallaxLayer" parent="."]
-position = Vector2(0, -750)
-motion_scale = Vector2(0.35, 1)
-motion_mirroring = Vector2(2560, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="HillFade"]
-texture = ExtResource("6_tndp2")
-centered = false
-
-[node name="Hill" type="ParallaxLayer" parent="."]
-position = Vector2(0, -750)
-motion_scale = Vector2(0.3, 1)
-motion_mirroring = Vector2(2560, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Hill"]
-texture = ExtResource("7_7x2pa")
-centered = false
-
-[node name="Grass" type="ParallaxLayer" parent="."]
-position = Vector2(0, -750)
-motion_scale = Vector2(0.4, 1)
-motion_mirroring = Vector2(2560, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Grass"]
-texture = ExtResource("8_uxc7j")
-centered = false
-
-[node name="GrennContinuos" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(2560, 0)
-
-[node name="ColorRect" type="ColorRect" parent="GrennContinuos"]
-offset_top = 1792.0
-offset_right = 2560.0
-offset_bottom = 2047.0
-color = Color(0.180392, 0.8, 0.443137, 1)
+region_rect = Rect2(0, 383.32, 1152, 640)

@@ -1,6 +1,8 @@
-extends ParallaxLayer
+extends ParallaxBackground
 
-@export var CLOUD_SPEED = -30;
+@export var scroolSpeed = 30;
 
 func _process(delta: float) -> void:
-	self.motion_offset.x += CLOUD_SPEED * delta;
+	pass
+	#for layerID in get_child_count():
+		#get_child(layerID).motion_offset.x -= scroolSpeed * layerID * delta;

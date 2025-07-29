@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://gfs07qdv1hf7"
-path="res://.godot/imported/03.5_big_hill_fade.png-1a1e506234b4aa5b925a60c1b64cd303.ctex"
+path="res://.godot/imported/03.5_big_hill_fade.png-ad6768a0847b5a395c64c963523e1567.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Sprites/Backgrounds/03.5_big_hill_fade.png"
-dest_files=["res://.godot/imported/03.5_big_hill_fade.png-1a1e506234b4aa5b925a60c1b64cd303.ctex"]
+source_file="res://Assets/Art/Sprites/Backgrounds/OLD/03.5_big_hill_fade.png"
+dest_files=["res://.godot/imported/03.5_big_hill_fade.png-ad6768a0847b5a395c64c963523e1567.ctex"]
 
 [params]
 
