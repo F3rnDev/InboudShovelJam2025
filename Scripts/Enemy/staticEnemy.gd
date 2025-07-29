@@ -2,9 +2,11 @@ extends CharacterBody2D
 
 @export var animations:AnimatedSprite2D
 @export var animationsTransform:AnimationPlayer
-var player
-var isBeingCaptured:bool = false
+@export var stunCooldown:Timer
+@export var collision:CollisionShape2D
+var playerUFO:CharacterBody2D
 var abductionSpeed:int = 200
+var isBeingCaptured:bool = false
 var stun:bool = false
 var dead:bool = false
 var initialPos:Vector2
@@ -13,17 +15,18 @@ func _ready() -> void:
 	initialPos = global_position
 
 func _process(delta: float) -> void:
-	player = get_parent().playerRef
-	
-	if !player.captureMode:
-		isBeingCaptured = false
-	
-	IsStunned()
+	Respawn()
+	Stunned()
 	pass
 
 func _physics_process(delta: float) -> void:
-	if isBeingCaptured:
-		var direction = (player.global_position - global_position).normalized()
+	BeingCaptured(delta)
+
+func BeingCaptured(delta):
+	playerUFO = get_parent().playerRef
+	var direction:Vector2 = (playerUFO.global_position - global_position).normalized()
+	
+	if playerUFO.captureMode and isBeingCaptured:
 		velocity = direction * abductionSpeed
 	else:
 		if is_on_floor():
@@ -33,22 +36,31 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-
-func IsStunned():
-	modulate.a = 1.0
-	
-	if stun:
+func Stunned():
+	if stun: 
+		animations.play("hit")
+		collision.set_deferred("disabled", true)
 		modulate.a = 0.3
-	elif !isBeingCaptured and !stun:
-		animations.play("idle")
 	else:
-		animations.stop()
+		animations.play("idle")
+		collision.set_deferred("disabled", false)
+		modulate.a = 1.0
 
-func Die():
+func Respawn():
+	if global_position.y >= playerUFO.camera.limit_bottom:
+		global_position = initialPos
+
+func dieAnimation():
 	if dead:
 		animationsTransform.play("die")
-		if animationsTransform.animation_finished:
+		if !animationsTransform.is_playing():
 			queue_free()
-	
-	if global_position.y >= 1900:
-		global_position = initialPos
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.get_parent().is_in_group("Player"):
+		stun = true
+		get_parent().enemyhit.emit()
+		stunCooldown.start()
+
+func _on_timer_timeout() -> void:
+	stun = false
